@@ -31,7 +31,6 @@ const COLORS = {
 };
 
 const OFFICIAL_LOGO = "/logo-premios-europa.png";
-
 const fadeUp = {
   hidden: { opacity: 0, y: 28 },
   visible: { opacity: 1, y: 0 },
@@ -99,11 +98,14 @@ const categories = [
 ];
 
 const schedule = [
-  { time: "18:00", title: "Recepción", text: "Llegada de participantes, familias e invitados." },
-  { time: "18:20", title: "Presentación", text: "Bienvenida y apertura oficial de la II Edición." },
-  { time: "18:40", title: "Proyección", text: "Visionado de candidaturas y piezas seleccionadas." },
-  { time: "20:00", title: "Entrega de premios", text: "Anuncio de ganadores y menciones especiales." },
-  { time: "20:30", title: "Cierre de gala", text: "Foto final y despedida del festival." },
+  { time: "10:15-10:45", title: "Recepción", text: "Llegada de participantes, invitados y prensa." },
+  { time: "11:00", title: "Actuación inicial", text: "" },
+
+  { time: "11:05", title: "Presentación", text: "Bienvenida y apertura oficial de la II Edición." },
+  { time: "11:15", title: "Proyección", text: "Visionado de candidaturas y piezas seleccionadas." },
+  { time: "12:45", title: "Descanso", text: "Espacio para charlas y descanso." },
+  { time: "13:15", title: "Comienzo de la ceremonia", text: "Anuncio de ganadores y menciones especiales." },
+  { time: "14:15", title: "Cierre de gala", text: "Foto final y despedida de la gala." },
 ];
 
 function PremiosEuropaLogo({ compact = false, inverted = false }) {
@@ -276,7 +278,7 @@ function EventIntro() {
       <div className="mx-auto max-w-7xl">
         <SectionTitle
           eyebrow="La gala"
-          title="Una noche para celebrar el talento joven"
+          title="Una mañana para celebrar el talento joven"
           text="Premios Europa es una gala para mostrar y premiar trabajos audiovisuales realizados por adolescentes, cuidando tanto el proceso creativo como la presentación final ante público."
         />
         <div className="grid gap-6 md:grid-cols-3">
