@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { motion } from "framer-motion";
 import {
   Award,
@@ -445,7 +445,7 @@ function Nav({ isAdmin, onAdminLogin, onAdminLogout }) {
       .normalize("NFD")
       .replace(/[\u0300-\u036f]/g, "")
       .replace(/\s+/g, "-")}`;
-  const getLinkHref = (link) => (link === "Jurado" ? "/jurado" : link === "Colaboración" ? "/colaboracion" : getSectionHref(link));
+  const getLinkHref = (link) => (link === "Jurado" ? "#/jurado" : link === "Colaboración" ? "#/colaboracion" : getSectionHref(link));
 
   return (
     <header className="fixed left-0 right-0 top-0 z-50 border-b border-[#101a36]/10 bg-[#fbf7ed]/80 backdrop-blur-xl">
@@ -919,12 +919,12 @@ function JuryVideos() {
     <section id="jurado" className="min-h-screen px-4 pb-20 pt-8 md:px-8">
       <div className="mx-auto max-w-7xl">
         <div className="mb-10 flex flex-col gap-5 border-b border-[#101a36]/10 pb-6 md:flex-row md:items-center md:justify-between">
-          <a href="/" className="inline-flex w-fit items-center gap-3" aria-label="Volver a Premios Europa">
+          <a href="/#inicio" className="inline-flex w-fit items-center gap-3" aria-label="Volver a Premios Europa">
             <PremiosEuropaLogo compact />
             <span className="text-sm font-semibold uppercase tracking-[0.22em] text-[#101a36]/70">Premios Europa</span>
           </a>
           <a
-            href="/"
+            href="/#inicio"
             className="inline-flex w-fit items-center justify-center rounded-full border border-[#101a36]/15 bg-white/50 px-5 py-3 text-sm font-semibold text-[#101a36] transition hover:bg-[#f3ecd9]"
           >
             Volver a la web principal
@@ -1041,12 +1041,12 @@ function CollaborationPage() {
     <section className="min-h-screen px-4 pb-20 pt-8 md:px-8">
       <div className="mx-auto max-w-7xl">
         <div className="mb-10 flex flex-col gap-5 border-b border-[#101a36]/10 pb-6 md:flex-row md:items-center md:justify-between">
-          <a href="/" className="inline-flex w-fit items-center gap-3" aria-label="Volver a Premios Europa">
+          <a href="/#inicio" className="inline-flex w-fit items-center gap-3" aria-label="Volver a Premios Europa">
             <PremiosEuropaLogo compact />
             <span className="text-sm font-semibold uppercase tracking-[0.22em] text-[#101a36]/70">Premios Europa</span>
           </a>
           <a
-            href="/"
+            href="/#inicio"
             className="inline-flex w-fit items-center justify-center rounded-full border border-[#101a36]/15 bg-white/50 px-5 py-3 text-sm font-semibold text-[#101a36] transition hover:bg-[#f3ecd9]"
           >
             Volver a la web principal
@@ -1313,8 +1313,24 @@ function Footer() {
 export default function PremiosEuropaLanding() {
   const year = useMemo(() => new Date().getFullYear(), []);
   const [isAdmin, setIsAdmin] = useState(false);
-  const isJuryPage = window.location.pathname === "/jurado";
-  const isCollaborationPage = window.location.pathname === "/colaboracion";
+  const getCurrentPage = () => {
+    if (window.location.hash === "#/jurado") return "/jurado";
+    if (window.location.hash === "#/colaboracion") return "/colaboracion";
+    return window.location.pathname;
+  };
+  const [currentPage, setCurrentPage] = useState(getCurrentPage);
+  const isJuryPage = currentPage === "/jurado";
+  const isCollaborationPage = currentPage === "/colaboracion";
+
+  useEffect(() => {
+    const handleRouteChange = () => setCurrentPage(getCurrentPage());
+    window.addEventListener("hashchange", handleRouteChange);
+    window.addEventListener("popstate", handleRouteChange);
+    return () => {
+      window.removeEventListener("hashchange", handleRouteChange);
+      window.removeEventListener("popstate", handleRouteChange);
+    };
+  }, []);
 
   const handleAdminLogin = () => {
     const password = window.prompt("Introduce la clave de administrador");
