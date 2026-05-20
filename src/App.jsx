@@ -2,14 +2,19 @@ import { useMemo, useState } from "react";
 import { motion } from "framer-motion";
 import {
   Award,
+  Building2,
   Calculator,
   CalendarDays,
   Camera,
   ChevronLeft,
   ChevronRight,
   Film,
+  Handshake,
   Image,
   ImagePlus,
+  Mail,
+  Menu,
+  Megaphone,
   Music,
   Palette,
   PlayCircle,
@@ -17,6 +22,7 @@ import {
   Shirt,
   Sparkles,
   Star,
+  Theater,
   Trophy,
   UploadCloud,
   Users,
@@ -25,6 +31,7 @@ import {
   LockKeyhole,
   ShieldCheck,
   Video,
+  X,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -364,6 +371,24 @@ const categories = [
   { name: "Formato arriesgado", icon: Sparkles },
 ];
 
+const collaborationHighlights = [
+  { icon: Users, title: "Impacto local", text: "Primera edición con más de 300 asistentes, 40 productoras escolares y cobertura televisiva." },
+  { icon: Theater, title: "Gala 2026", text: "La II Edición se celebrará el 4 de junio en el Teatro Municipal de Arahal, con 412 butacas." },
+  { icon: Sparkles, title: "Proyección cultural", text: "Festival internacional gracias a la alianza Erasmus con el Liceo de Aviano, Italia." },
+  { icon: Award, title: "Jurado profesional", text: "Participación de referentes de la cultura, la interpretación, el diseño y el audiovisual." },
+];
+
+const collaborationTiers = [
+  { name: "Bronce", amount: "50 €", benefits: "Marca en cartelería pequeña y difusión especial en redes sociales." },
+  { name: "Plata", amount: "100 €", benefits: "Cartelería mediana, redes sociales y mención de honor durante la gala." },
+  { name: "Oro", amount: "150 €", benefits: "Todo lo anterior y proyección del logotipo en la pantalla principal del teatro." },
+  { name: "Premium", amount: "200 €", benefits: "Todo lo anterior y presencia destacada en cartelería de gran formato." },
+  { name: "Especial", amount: "250 €", benefits: "Todo lo anterior y 2 entradas exclusivas para asistir a la gala." },
+  { name: "Destacada", amount: "300 €", benefits: "Todo lo anterior y entrega de uno de los premios oficiales en el escenario." },
+  { name: "Honor", amount: "400 €", benefits: "Todo lo anterior y 2 minutos de discurso ante el público asistente." },
+  { name: "Patrocinador principal", amount: "500 €", benefits: "Máximo reconocimiento: dar nombre de empresa a uno de los premios oficiales." },
+];
+
 const schedule = [
   { time: "10:15 - 10:55", title: "Recepción", text: "Llegada de participantes, jurado e invitados." },
   { time: "11:00", title: "Actuación inicial", text: ""},
@@ -412,13 +437,15 @@ function SectionTitle({ eyebrow, title, text }) {
 }
 
 function Nav({ isAdmin, onAdminLogin, onAdminLogout }) {
-  const links = ["Evento", "I Edición", "Candidaturas", "Jurado", "Programa"];
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const links = ["Evento", "I Edición", "Candidaturas", "Colaboración", "Jurado", "Programa"];
   const getSectionHref = (link) =>
     `#${link
       .toLowerCase()
       .normalize("NFD")
       .replace(/[\u0300-\u036f]/g, "")
       .replace(/\s+/g, "-")}`;
+  const getLinkHref = (link) => (link === "Jurado" ? "/jurado" : link === "Colaboración" ? "/colaboracion" : getSectionHref(link));
 
   return (
     <header className="fixed left-0 right-0 top-0 z-50 border-b border-[#101a36]/10 bg-[#fbf7ed]/80 backdrop-blur-xl">
@@ -430,42 +457,102 @@ function Nav({ isAdmin, onAdminLogin, onAdminLogout }) {
           {links.map((link) => (
             <a
               key={link}
-              href={link === "Jurado" ? "/jurado" : getSectionHref(link)}
-              target={link === "Jurado" ? "_blank" : undefined}
-              rel={link === "Jurado" ? "noreferrer" : undefined}
+              href={getLinkHref(link)}
               className="text-sm font-medium text-[#101a36]/75 transition hover:text-[#b56b24]"
             >
               {link}
             </a>
           ))}
         </div>
-        {isAdmin ? (
-          <div className="flex items-center gap-2">
-            <a
-              href="#subir"
-              className="hidden rounded-full border border-[#101a36]/15 bg-[#101a36] px-4 py-2 text-sm font-medium text-[#fbf7ed] shadow-lg shadow-[#101a36]/10 transition hover:-translate-y-0.5 hover:bg-[#1b294e] sm:inline-flex"
-            >
-              Subir cortos
-            </a>
+        <div className="flex items-center gap-2">
+          {isAdmin ? (
+            <>
+              <a
+                href="#subir"
+                className="hidden rounded-full border border-[#101a36]/15 bg-[#101a36] px-4 py-2 text-sm font-medium text-[#fbf7ed] shadow-lg shadow-[#101a36]/10 transition hover:-translate-y-0.5 hover:bg-[#1b294e] sm:inline-flex"
+              >
+                Subir cortos
+              </a>
+              <button
+                type="button"
+                onClick={onAdminLogout}
+                className="hidden rounded-full border border-[#101a36]/15 bg-white/40 px-4 py-2 text-sm font-medium text-[#101a36] transition hover:bg-[#f3ecd9] sm:inline-flex"
+              >
+                Salir admin
+              </button>
+            </>
+          ) : (
             <button
               type="button"
-              onClick={onAdminLogout}
-              className="rounded-full border border-[#101a36]/15 bg-white/40 px-4 py-2 text-sm font-medium text-[#101a36] transition hover:bg-[#f3ecd9]"
+              onClick={onAdminLogin}
+              className="hidden items-center gap-2 rounded-full border border-[#101a36]/15 bg-white/40 px-4 py-2 text-sm font-medium text-[#101a36] shadow-sm transition hover:-translate-y-0.5 hover:bg-[#f3ecd9] sm:inline-flex"
             >
-              Salir admin
+              <LockKeyhole className="h-4 w-4 text-[#b56b24]" />
+              Admin
             </button>
-          </div>
-        ) : (
+          )}
           <button
             type="button"
-            onClick={onAdminLogin}
-            className="inline-flex items-center gap-2 rounded-full border border-[#101a36]/15 bg-white/40 px-4 py-2 text-sm font-medium text-[#101a36] shadow-sm transition hover:-translate-y-0.5 hover:bg-[#f3ecd9]"
+            onClick={() => setIsMenuOpen((isOpen) => !isOpen)}
+            className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-[#101a36]/15 bg-white/50 text-[#101a36] shadow-sm transition hover:bg-[#f3ecd9] lg:hidden"
+            aria-label={isMenuOpen ? "Cerrar menú" : "Abrir menú"}
+            aria-expanded={isMenuOpen}
           >
-            <LockKeyhole className="h-4 w-4 text-[#b56b24]" />
-            Admin
+            {isMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
           </button>
-        )}
+        </div>
       </nav>
+      {isMenuOpen && (
+        <div className="border-t border-[#101a36]/10 bg-[#fbf7ed]/95 px-4 py-4 shadow-xl shadow-[#101a36]/10 backdrop-blur-xl lg:hidden">
+          <div className="mx-auto grid max-w-7xl gap-2">
+            {links.map((link) => (
+              <a
+                key={link}
+                href={getLinkHref(link)}
+                onClick={() => setIsMenuOpen(false)}
+                className="rounded-2xl px-4 py-3 text-base font-semibold text-[#101a36] transition hover:bg-[#f3ecd9] hover:text-[#b56b24]"
+              >
+                {link}
+              </a>
+            ))}
+            <div className="mt-2 border-t border-[#101a36]/10 pt-3">
+              {isAdmin ? (
+                <div className="grid gap-2">
+                  <a
+                    href="#subir"
+                    onClick={() => setIsMenuOpen(false)}
+                    className="rounded-2xl bg-[#101a36] px-4 py-3 text-center text-sm font-semibold text-[#fbf7ed] transition hover:bg-[#1b294e]"
+                  >
+                    Subir cortos
+                  </a>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setIsMenuOpen(false);
+                      onAdminLogout();
+                    }}
+                    className="rounded-2xl border border-[#101a36]/15 bg-white/50 px-4 py-3 text-sm font-semibold text-[#101a36] transition hover:bg-[#f3ecd9]"
+                  >
+                    Salir admin
+                  </button>
+                </div>
+              ) : (
+                <button
+                  type="button"
+                  onClick={() => {
+                    setIsMenuOpen(false);
+                    onAdminLogin();
+                  }}
+                  className="inline-flex w-full items-center justify-center gap-2 rounded-2xl border border-[#101a36]/15 bg-white/50 px-4 py-3 text-sm font-semibold text-[#101a36] transition hover:bg-[#f3ecd9]"
+                >
+                  <LockKeyhole className="h-4 w-4 text-[#b56b24]" />
+                  Admin
+                </button>
+              )}
+            </div>
+          </div>
+        </div>
+      )}
     </header>
   );
 }
@@ -913,6 +1000,173 @@ function JuryVideos() {
   );
 }
 
+function CollaborationPage() {
+  const [formData, setFormData] = useState({
+    business: "",
+    contact: "",
+    email: "",
+    phone: "",
+    collaboration: "Colaboración en material",
+    message: "",
+  });
+
+  const updateField = (field, value) => {
+    setFormData((current) => ({ ...current, [field]: value }));
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    const subject = `Colaboración Premios Europa - ${formData.business || "Empresa interesada"}`;
+    const body = [
+      "Hola,",
+      "",
+      "Nos interesa colaborar con los Premios Europa.",
+      "",
+      `Empresa/comercio: ${formData.business}`,
+      `Persona de contacto: ${formData.contact}`,
+      `Email: ${formData.email}`,
+      `Teléfono: ${formData.phone}`,
+      `Modalidad de interés: ${formData.collaboration}`,
+      "",
+      "Mensaje/propuesta:",
+      formData.message,
+      "",
+      "Gracias.",
+    ].join("\n");
+
+    window.location.href = `mailto:julioduqueaguilar@ieseuropa.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  };
+
+  return (
+    <section className="min-h-screen px-4 pb-20 pt-8 md:px-8">
+      <div className="mx-auto max-w-7xl">
+        <div className="mb-10 flex flex-col gap-5 border-b border-[#101a36]/10 pb-6 md:flex-row md:items-center md:justify-between">
+          <a href="/" className="inline-flex w-fit items-center gap-3" aria-label="Volver a Premios Europa">
+            <PremiosEuropaLogo compact />
+            <span className="text-sm font-semibold uppercase tracking-[0.22em] text-[#101a36]/70">Premios Europa</span>
+          </a>
+          <a
+            href="/"
+            className="inline-flex w-fit items-center justify-center rounded-full border border-[#101a36]/15 bg-white/50 px-5 py-3 text-sm font-semibold text-[#101a36] transition hover:bg-[#f3ecd9]"
+          >
+            Volver a la web principal
+          </a>
+        </div>
+
+        <div className="grid items-center gap-10 lg:grid-cols-[1.05fr_0.95fr]">
+          <motion.div initial={{ opacity: 0, y: 28 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7 }}>
+            <div className="mb-5 inline-flex items-center gap-2 rounded-full bg-[#d5a449]/20 px-4 py-2 text-sm font-semibold uppercase tracking-[0.18em] text-[#b56b24]">
+              <Handshake className="h-4 w-4" />
+              Colaboración oficial
+            </div>
+            <h1 className="text-4xl font-light uppercase leading-tight tracking-[0.12em] text-[#101a36] md:text-6xl">
+              Apoya el talento joven
+            </h1>
+            <p className="mt-6 max-w-2xl text-lg leading-8 text-[#1b294e]/75">
+              Premios Europa es el festival de cine adolescente del IES Europa de Arahal. Buscamos comercios, empresas e instituciones que quieran impulsar la cultura, el emprendimiento escolar y la creatividad audiovisual del alumnado.
+            </p>
+            <p className="mt-4 max-w-2xl leading-8 text-[#1b294e]/70">
+              La II Edición 2026 da un salto de calidad con una gala en el Teatro Municipal de Arahal, alianza Erasmus con el Liceo de Aviano y cobertura de Medial TV. También estamos abiertos a propuestas en material o colaboraciones adaptadas a cada entidad.
+            </p>
+          </motion.div>
+
+          <motion.div initial={{ opacity: 0, scale: 0.96 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.7, delay: 0.1 }} className="overflow-hidden rounded-[2rem] border border-[#101a36]/10 bg-[#101a36] p-7 text-[#fbf7ed] shadow-2xl shadow-[#101a36]/20 md:p-8">
+            <Megaphone className="mb-6 h-12 w-12 text-[#d5a449]" />
+            <h2 className="text-3xl font-light uppercase tracking-[0.12em]">Por qué colaborar</h2>
+            <div className="mt-7 grid gap-4 sm:grid-cols-2">
+              {collaborationHighlights.map((item) => (
+                <div key={item.title} className="rounded-2xl border border-[#fbf7ed]/10 bg-white/[0.06] p-5">
+                  <item.icon className="h-7 w-7 text-[#d5a449]" />
+                  <h3 className="mt-4 font-semibold text-[#fbf7ed]">{item.title}</h3>
+                  <p className="mt-2 text-sm leading-6 text-[#fbf7ed]/70">{item.text}</p>
+                </div>
+              ))}
+            </div>
+          </motion.div>
+        </div>
+
+        <div className="mt-16">
+          <SectionTitle
+            eyebrow="Modalidades"
+            title="Formas de colaboración"
+            text="Puedes elegir una modalidad económica, proponer una colaboración en material o plantearnos una fórmula personalizada."
+          />
+          <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-4">
+            {collaborationTiers.map((tier, index) => (
+              <motion.article
+                key={tier.name}
+                variants={fadeUp}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+                transition={{ duration: 0.55, delay: index * 0.04 }}
+                className="rounded-[1.5rem] border border-[#101a36]/10 bg-white/60 p-6 shadow-xl shadow-[#101a36]/5"
+              >
+                <p className="text-sm font-semibold uppercase tracking-[0.24em] text-[#b56b24]">{tier.name}</p>
+                <p className="mt-3 text-3xl font-light text-[#101a36]">{tier.amount}</p>
+                <p className="mt-4 text-sm leading-6 text-[#1b294e]/70">{tier.benefits}</p>
+              </motion.article>
+            ))}
+          </div>
+        </div>
+
+        <div className="mt-16 grid gap-8 lg:grid-cols-[0.9fr_1.1fr]">
+          <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} transition={{ duration: 0.7 }} className="rounded-[2rem] border border-[#101a36]/10 bg-white/60 p-7 shadow-2xl shadow-[#101a36]/10 md:p-8">
+            <Building2 className="mb-6 h-12 w-12 text-[#b56b24]" />
+            <h2 className="text-3xl font-light uppercase tracking-[0.12em] text-[#101a36]">Hablemos</h2>
+            <p className="mt-5 leading-8 text-[#1b294e]/70">
+              Si representas a una empresa, comercio local, librería, asociación o entidad cultural, puedes escribirnos para valorar una colaboración. Escuchamos propuestas económicas, aportaciones en material y acuerdos especiales.
+            </p>
+            <div className="mt-7 rounded-2xl bg-[#101a36] p-5 text-[#fbf7ed]">
+              <Mail className="mb-3 h-6 w-6 text-[#d5a449]" />
+              <p className="text-sm text-[#fbf7ed]/65">Correo de contacto</p>
+              <p className="mt-1 break-all font-semibold">julioduqueaguilar@ieseuropa.com</p>
+            </div>
+          </motion.div>
+
+          <motion.form onSubmit={handleSubmit} variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} transition={{ duration: 0.7, delay: 0.1 }} className="rounded-[2rem] border border-[#101a36]/10 bg-white/65 p-6 shadow-2xl shadow-[#101a36]/10 md:p-8">
+            <div className="grid gap-5 md:grid-cols-2">
+              <label className="space-y-2">
+                <span className="text-sm font-semibold text-[#101a36]">Empresa o comercio</span>
+                <input value={formData.business} onChange={(event) => updateField("business", event.target.value)} required className="w-full rounded-2xl border border-[#101a36]/10 bg-[#fbf7ed] px-4 py-3 outline-none transition focus:border-[#b56b24] focus:ring-4 focus:ring-[#d5a449]/20" placeholder="Nombre de la empresa" />
+              </label>
+              <label className="space-y-2">
+                <span className="text-sm font-semibold text-[#101a36]">Persona de contacto</span>
+                <input value={formData.contact} onChange={(event) => updateField("contact", event.target.value)} required className="w-full rounded-2xl border border-[#101a36]/10 bg-[#fbf7ed] px-4 py-3 outline-none transition focus:border-[#b56b24] focus:ring-4 focus:ring-[#d5a449]/20" placeholder="Nombre y apellidos" />
+              </label>
+              <label className="space-y-2">
+                <span className="text-sm font-semibold text-[#101a36]">Email</span>
+                <input type="email" value={formData.email} onChange={(event) => updateField("email", event.target.value)} required className="w-full rounded-2xl border border-[#101a36]/10 bg-[#fbf7ed] px-4 py-3 outline-none transition focus:border-[#b56b24] focus:ring-4 focus:ring-[#d5a449]/20" placeholder="correo@empresa.com" />
+              </label>
+              <label className="space-y-2">
+                <span className="text-sm font-semibold text-[#101a36]">Teléfono</span>
+                <input value={formData.phone} onChange={(event) => updateField("phone", event.target.value)} className="w-full rounded-2xl border border-[#101a36]/10 bg-[#fbf7ed] px-4 py-3 outline-none transition focus:border-[#b56b24] focus:ring-4 focus:ring-[#d5a449]/20" placeholder="Teléfono de contacto" />
+              </label>
+              <label className="space-y-2 md:col-span-2">
+                <span className="text-sm font-semibold text-[#101a36]">Tipo de colaboración</span>
+                <select value={formData.collaboration} onChange={(event) => updateField("collaboration", event.target.value)} className="w-full rounded-2xl border border-[#101a36]/10 bg-[#fbf7ed] px-4 py-3 outline-none transition focus:border-[#b56b24] focus:ring-4 focus:ring-[#d5a449]/20">
+                  <option>Colaboración en material</option>
+                  {collaborationTiers.map((tier) => (
+                    <option key={tier.name}>{tier.name} - {tier.amount}</option>
+                  ))}
+                  <option>Propuesta personalizada</option>
+                </select>
+              </label>
+              <label className="space-y-2 md:col-span-2">
+                <span className="text-sm font-semibold text-[#101a36]">Mensaje o propuesta</span>
+                <textarea value={formData.message} onChange={(event) => updateField("message", event.target.value)} className="min-h-36 w-full rounded-2xl border border-[#101a36]/10 bg-[#fbf7ed] px-4 py-3 outline-none transition focus:border-[#b56b24] focus:ring-4 focus:ring-[#d5a449]/20" placeholder="Cuéntanos cómo te gustaría colaborar" />
+              </label>
+            </div>
+            <Button type="submit" className="mt-6 w-full rounded-full bg-[#101a36] py-6 text-base text-[#fbf7ed] hover:bg-[#1b294e] md:w-auto md:px-8">
+              Enviar propuesta
+            </Button>
+          </motion.form>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function AdminUploadSection() {
   const [fileName, setFileName] = useState("");
   const [videoFileName, setVideoFileName] = useState("");
@@ -1049,7 +1303,7 @@ function Footer() {
         </div>
         <div className="text-left md:text-right">
           <p className="text-lg tracking-[0.18em] text-[#d5a449]">04.JUN.26</p>
-          <p className="mt-2 text-sm text-[#fbf7ed]/60">Design by Julio Duque]</p>
+          <p className="mt-2 text-sm text-[#fbf7ed]/60">Design by Julio Duque</p>
         </div>
       </div>
     </footer>
@@ -1060,6 +1314,7 @@ export default function PremiosEuropaLanding() {
   const year = useMemo(() => new Date().getFullYear(), []);
   const [isAdmin, setIsAdmin] = useState(false);
   const isJuryPage = window.location.pathname === "/jurado";
+  const isCollaborationPage = window.location.pathname === "/colaboracion";
 
   const handleAdminLogin = () => {
     const password = window.prompt("Introduce la clave de administrador");
@@ -1080,6 +1335,20 @@ export default function PremiosEuropaLanding() {
         `}</style>
         <JuryVideos />
         <div className="sr-only">Premios Europa zona de jurado {year}</div>
+      </main>
+    );
+  }
+
+  if (isCollaborationPage) {
+    return (
+      <main className="min-h-screen scroll-smooth bg-[#fbf7ed] font-sans text-[#101a36] selection:bg-[#d5a449]/40">
+        <style>{`
+          html { scroll-behavior: smooth; }
+          body { background: ${COLORS.creamLight}; }
+          section { scroll-margin-top: 88px; }
+        `}</style>
+        <CollaborationPage />
+        <div className="sr-only">Premios Europa página de colaboración {year}</div>
       </main>
     );
   }
