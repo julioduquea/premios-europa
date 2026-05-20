@@ -3,7 +3,6 @@ import React from "react";
 export function Button({
   children,
   className = "",
-  variant = "default",
   asChild = false,
   type = "button",
   ...props

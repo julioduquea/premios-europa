@@ -1,19 +1,27 @@
-import React, { useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import { motion } from "framer-motion";
 import {
   Award,
+  Calculator,
   CalendarDays,
   Camera,
-  Clapperboard,
-  Crown,
+  ChevronLeft,
+  ChevronRight,
   Film,
+  Image,
   ImagePlus,
+  Music,
+  Palette,
   PlayCircle,
+  ScrollText,
+  Shirt,
   Sparkles,
   Star,
   Trophy,
   UploadCloud,
   Users,
+  UserRound,
+  UsersRound,
   LockKeyhole,
   ShieldCheck,
   Video,
@@ -30,7 +38,9 @@ const COLORS = {
   gold: "#d5a449",
 };
 
-const OFFICIAL_LOGO = "/logo-premios-europa.png";
+const OFFICIAL_LOGO = " /logo-premios-europa.png";
+
+
 const fadeUp = {
   hidden: { opacity: 0, y: 28 },
   visible: { opacity: 1, y: 0 },
@@ -69,43 +79,299 @@ const candidates = [
   },
 ];
 
-const videos = [
+const juryPassword = "jurado2026";
+
+const juryShorts = [
   {
-    title: "Making of · Premios Europa",
-    description: "Proceso creativo, ensayos y rodajes realizados por el alumnado.",
+    title: "Corto 01 · Pendiente de título",
+    group: "Grupo participante",
+    category: "Selección oficial",
+    description: "Ficha privada para que el jurado valore el corto antes de la gala.",
     embed: "https://www.youtube.com/embed/tgbNymZ7vqY",
   },
   {
-    title: "Selección oficial · Tráiler",
-    description: "Avance de las candidaturas finalistas de la II Edición.",
+    title: "Corto 02 · Pendiente de título",
+    group: "Grupo participante",
+    category: "Selección oficial",
+    description: "Sustituye este enlace por el vídeo real cuando esté subido.",
     embed: "https://player.vimeo.com/video/76979871",
   },
   {
-    title: "Entrevistas a participantes",
-    description: "Voces jóvenes explicando sus ideas, referentes y aprendizajes.",
+    title: "Corto 03 · Pendiente de título",
+    group: "Grupo participante",
+    category: "Selección oficial",
+    description: "Espacio reservado para otra candidatura de la II Edición.",
     embed: "https://www.youtube.com/embed/dQw4w9WgXcQ",
+  },
+];
+
+const firstEditionGallery = [
+  {
+    title: "Alfombra roja",
+    description: "Recepción del alumnado, familias e invitados durante la I Edición.",
+    image: "/i-edicion/galeria-01.jpg",
+  },
+  {
+    title: "Presentación de la gala",
+    description: "Inicio de la ceremonia y presentación de los cortos finalistas.",
+    image: "/i-edicion/galeria-02.jpg",
+  },
+  {
+    title: "Entrega de premios",
+    description: "Momentos destacados de la entrega de galardones.",
+    image: "/i-edicion/galeria-03.jpg",
+  },
+  {
+    title: "Foto final",
+    description: "Participantes y organización al cierre de la primera gala.",
+    image: "/i-edicion/galeria-04.jpg",
+  },
+];
+
+const firstEditionAwardPhotos = [
+  {
+    title: "Entrega de premios 01",
+    description: "Entrega de galardones durante la I Edición.",
+    image: "/i-edicion/entrega-premios-01.jpg",
+  },
+  {
+    title: "Entrega de premios 02",
+    description: "Momento de reconocimiento a los cortos premiados.",
+    image: "/i-edicion/entrega-premios-02.jpg",
+  },
+  {
+    title: "Entrega de premios 03",
+    description: "Participantes recogiendo su premio sobre el escenario.",
+    image: "/i-edicion/entrega-premios-03.jpg",
+  },
+  {
+    title: "Entrega de premios 04",
+    description: "Fotografía de una de las categorías de la primera gala.",
+    image: "/i-edicion/entrega-premios-04.jpg",
+  },
+  {
+    title: "Entrega de premios 05",
+    description: "Celebración de los equipos premiados en la I Edición.",
+    image: "/i-edicion/entrega-premios-05.jpg",
+  },
+   {
+    title: "Entrega de premios 06",
+    description: "Celebración de los equipos premiados en la I Edición.",
+    image: "/i-edicion/entrega-premios-06.jpg",
+  },
+   {
+    title: "Entrega de premios 07",
+    description: "Celebración de los equipos premiados en la I Edición.",
+    image: "/i-edicion/entrega-premios-07.jpg",
+  },
+   {
+    title: "Entrega de premios 08",
+    description: "Celebración de los equipos premiados en la I Edición.",
+    image: "/i-edicion/entrega-premios-08.jpg",
+  },
+   {
+    title: "Entrega de premios 09",
+    description: "Celebración de los equipos premiados en la I Edición.",
+    image: "/i-edicion/entrega-premios-09.jpg",
+  },
+   {
+    title: "Entrega de premios 10",
+    description: "Celebración de los equipos premiados en la I Edición.",
+    image: "/i-edicion/entrega-premios-10.jpg",
+  },
+   {
+    title: "Entrega de premios 11",
+    description: "Celebración de los equipos premiados en la I Edición.",
+    image: "/i-edicion/entrega-premios-11.jpg",
+  },
+   {
+    title: "Entrega de premios 12",
+    description: "Celebración de los equipos premiados en la I Edición.",
+    image: "/i-edicion/entrega-premios-12.jpg",
+  },
+   {
+    title: "Entrega de premios 13",
+    description: "Celebración de los equipos premiados en la I Edición.",
+    image: "/i-edicion/entrega-premios-13.jpg",
+  },
+   {
+    title: "Entrega de premios 14",
+    description: "Celebración de los equipos premiados en la I Edición.",
+    image: "/i-edicion/entrega-premios-14.jpg",
+  },
+   {
+    title: "Entrega de premios 15",
+    description: "Celebración de los equipos premiados en la I Edición.",
+    image: "/i-edicion/entrega-premios-15.jpg",
+  },
+   {
+    title: "Entrega de premios 16",
+    description: "Celebración de los equipos premiados en la I Edición.",
+    image: "/i-edicion/entrega-premios-16.jpg",
+  },
+   {
+    title: "Entrega de premios 17",
+    description: "Celebración de los equipos premiados en la I Edición.",
+    image: "/i-edicion/entrega-premios-17.jpg",
+  },
+   {
+    title: "Entrega de premios 18",
+    description: "Celebración de los equipos premiados en la I Edición.",
+    image: "/i-edicion/entrega-premios-18.jpg",
+  },
+   {
+    title: "Entrega de premios 19",
+    description: "Celebración de los equipos premiados en la I Edición.",
+    image: "/i-edicion/entrega-premios-19.jpg",
+  },
+   {
+    title: "Entrega de premios 20",
+    description: "Celebración de los equipos premiados en la I Edición.",
+    image: "/i-edicion/entrega-premios-20.jpg",
+  },
+     {
+    title: "Entrega de premios 21",
+    description: "Celebración de los equipos premiados en la I Edición.",
+    image: "/i-edicion/entrega-premios-21.jpg",
+  },
+     {
+    title: "Entrega de premios 22",
+    description: "Celebración de los equipos premiados en la I Edición.",
+    image: "/i-edicion/entrega-premios-22.jpg",
+  },
+     {
+    title: "Entrega de premios 23",
+    description: "Celebración de los equipos premiados en la I Edición.",
+    image: "/i-edicion/entrega-premios-23.jpg",
+  },
+     {
+    title: "Entrega de premios 24",
+    description: "Celebración de los equipos premiados en la I Edición.",
+    image: "/i-edicion/entrega-premios-24.jpg",
+  },
+     {
+    title: "Entrega de premios 25",
+    description: "Celebración de los equipos premiados en la I Edición.",
+    image: "/i-edicion/entrega-premios-25.jpg",
+  },
+];
+
+const firstEditionShorts = [
+  {
+    title: "Mejor cortometraje",
+    group: "Equipo ganador",
+    award: "Mejor cortometraje",
+    description: "Corto ganador de la primera edición de los Premios Europa.",
+    image: "/i-edicion/mejor-cortometraje.jpg",
+    video: "https://www.youtube.com/embed/tgbNymZ7vqY",
+  },
+  {
+    title: "Mejor interpretación protagonista",
+    group: "Intérprete protagonista",
+    award: "Mejor interpretación protagonista",
+    description: "Reconocimiento a la interpretación principal más destacada de la I Edición.",
+    image: "/i-edicion/mejor-interpretacion-protagonista.jpg",
+    video: "https://www.youtube.com/embed/dQw4w9WgXcQ",
+  },
+  {
+    title: "Mejor interpretación de reparto",
+    group: "Intérprete de reparto",
+    award: "Mejor interpretación de reparto",
+    description: "Reconocimiento a la interpretación secundaria más destacada de la I Edición.",
+    image: "/i-edicion/mejor-interpretacion-reparto.jpg",
+    video: "https://player.vimeo.com/video/76979871",
+  },
+  {
+    title: "Mejor logo",
+    group: "Candidatura destacada",
+    award: "Mejor logo",
+    description: "Proyecto reconocido por su planificación, puesta en escena y mirada audiovisual.",
+    image: "/i-edicion/mejor-logo.jpg",
+    video: "https://www.youtube.com/embed/tgbNymZ7vqY",
+  },
+  {
+    title: "Mejor guion",
+    group: "Equipo guionista",
+    award: "Mejor guion",
+    description: "Corto premiado por la construcción de la historia, diálogos y estructura narrativa.",
+    image: "/i-edicion/mejor-guion.jpg",
+    video: "https://www.youtube.com/embed/dQw4w9WgXcQ",
+  },
+  {
+    title: "Mejor vestuario",
+    group: "Equipo de vestuario",
+    award: "Mejor vestuario",
+    description: "Corto premiado por su dirección artística, diseño de vestuario y ambientación visual.",
+    image: "/i-edicion/mejor-vestuario.jpg",
+    video: "https://www.youtube.com/embed/dQw4w9WgXcQ",
+  },
+  {
+    title: "Mejor storyboard",
+    group: "Equipo de storyboard",
+    award: "Mejor storyboard",
+    description: "Corto premiado por su planificación, puesta en escena y mirada audiovisual.",
+    image: "/i-edicion/mejor-storyboard.jpg",
+    video: "https://www.youtube.com/embed/dQw4w9WgXcQ",
+  },
+  {
+    title: "Mejor presupuesto",
+    group: "Equipo presupuesto",
+    award: "Mejor presupuesto",
+    description: "Corto premiado por su gestión de recursos, creatividad y eficiencia en la producción.",
+    image: "/i-edicion/mejor-presupuesto.jpg",
+    video: "https://www.youtube.com/embed/dQw4w9WgXcQ",
+  },
+
+  {
+    title: "Mejor cartel",
+    group: "Equipo cartel",
+    award: "Mejor cartel",
+    description: "Corto premiado por su diseño gráfico, creatividad y capacidad de transmitir la esencia del proyecto.",
+    image: "/i-edicion/mejor-cartel.jpg",
+    video: "https://www.youtube.com/embed/dQw4w9WgXcQ",
+  },
+
+  {
+    title: "Mejor BSO",
+    group: "Equipo BSO",
+    award: "Mejor BSO",
+    description: "Corto premiado por su banda sonora original, composición musical y capacidad para potenciar la narrativa audiovisual.",
+    image: "/i-edicion/mejor-bso.jpg",
+    video: "https://www.youtube.com/embed/dQw4w9WgXcQ",
+  },
+
+  {
+    title: "Premio formato arriesgado",
+    group: "Equipo formato arriesgado",
+    award: "Formato arriesgado",
+    description: "Corto elegido por su propuesta innovadora, originalidad y valentía para explorar nuevas formas narrativas o estéticas.",
+    image: "/i-edicion/premio-formato-arriesgado.jpg",
+    video: "https://player.vimeo.com/video/76979871",
   },
 ];
 
 const categories = [
   { name: "Mejor cortometraje", icon: Trophy },
-  { name: "Mejor dirección", icon: Clapperboard },
-  { name: "Mejor interpretación", icon: Star },
-  { name: "Mejor guion", icon: Film },
-  { name: "Mejor montaje", icon: Video },
-  { name: "Mejor fotografía", icon: Camera },
-  { name: "Premio del público", icon: Crown },
+  { name: "Mejor personaje protagonista", icon: UserRound },
+  { name: "Mejor personaje de reparto", icon: UsersRound },
+  { name: "Mejor logo", icon: Palette },
+  { name: "Mejor guión", icon: ScrollText },
+  { name: "Mejor vestuario", icon: Shirt },
+  { name: "Mejor storyboard", icon: Camera },
+  { name: "Mejor presupuesto", icon: Calculator },
+  { name: "Mejor cartel", icon: Image },
+  { name: "Mejor BSO", icon: Music },
+  { name: "Formato arriesgado", icon: Sparkles },
 ];
 
 const schedule = [
-  { time: "10:15-10:45", title: "Recepción", text: "Llegada de participantes, invitados y prensa." },
-  { time: "11:00", title: "Actuación inicial", text: "" },
-
+  { time: "10:15 - 10:55", title: "Recepción", text: "Llegada de participantes, jurado e invitados." },
+  { time: "11:00", title: "Actuación inicial", text: ""},
   { time: "11:05", title: "Presentación", text: "Bienvenida y apertura oficial de la II Edición." },
   { time: "11:15", title: "Proyección", text: "Visionado de candidaturas y piezas seleccionadas." },
-  { time: "12:45", title: "Descanso", text: "Espacio para charlas y descanso." },
-  { time: "13:15", title: "Comienzo de la ceremonia", text: "Anuncio de ganadores y menciones especiales." },
-  { time: "14:15", title: "Cierre de gala", text: "Foto final y despedida de la gala." },
+  { time: "12:45", title: "Descanso", text: "Momento para comentar cortos y valoración del jurado." },
+  { time: "13:15", title: "Entrega de premios", text: "Anuncio de ganadores y menciones especiales." },
+  { time: "14:15", title: "Cierre de gala", text: "Foto final y despedida del festival." },
 ];
 
 function PremiosEuropaLogo({ compact = false, inverted = false }) {
@@ -146,7 +412,14 @@ function SectionTitle({ eyebrow, title, text }) {
 }
 
 function Nav({ isAdmin, onAdminLogin, onAdminLogout }) {
-  const links = ["Evento", "Candidaturas", "Vídeos", "Programa"];
+  const links = ["Evento", "I Edición", "Candidaturas", "Jurado", "Programa"];
+  const getSectionHref = (link) =>
+    `#${link
+      .toLowerCase()
+      .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "")
+      .replace(/\s+/g, "-")}`;
+
   return (
     <header className="fixed left-0 right-0 top-0 z-50 border-b border-[#101a36]/10 bg-[#fbf7ed]/80 backdrop-blur-xl">
       <nav className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 md:px-8">
@@ -157,7 +430,9 @@ function Nav({ isAdmin, onAdminLogin, onAdminLogout }) {
           {links.map((link) => (
             <a
               key={link}
-              href={`#${link.toLowerCase().replace("í", "i")}`}
+              href={link === "Jurado" ? "/jurado" : getSectionHref(link)}
+              target={link === "Jurado" ? "_blank" : undefined}
+              rel={link === "Jurado" ? "noreferrer" : undefined}
               className="text-sm font-medium text-[#101a36]/75 transition hover:text-[#b56b24]"
             >
               {link}
@@ -170,7 +445,7 @@ function Nav({ isAdmin, onAdminLogin, onAdminLogout }) {
               href="#subir"
               className="hidden rounded-full border border-[#101a36]/15 bg-[#101a36] px-4 py-2 text-sm font-medium text-[#fbf7ed] shadow-lg shadow-[#101a36]/10 transition hover:-translate-y-0.5 hover:bg-[#1b294e] sm:inline-flex"
             >
-              Subir material
+              Subir cortos
             </a>
             <button
               type="button"
@@ -225,7 +500,7 @@ function Hero({ isAdmin }) {
             </Button>
             {isAdmin && (
               <Button asChild variant="outline" className="rounded-full border-[#b56b24]/50 bg-white/30 px-7 py-6 text-base text-[#101a36] backdrop-blur hover:bg-[#f3ecd9]">
-                <a href="#subir">Subir material</a>
+                <a href="#subir">Subir cortos</a>
               </Button>
             )}
           </div>
@@ -301,6 +576,211 @@ function EventIntro() {
   );
 }
 
+function AwardPhotosCarousel() {
+  const [currentPhoto, setCurrentPhoto] = useState(0);
+  const selectedPhoto = firstEditionAwardPhotos[currentPhoto];
+  const lastPhotoIndex = firstEditionAwardPhotos.length - 1;
+
+  const showPreviousPhoto = () => {
+    setCurrentPhoto((index) => (index === 0 ? lastPhotoIndex : index - 1));
+  };
+
+  const showNextPhoto = () => {
+    setCurrentPhoto((index) => (index === lastPhotoIndex ? 0 : index + 1));
+  };
+
+  return (
+    <motion.div
+      id="entrega-premios-i-edicion"
+      variants={fadeUp}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true }}
+      transition={{ duration: 0.7 }}
+      className="mt-14 overflow-hidden rounded-[2rem] border border-[#101a36]/10 bg-white/65 shadow-2xl shadow-[#101a36]/10"
+    >
+      <div className="grid gap-0 lg:grid-cols-[1.15fr_0.85fr]">
+        <div className="relative bg-[#101a36]">
+          <div className="aspect-[4/3] overflow-hidden lg:aspect-[16/10]">
+            <img src={selectedPhoto.image} alt={selectedPhoto.title} className="h-full w-full object-cover" />
+          </div>
+          <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-[#101a36]/85 to-transparent p-5 text-[#fbf7ed] md:p-7">
+            <p className="text-sm font-semibold uppercase tracking-[0.24em] text-[#d5a449]">
+              {String(currentPhoto + 1).padStart(2, "0")} / {String(firstEditionAwardPhotos.length).padStart(2, "0")}
+            </p>
+            <h3 className="mt-2 text-2xl font-light uppercase tracking-[0.1em] md:text-3xl">{selectedPhoto.title}</h3>
+          </div>
+          <div className="absolute inset-y-0 left-4 flex items-center">
+            <button
+              type="button"
+              onClick={showPreviousPhoto}
+              className="flex h-11 w-11 items-center justify-center rounded-full border border-white/20 bg-[#101a36]/70 text-[#fbf7ed] shadow-lg backdrop-blur transition hover:bg-[#d5a449] hover:text-[#101a36]"
+              aria-label="Foto anterior de la entrega de premios"
+            >
+              <ChevronLeft className="h-5 w-5" />
+            </button>
+          </div>
+          <div className="absolute inset-y-0 right-4 flex items-center">
+            <button
+              type="button"
+              onClick={showNextPhoto}
+              className="flex h-11 w-11 items-center justify-center rounded-full border border-white/20 bg-[#101a36]/70 text-[#fbf7ed] shadow-lg backdrop-blur transition hover:bg-[#d5a449] hover:text-[#101a36]"
+              aria-label="Foto siguiente de la entrega de premios"
+            >
+              <ChevronRight className="h-5 w-5" />
+            </button>
+          </div>
+        </div>
+
+        <div className="p-6 md:p-8">
+          <p className="text-sm font-semibold uppercase tracking-[0.28em] text-[#b56b24]">Galería especial</p>
+          <h3 className="mt-2 text-3xl font-light uppercase tracking-[0.1em] text-[#101a36] md:text-4xl">Entrega de premios</h3>
+          <p className="mt-4 leading-7 text-[#1b294e]/70">{selectedPhoto.description}</p>
+          <div className="mt-7 grid grid-cols-5 gap-3">
+            {firstEditionAwardPhotos.map((photo, index) => (
+              <button
+                key={photo.image}
+                type="button"
+                onClick={() => setCurrentPhoto(index)}
+                className={`group aspect-square overflow-hidden rounded-2xl border transition ${
+                  currentPhoto === index ? "border-[#b56b24] ring-4 ring-[#d5a449]/25" : "border-[#101a36]/10 hover:border-[#b56b24]/70"
+                }`}
+                aria-label={`Ver ${photo.title}`}
+              >
+                <img src={photo.image} alt="" className="h-full w-full object-cover transition duration-500 group-hover:scale-105" />
+              </button>
+            ))}
+          </div>
+        </div>
+      </div>
+    </motion.div>
+  );
+}
+
+function FirstEdition() {
+  return (
+    <section id="i-edicion" className="relative overflow-hidden bg-gradient-to-br from-[#f3ecd9] via-[#fbf7ed] to-[#f3ecd9] px-4 py-20 md:px-8">
+      <div className="absolute inset-0 opacity-[0.14] [background-image:linear-gradient(90deg,rgba(16,26,54,.16)_1px,transparent_1px),linear-gradient(rgba(16,26,54,.12)_1px,transparent_1px)] [background-size:42px_42px]" />
+      <div className="relative mx-auto max-w-7xl">
+        <SectionTitle
+          eyebrow="Archivo histórico"
+          title="I Edición"
+          text="Un espacio para recordar la primera gala: reportaje gráfico, momentos destacados y cortos ganadores. Sustituye las imágenes y enlaces de ejemplo por el material real de la edición anterior."
+        />
+
+        <motion.div
+          variants={fadeUp}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          transition={{ duration: 0.7 }}
+          className="mb-10 overflow-hidden rounded-[2rem] border border-[#101a36]/10 bg-[#101a36] shadow-2xl shadow-[#101a36]/20"
+        >
+          <div className="grid items-center gap-0 lg:grid-cols-[0.9fr_1.1fr]">
+            <div className="p-8 text-[#fbf7ed] md:p-10">
+              <div className="mb-5 inline-flex items-center gap-2 rounded-full bg-[#d5a449]/15 px-4 py-2 text-sm font-semibold uppercase tracking-[0.18em] text-[#d5a449]">
+                <Trophy className="h-4 w-4" />
+                Primera gala
+              </div>
+              <h3 className="text-3xl font-light uppercase tracking-[0.12em] md:text-5xl">Recuerdos de la I Edición</h3>
+              <p className="mt-5 max-w-2xl leading-8 text-[#fbf7ed]/75">
+                Galería pensada para mostrar fotografías de la gala, entrega de premios, alumnado participante y una selección de los cortos ganadores.
+              </p>
+              <div className="mt-7 flex flex-wrap gap-3">
+                <a href="#reportaje-i-edicion" className="rounded-full bg-[#fbf7ed] px-5 py-3 text-sm font-semibold text-[#101a36] transition hover:bg-[#d5a449]">
+                  Ver reportaje gráfico
+                </a>
+                <a href="#entrega-premios-i-edicion" className="rounded-full border border-[#fbf7ed]/25 px-5 py-3 text-sm font-semibold text-[#fbf7ed] transition hover:border-[#d5a449] hover:text-[#d5a449]">
+                  Ver entrega de premios
+                </a>
+                <a href="#ganadores-i-edicion" className="rounded-full border border-[#fbf7ed]/25 px-5 py-3 text-sm font-semibold text-[#fbf7ed] transition hover:border-[#d5a449] hover:text-[#d5a449]">
+                  Ver cortos ganadores
+                </a>
+              </div>
+            </div>
+            <div className="grid grid-cols-2 gap-3 p-4 md:p-6">
+              {firstEditionGallery.slice(0, 4).map((photo, index) => (
+                <div key={photo.title} className={`group relative overflow-hidden rounded-3xl ${index === 0 ? "row-span-2 min-h-80" : "min-h-40"}`}>
+                  <img src={photo.image} alt={photo.title} className="h-full w-full object-cover transition duration-700 group-hover:scale-105" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#101a36]/85 via-[#101a36]/15 to-transparent" />
+                  <div className="absolute bottom-4 left-4 right-4">
+                    <p className="text-sm font-semibold text-[#fbf7ed]">{photo.title}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </motion.div>
+
+        <div id="reportaje-i-edicion" className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+          {firstEditionGallery.map((photo, index) => (
+            <motion.article
+              key={photo.title}
+              variants={fadeUp}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              transition={{ duration: 0.65, delay: index * 0.06 }}
+              className="group overflow-hidden rounded-[1.7rem] border border-[#101a36]/10 bg-white/60 shadow-xl shadow-[#101a36]/5"
+            >
+              <div className="h-56 overflow-hidden bg-[#101a36]/10">
+                <img src={photo.image} alt={photo.title} className="h-full w-full object-cover transition duration-700 group-hover:scale-105" />
+              </div>
+              <div className="p-5">
+                <h3 className="text-lg font-semibold text-[#101a36]">{photo.title}</h3>
+                <p className="mt-2 text-sm leading-6 text-[#1b294e]/70">{photo.description}</p>
+              </div>
+            </motion.article>
+          ))}
+        </div>
+
+        <AwardPhotosCarousel />
+
+        <div id="ganadores-i-edicion" className="mt-14">
+          <div className="mb-7 flex items-end justify-between gap-5">
+            <div>
+              <p className="text-sm font-semibold uppercase tracking-[0.28em] text-[#b56b24]">Palmarés</p>
+              <h3 className="mt-2 text-3xl font-light uppercase tracking-[0.1em] text-[#101a36] md:text-4xl">Cortos premiados</h3>
+            </div>
+          </div>
+
+          <div className="grid gap-7 md:grid-cols-2 lg:grid-cols-3">
+            {firstEditionShorts.map((short, index) => (
+              <motion.article
+                key={short.title}
+                variants={fadeUp}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+                transition={{ duration: 0.65, delay: index * 0.08 }}
+                className="group overflow-hidden rounded-[2rem] border border-[#101a36]/10 bg-white/65 shadow-2xl shadow-[#101a36]/10"
+              >
+                <div className="relative h-60 overflow-hidden">
+                  <img src={short.image} alt={short.title} className="h-full w-full object-cover transition duration-700 group-hover:scale-105" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#101a36]/90 via-[#101a36]/20 to-transparent" />
+                  <span className="absolute left-5 top-5 rounded-full bg-[#d5a449] px-4 py-1.5 text-xs font-bold uppercase tracking-[0.16em] text-[#101a36]">
+                    {short.award}
+                  </span>
+                </div>
+                <div className="p-6">
+                  <h4 className="text-2xl font-light tracking-[0.08em] text-[#101a36]">{short.title}</h4>
+                  <p className="mt-2 text-sm uppercase tracking-[0.18em] text-[#b56b24]">{short.group}</p>
+                  <p className="mt-4 leading-7 text-[#1b294e]/70">{short.description}</p>
+                  <Button asChild className="mt-6 rounded-full bg-[#101a36] text-[#fbf7ed] hover:bg-[#1b294e]">
+                    <a href={short.video} target="_blank" rel="noreferrer">
+                      <PlayCircle className="mr-2 h-4 w-4" /> Ver vídeo
+                    </a>
+                  </Button>
+                </div>
+              </motion.article>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function Candidates() {
   return (
     <section id="candidaturas" className="bg-[#101a36] px-4 py-20 text-[#fbf7ed] md:px-8">
@@ -308,7 +788,7 @@ function Candidates() {
         <SectionTitle
           eyebrow="Selección oficial"
           title="Candidaturas"
-          text="Tarjetas preparadas para sustituir fácilmente imágenes, títulos, categorías, descripciones y enlaces a vídeos."
+          text="Tarjetas preparadas para sustituir fácilmente imágenes, títulos, categorías y descripciones. Los vídeos de esta edición quedan reservados para el jurado hasta la gala."
         />
         <div className="grid gap-7 md:grid-cols-3">
           {candidates.map((candidate, index) => (
@@ -324,11 +804,6 @@ function Candidates() {
                 <h3 className="text-2xl font-light tracking-[0.08em]">{candidate.title}</h3>
                 <p className="mt-2 text-sm uppercase tracking-[0.18em] text-[#d5a449]">{candidate.group}</p>
                 <p className="mt-4 leading-7 text-[#fbf7ed]/72">{candidate.description}</p>
-                <Button asChild className="mt-6 rounded-full bg-[#fbf7ed] text-[#101a36] hover:bg-[#d5a449]">
-                  <a href={candidate.video} target="_blank" rel="noreferrer">
-                    <PlayCircle className="mr-2 h-4 w-4" /> Ver vídeo
-                  </a>
-                </Button>
               </div>
             </motion.article>
           ))}
@@ -338,36 +813,101 @@ function Candidates() {
   );
 }
 
-function VideoGallery() {
+function JuryVideos() {
+  const [password, setPassword] = useState("");
+  const [isUnlocked, setIsUnlocked] = useState(false);
+  const [error, setError] = useState("");
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    if (password === juryPassword) {
+      setIsUnlocked(true);
+      setError("");
+      return;
+    }
+    setError("Clave incorrecta. Revisa la contraseña enviada al jurado.");
+  };
+
   return (
-    <section id="videos" className="px-4 py-20 md:px-8">
+    <section id="jurado" className="min-h-screen px-4 pb-20 pt-8 md:px-8">
       <div className="mx-auto max-w-7xl">
-        <SectionTitle
-          eyebrow="Proyecciones"
-          title="Galería de vídeos"
-          text="Compatible con vídeos incrustados de YouTube, Vimeo o rutas locales. Solo hay que cambiar el valor embed en el listado de datos."
-        />
-        <div className="grid gap-7 lg:grid-cols-3">
-          {videos.map((video, index) => (
-            <motion.div key={video.title} variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} transition={{ duration: 0.65, delay: index * 0.08 }}>
-              <Card className="overflow-hidden rounded-[2rem] border-[#101a36]/10 bg-white/55 shadow-xl shadow-[#101a36]/10">
-                <div className="aspect-video bg-[#101a36]">
-                  <iframe
-                    className="h-full w-full"
-                    src={video.embed}
-                    title={video.title}
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                    allowFullScreen
-                  />
-                </div>
-                <CardContent className="p-6">
-                  <h3 className="text-xl font-semibold text-[#101a36]">{video.title}</h3>
-                  <p className="mt-2 leading-7 text-[#1b294e]/70">{video.description}</p>
-                </CardContent>
-              </Card>
-            </motion.div>
-          ))}
+        <div className="mb-10 flex flex-col gap-5 border-b border-[#101a36]/10 pb-6 md:flex-row md:items-center md:justify-between">
+          <a href="/" className="inline-flex w-fit items-center gap-3" aria-label="Volver a Premios Europa">
+            <PremiosEuropaLogo compact />
+            <span className="text-sm font-semibold uppercase tracking-[0.22em] text-[#101a36]/70">Premios Europa</span>
+          </a>
+          <a
+            href="/"
+            className="inline-flex w-fit items-center justify-center rounded-full border border-[#101a36]/15 bg-white/50 px-5 py-3 text-sm font-semibold text-[#101a36] transition hover:bg-[#f3ecd9]"
+          >
+            Volver a la web principal
+          </a>
         </div>
+
+        <SectionTitle
+          eyebrow="Zona privada"
+          title="Visionado del jurado"
+          text="Acceso reservado para revisar los cortos de la II Edición antes de la gala. Esta página está pensada para ver los vídeos con calma y sin el resto de contenido de la web."
+        />
+
+        {!isUnlocked ? (
+          <motion.div
+            variants={fadeUp}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            transition={{ duration: 0.7 }}
+            className="mx-auto max-w-2xl rounded-[2rem] border border-[#101a36]/10 bg-[#101a36] p-7 text-[#fbf7ed] shadow-2xl shadow-[#101a36]/20 md:p-9"
+          >
+            <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-2xl bg-[#d5a449] text-[#101a36] shadow-lg shadow-black/10">
+              <ShieldCheck className="h-7 w-7" />
+            </div>
+            <h3 className="text-3xl font-light uppercase tracking-[0.12em]">Acceso con clave</h3>
+            <p className="mt-4 leading-8 text-[#fbf7ed]/75">
+              Introduce la contraseña privada del jurado para ver los cortos. Clave de ejemplo: <span className="font-semibold text-[#d5a449]">jurado2026</span>.
+            </p>
+            <form onSubmit={handleSubmit} className="mt-7 flex flex-col gap-3 sm:flex-row">
+              <input
+                type="password"
+                value={password}
+                onChange={(event) => setPassword(event.target.value)}
+                className="min-h-12 flex-1 rounded-full border border-[#fbf7ed]/20 bg-[#fbf7ed] px-5 text-[#101a36] outline-none transition focus:border-[#d5a449] focus:ring-4 focus:ring-[#d5a449]/20"
+                placeholder="Contraseña del jurado"
+                aria-label="Contraseña del jurado"
+              />
+              <Button type="submit" className="rounded-full bg-[#d5a449] px-7 text-[#101a36] hover:bg-[#fbf7ed]">
+                Entrar
+              </Button>
+            </form>
+            {error && <p className="mt-4 text-sm font-semibold text-[#d5a449]">{error}</p>}
+          </motion.div>
+        ) : (
+          <div className="grid gap-8 xl:grid-cols-2">
+            {juryShorts.map((short, index) => (
+              <motion.div key={short.title} variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} transition={{ duration: 0.65, delay: index * 0.08 }}>
+                <Card className="overflow-hidden rounded-[2rem] border-[#101a36]/10 bg-white/65 shadow-xl shadow-[#101a36]/10">
+                  <div className="aspect-video bg-[#101a36] lg:aspect-[16/9]">
+                    <iframe
+                      className="h-full w-full"
+                      src={short.embed}
+                      title={short.title}
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                      allowFullScreen
+                    />
+                  </div>
+                  <CardContent className="p-6">
+                    <span className="rounded-full bg-[#d5a449]/20 px-3 py-1 text-xs font-bold uppercase tracking-[0.16em] text-[#b56b24]">
+                      {short.category}
+                    </span>
+                    <h3 className="mt-4 text-xl font-semibold text-[#101a36]">{short.title}</h3>
+                    <p className="mt-2 text-sm uppercase tracking-[0.18em] text-[#b56b24]">{short.group}</p>
+                    <p className="mt-3 leading-7 text-[#1b294e]/70">{short.description}</p>
+                  </CardContent>
+                </Card>
+              </motion.div>
+            ))}
+          </div>
+        )}
       </div>
     </section>
   );
@@ -375,21 +915,22 @@ function VideoGallery() {
 
 function AdminUploadSection() {
   const [fileName, setFileName] = useState("");
+  const [videoFileName, setVideoFileName] = useState("");
 
   return (
     <section id="subir" className="px-4 py-20 md:px-8">
       <div className="mx-auto max-w-7xl">
         <SectionTitle
           eyebrow="Zona privada"
-          title="Panel de subida de imágenes"
-          text="Esta sección solo se muestra cuando el usuario está identificado como administrador. El formulario visual queda preparado para conectarse más adelante a Firebase, Supabase o una API propia."
+          title="Panel de subida de cortos"
+          text="Esta sección solo se muestra cuando el usuario está identificado como administrador. El formulario queda preparado para añadir los vídeos que después verá el jurado en su zona privada."
         />
         <div className="grid items-start gap-8 lg:grid-cols-[0.95fr_1.05fr]">
           <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} transition={{ duration: 0.7 }} className="rounded-[2rem] border border-[#101a36]/10 bg-[#101a36] p-8 text-[#fbf7ed] shadow-2xl shadow-[#101a36]/20">
             <ImagePlus className="mb-6 h-12 w-12 text-[#d5a449]" />
-            <h3 className="text-3xl font-light uppercase tracking-[0.12em]">Material de candidatura</h3>
+            <h3 className="text-3xl font-light uppercase tracking-[0.12em]">Vídeos de la II Edición</h3>
             <p className="mt-5 leading-8 text-[#fbf7ed]/75">
-              Añade cartel, imagen destacada y descripción del proyecto. La zona de carga está simulada para esta landing, pero el componente ya separa campos y archivo para una integración real.
+              Añade cartel, enlace privado o archivo del corto y descripción del proyecto. La zona de carga está simulada para esta landing, pero el componente ya separa los campos para una integración real.
             </p>
           </motion.div>
 
@@ -422,12 +963,26 @@ function AdminUploadSection() {
                 </div>
               </label>
               <label className="space-y-2 md:col-span-2">
+                <span className="text-sm font-semibold text-[#101a36]">Enlace privado del vídeo</span>
+                <input className="w-full rounded-2xl border border-[#101a36]/10 bg-[#fbf7ed] px-4 py-3 outline-none transition focus:border-[#b56b24] focus:ring-4 focus:ring-[#d5a449]/20" placeholder="Ej. enlace privado de YouTube, Vimeo o Drive" />
+              </label>
+              <label className="space-y-2 md:col-span-2">
+                <span className="text-sm font-semibold text-[#101a36]">Archivo del corto</span>
+                <div className="relative flex min-h-40 cursor-pointer flex-col items-center justify-center rounded-[1.5rem] border-2 border-dashed border-[#101a36]/25 bg-[#fbf7ed] p-8 text-center transition hover:border-[#b56b24] hover:bg-[#f3ecd9]">
+                  <Video className="mb-4 h-12 w-12 text-[#b56b24]" />
+                  <p className="font-semibold text-[#101a36]">Arrastra y suelta el vídeo aquí</p>
+                  <p className="mt-1 text-sm text-[#1b294e]/65">MP4, MOV o enlace externo si pesa demasiado</p>
+                  {videoFileName && <p className="mt-4 rounded-full bg-[#101a36] px-4 py-2 text-sm text-[#fbf7ed]">{videoFileName}</p>}
+                  <input type="file" accept="video/*" className="absolute inset-0 opacity-0" onChange={(event) => setVideoFileName(event.target.files?.[0]?.name || "")} />
+                </div>
+              </label>
+              <label className="space-y-2 md:col-span-2">
                 <span className="text-sm font-semibold text-[#101a36]">Descripción breve</span>
                 <textarea className="min-h-32 w-full rounded-2xl border border-[#101a36]/10 bg-[#fbf7ed] px-4 py-3 outline-none transition focus:border-[#b56b24] focus:ring-4 focus:ring-[#d5a449]/20" placeholder="Resume el proyecto en pocas líneas" />
               </label>
             </div>
             <Button type="button" className="mt-6 w-full rounded-full bg-[#101a36] py-6 text-base text-[#fbf7ed] hover:bg-[#1b294e] md:w-auto md:px-8">
-              Guardar candidatura
+              Guardar corto
             </Button>
           </motion.form>
         </div>
@@ -494,7 +1049,7 @@ function Footer() {
         </div>
         <div className="text-left md:text-right">
           <p className="text-lg tracking-[0.18em] text-[#d5a449]">04.JUN.26</p>
-          <p className="mt-2 text-sm text-[#fbf7ed]/60">Diseño inspirado en la imagen oficial de la gala.</p>
+          <p className="mt-2 text-sm text-[#fbf7ed]/60">Design by Julio Duque]</p>
         </div>
       </div>
     </footer>
@@ -504,6 +1059,7 @@ function Footer() {
 export default function PremiosEuropaLanding() {
   const year = useMemo(() => new Date().getFullYear(), []);
   const [isAdmin, setIsAdmin] = useState(false);
+  const isJuryPage = window.location.pathname === "/jurado";
 
   const handleAdminLogin = () => {
     const password = window.prompt("Introduce la clave de administrador");
@@ -513,6 +1069,20 @@ export default function PremiosEuropaLanding() {
       window.alert("Clave incorrecta");
     }
   };
+
+  if (isJuryPage) {
+    return (
+      <main className="min-h-screen scroll-smooth bg-[#fbf7ed] font-sans text-[#101a36] selection:bg-[#d5a449]/40">
+        <style>{`
+          html { scroll-behavior: smooth; }
+          body { background: ${COLORS.creamLight}; }
+          section { scroll-margin-top: 88px; }
+        `}</style>
+        <JuryVideos />
+        <div className="sr-only">Premios Europa zona de jurado {year}</div>
+      </main>
+    );
+  }
 
   return (
     <main className="min-h-screen scroll-smooth bg-[#fbf7ed] font-sans text-[#101a36] selection:bg-[#d5a449]/40">
@@ -524,8 +1094,8 @@ export default function PremiosEuropaLanding() {
       <Nav isAdmin={isAdmin} onAdminLogin={handleAdminLogin} onAdminLogout={() => setIsAdmin(false)} />
       <Hero isAdmin={isAdmin} />
       <EventIntro />
+      <FirstEdition />
       <Candidates />
-      <VideoGallery />
       {isAdmin && <AdminUploadSection />}
       <AwardCategories />
       <Schedule />
@@ -534,4 +1104,3 @@ export default function PremiosEuropaLanding() {
     </main>
   );
 }
-
