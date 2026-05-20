@@ -951,7 +951,7 @@ function JuryVideos() {
             </div>
             <h3 className="text-3xl font-light uppercase tracking-[0.12em]">Acceso con clave</h3>
             <p className="mt-4 leading-8 text-[#fbf7ed]/75">
-              Introduce la contraseña privada del jurado para ver los cortos. Clave de ejemplo: <span className="font-semibold text-[#d5a449]">jurado2026</span>.
+              Introduce la contraseña privada del jurado para ver los cortos.
             </p>
             <form onSubmit={handleSubmit} className="mt-7 flex flex-col gap-3 sm:flex-row">
               <input
@@ -1034,7 +1034,7 @@ function CollaborationPage() {
       "Gracias.",
     ].join("\n");
 
-    window.location.href = `mailto:julioduqueaguilar@ieseuropa.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    window.location.href = `mailto:abonesl857@ieseuropa.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
   };
 
   return (
@@ -1119,8 +1119,8 @@ function CollaborationPage() {
             </p>
             <div className="mt-7 rounded-2xl bg-[#101a36] p-5 text-[#fbf7ed]">
               <Mail className="mb-3 h-6 w-6 text-[#d5a449]" />
-              <p className="text-sm text-[#fbf7ed]/65">Correo de contacto</p>
-              <p className="mt-1 break-all font-semibold">julioduqueaguilar@ieseuropa.com</p>
+              <p className="text-sm text-[#fbf7ed]/65">Persona de contacto</p>
+              <p className="mt-1 break-all font-semibold"> Antonio Miguel Bonilla Eslava</p>
             </div>
           </motion.div>
 
