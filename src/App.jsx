@@ -195,7 +195,7 @@ const firstEditionAwardPhotos = [
     title: "Entrega de premios 12",
     description: "Celebración de los equipos premiados en la I Edición.",
     image: "/i-edicion/entrega-premios-12.jpg",
-  },
+  },S
    {
     title: "Entrega de premios 13",
     description: "Celebración de los equipos premiados en la I Edición.",
@@ -274,7 +274,7 @@ const firstEditionShorts = [
   },
   {
     title: "Mejor interpretación protagonista",
-    group: "Paco Parrilla por La Tarde",
+    group: "Daniel Parrilla por La Tarde",
     award: "Mejor interpretación protagonista",
     description: "Reconocimiento a la interpretación principal más destacada de la I Edición",
     image: "/i-edicion/mejor-interpretacion-protagonista.jpg",
@@ -752,7 +752,7 @@ function FirstEdition() {
         <SectionTitle
           eyebrow="Archivo histórico"
           title="I Edición"
-          text="Un espacio para recordar la primera gala: reportaje gráfico, momentos destacados y cortos ganadores. Sustituye las imágenes y enlaces de ejemplo por el material real de la edición anterior."
+          text="Un espacio para recordar la primera gala: reportaje gráfico, momentos destacados y cortos ganadores."
         />
 
         <motion.div
