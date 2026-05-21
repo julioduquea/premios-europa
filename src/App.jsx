@@ -771,7 +771,7 @@ function FirstEdition() {
               </div>
               <h3 className="text-3xl font-light uppercase tracking-[0.12em] md:text-5xl">Recuerdos de la I Edición</h3>
               <p className="mt-5 max-w-2xl leading-8 text-[#fbf7ed]/75">
-                Galería pensada para mostrar fotografías de la gala, entrega de premios, alumnado participante y una selección de los cortos ganadores.
+                Galería que muestra fotografías de la gala, entrega de premios, alumnado participante y una selección de los cortos ganadores.
               </p>
               <div className="mt-7 flex flex-wrap gap-3">
                 <a href="#reportaje-i-edicion" className="rounded-full bg-[#fbf7ed] px-5 py-3 text-sm font-semibold text-[#101a36] transition hover:bg-[#d5a449]">
