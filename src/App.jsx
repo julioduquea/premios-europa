@@ -195,7 +195,7 @@ const firstEditionAwardPhotos = [
     title: "Entrega de premios 12",
     description: "Celebración de los equipos premiados en la I Edición.",
     image: "/i-edicion/entrega-premios-12.jpg",
-  },S
+  },
    {
     title: "Entrega de premios 13",
     description: "Celebración de los equipos premiados en la I Edición.",
