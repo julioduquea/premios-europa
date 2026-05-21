@@ -875,7 +875,7 @@ function Candidates() {
         <SectionTitle
           eyebrow="Selección oficial"
           title="Candidaturas"
-          text="Tarjetas preparadas para sustituir fácilmente imágenes, títulos, categorías y descripciones. Los vídeos de esta edición quedan reservados para el jurado hasta la gala."
+          text="Los vídeos de esta edición quedan reservados para el jurado hasta la gala."
         />
         <div className="grid gap-7 md:grid-cols-3">
           {candidates.map((candidate, index) => (
