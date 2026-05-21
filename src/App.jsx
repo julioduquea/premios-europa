@@ -266,23 +266,23 @@ const firstEditionAwardPhotos = [
 const firstEditionShorts = [
   {
     title: "Mejor cortometraje",
-    group: "Equipo ganador",
+    group: "La Tarde - SONYDEAS",
     award: "Mejor cortometraje",
     description: "Corto ganador de la primera edición de los Premios Europa.",
-    image: "/i-edicion/mejor-cortometraje.jpg",
-    video: "https://www.youtube.com/embed/tgbNymZ7vqY",
+    image: "/i-edicion/entrega-premios-20.jpg",
+    video: "https://youtu.be/dj3sdt3DPNc",
   },
   {
     title: "Mejor interpretación protagonista",
-    group: "Intérprete protagonista",
+    group: "Paco Parrilla por La Tarde",
     award: "Mejor interpretación protagonista",
-    description: "Reconocimiento a la interpretación principal más destacada de la I Edición.",
+    description: "Reconocimiento a la interpretación principal más destacada de la I Edición",
     image: "/i-edicion/mejor-interpretacion-protagonista.jpg",
-    video: "https://www.youtube.com/embed/dQw4w9WgXcQ",
+    video: "https://youtu.be/dj3sdt3DPNc",
   },
   {
     title: "Mejor interpretación de reparto",
-    group: "Intérprete de reparto",
+    group: "Elenco completo de Singer Star Quiz",
     award: "Mejor interpretación de reparto",
     description: "Reconocimiento a la interpretación secundaria más destacada de la I Edición.",
     image: "/i-edicion/mejor-interpretacion-reparto.jpg",
@@ -568,7 +568,7 @@ function Hero({ isAdmin }) {
           <div className="mt-12 inline-flex rotate-[-8deg] items-center rounded-sm bg-gradient-to-r from-[#9a531b] to-[#d5a449] px-5 py-2 text-sm font-semibold uppercase tracking-[0.28em] text-white shadow-xl shadow-[#b56b24]/20">
             II Edición
           </div>
-          <h1 className="mt-7 text-5xl font-light uppercase leading-[0.95] tracking-[0.12em] text-[#101a36] md:text-7xl xl:text-8xl">
+          <h1 className="font-anthony mt-7 text-5xl font-light uppercase leading-[0.95] tracking-[0.12em] text-[#101a36] md:text-7xl xl:text-8xl">
             Premios
             <span className="block">Europa</span>
           </h1>
@@ -609,7 +609,7 @@ function Hero({ isAdmin }) {
                 </div>
                 <div>
                   <p className="mb-4 text-sm uppercase tracking-[0.35em] text-[#b56b24]">Selección oficial</p>
-                  <h3 className="text-4xl font-light uppercase tracking-[0.12em] text-[#101a36] md:text-5xl">
+                  <h3 className="font-anthony text-4xl font-light uppercase tracking-[0.12em] text-[#101a36] md:text-5xl">
                     ¿Estáis preparados?
                   </h3>
                 </div>
@@ -1345,6 +1345,14 @@ export default function PremiosEuropaLanding() {
     return (
       <main className="min-h-screen scroll-smooth bg-[#fbf7ed] font-sans text-[#101a36] selection:bg-[#d5a449]/40">
         <style>{`
+          @font-face {
+            font-family: "Anthony Regular";
+            src: url("/fonts/Anthony-Regular.woff2") format("woff2");
+            font-weight: 400;
+            font-style: normal;
+            font-display: swap;
+          }
+          .font-anthony { font-family: "Anthony Regular", serif; }
           html { scroll-behavior: smooth; }
           body { background: ${COLORS.creamLight}; }
           section { scroll-margin-top: 88px; }
@@ -1359,6 +1367,14 @@ export default function PremiosEuropaLanding() {
     return (
       <main className="min-h-screen scroll-smooth bg-[#fbf7ed] font-sans text-[#101a36] selection:bg-[#d5a449]/40">
         <style>{`
+          @font-face {
+            font-family: "Anthony Regular";
+            src: url("/fonts/Anthony-Regular.woff2") format("woff2");
+            font-weight: 400;
+            font-style: normal;
+            font-display: swap;
+          }
+          .font-anthony { font-family: "Anthony Regular", serif; }
           html { scroll-behavior: smooth; }
           body { background: ${COLORS.creamLight}; }
           section { scroll-margin-top: 88px; }
@@ -1372,6 +1388,14 @@ export default function PremiosEuropaLanding() {
   return (
     <main className="min-h-screen scroll-smooth bg-[#fbf7ed] font-sans text-[#101a36] selection:bg-[#d5a449]/40">
       <style>{`
+        @font-face {
+          font-family: "Anthony Regular";
+          src: url("/fonts/Anthony-Regular.woff2") format("woff2");
+          font-weight: 400;
+          font-style: normal;
+          font-display: swap;
+        }
+        .font-anthony { font-family: "Anthony Regular", serif; }
         html { scroll-behavior: smooth; }
         body { background: ${COLORS.creamLight}; }
         section { scroll-margin-top: 88px; }
