@@ -395,45 +395,69 @@ const filmIndustryJury = [
     role: "Artista, cantante, actriz y creadora de contenido",
     image: "/jurado/samantha-hudson.jpg",
     imagePosition: "center 18%",
-    bio:
-      "Artista vinculada a la performance, la comunicación audiovisual, la cultura pop y el activismo. Ha desarrollado proyectos cinematográficos, televisivos y musicales para plataformas, productoras y marcas como Netflix, RTVE, Podimo o Spotify, trabajando desde la sátira, el activismo LGBTIQ+ y la deconstrucción de los códigos de la cultura de masas.",
+    bio: [
+      { text: "Artista vinculada a la performance, la comunicación audiovisual, la cultura pop y el activismo.", highlight: true },
+      " Ha desarrollado proyectos cinematográficos, televisivos y musicales para plataformas, productoras y marcas como ",
+      { text: "Netflix, RTVE, Podimo o Spotify", highlight: true },
+      ", trabajando desde la sátira, el activismo LGBTIQ+ y la deconstrucción de los códigos de la cultura de masas.",
+    ],
   },
   {
     name: "Beatriz Molinero",
     role: "Educadora social, arte dramático y pedagogía teatral",
     image: "/jurado/beatriz-molinero.jpeg",
     imagePosition: "center 18%",
-    bio:
-      "Educadora social con formación en arte dramático, pedagogía teatral, cine e interpretación. Ha impulsado proyectos socioeducativos y de comunicación para entidades sociales, fundaciones y empresas como Coca-Cola, IKEA o Fundación La Caixa, especialmente con jóvenes y colectivos en situación de vulnerabilidad.",
+    bio: [
+      { text: "Educadora social con formación en arte dramático, pedagogía teatral, cine e interpretación.", highlight: true },
+      " Ha impulsado proyectos socioeducativos y de comunicación para entidades sociales, fundaciones y empresas como ",
+      { text: "Coca-Cola, IKEA o Fundación La Caixa", highlight: true },
+      ", especialmente con jóvenes y colectivos en situación de vulnerabilidad.",
+    ],
   },
   {
     name: "César Vicente",
     role: "Actor",
     image: "/jurado/cesar-vicente.jpg",
     imagePosition: "center 28%",
-    bio:
-      "Actor sevillano de reconocido prestigio nacional. Ha sido dirigido por Pedro Almodóvar en Dolor y gloria, nominada al Oscar a Mejor Película Extranjera y Premio Goya 2020 a Mejor Película. También ha trabajado en Los tigres, de Alberto Rodríguez, y en series como Franklin, Amar es para siempre, La otra mirada y Hernán Cortés.",
+    bio: [
+      { text: "Actor sevillano de reconocido prestigio nacional.", highlight: true },
+      " Ha sido dirigido por ",
+      { text: "Pedro Almodóvar en Dolor y gloria", highlight: true },
+      ", nominada al Oscar a Mejor Película Extranjera y Premio Goya 2020 a Mejor Película. También ha trabajado en ",
+      { text: "Los tigres, de Alberto Rodríguez", highlight: true },
+      ", y en series como Franklin, Amar es para siempre, La otra mirada y Hernán Cortés.",
+    ],
   },
   {
     name: "Luís Calderón",
     role: "Director, guionista, montador y productor audiovisual",
     image: "/jurado/luis-calderon.png",
     imagePosition: "center 18%",
-    bio:
-      "Cineasta sevillano especializado en cine de género y ficción cinematográfica. Ha desarrollado su carrera desde La Barbería Films, impulsando proyectos para festivales y salas comerciales. Destaca su largometraje de terror psicológico y slasher La casa en el árbol, seleccionado en el Festival de Cine Europeo de Sevilla.",
+    bio: [
+      { text: "Cineasta sevillano especializado en cine de género y ficción cinematográfica.", highlight: true },
+      " Ha desarrollado su carrera desde ",
+      { text: "La Barbería Films", highlight: true },
+      ", impulsando proyectos para festivales y salas comerciales. Destaca su largometraje ",
+      { text: "La casa en el árbol", highlight: true },
+      ", seleccionado en el Festival de Cine Europeo de Sevilla.",
+    ],
   },
   {
     name: "Lola Buzón",
     role: "Actriz",
     image: "/jurado/lola-buzon.jpg",
     imagePosition: "center 18%",
-    bio:
-      "Actriz andaluza con formación en arte dramático e interpretación cinematográfica. Formada en espacios como la ESAD de Sevilla o Work in Progress, destaca por su papel de Paca en Te estoy amando locamente, película ganadora de un Goya, trabajo por el que obtuvo candidatura a los Premios Goya como Mejor Actriz de Reparto.",
+    bio: [
+      { text: "Actriz andaluza con formación en arte dramático e interpretación cinematográfica.", highlight: true },
+      " Formada en espacios como la ESAD de Sevilla o Work in Progress, destaca por su papel de ",
+      { text: "Paca en Te estoy amando locamente", highlight: true },
+      ", película ganadora de un Goya, trabajo por el que obtuvo candidatura a los Premios Goya como Mejor Actriz de Reparto.",
+    ],
   },
   {
     name: "David Díaz",
     role: "Jurado industria del cine",
-    bio: "Miembro del jurado de la industria del cine. Biografía pendiente de incorporar.",
+    bio: [{ text: "Miembro del jurado de la industria del cine.", highlight: true }, " Biografía pendiente de incorporar."],
   },
 ];
 
@@ -443,23 +467,35 @@ const graphicJury = [
     role: "Diseñadora gráfica y artista visual",
     image: "/jurado/beatriz-pavon.png",
     imagePosition: "center 28%",
-    bio:
-      "Diseñadora gráfica y artista visual. Ha desarrollado su carrera en proyectos gráficos, de arquitectura, diseño colaborativo, social y cultural. Ha trabajado en proyectos de branding como la Marca Ciudad Sevilla o la Marca Ciudad Huelva. Su obra ha sido expuesta en ciudades como Madrid, Barcelona, Valencia o Bélgica. En cine, ha creado el cartel de la película Elio.",
+    bio: [
+      { text: "Diseñadora gráfica y artista visual.", highlight: true },
+      " Ha desarrollado su carrera en proyectos gráficos, arquitectura, diseño colaborativo, social y cultural. Ha trabajado en branding como ",
+      { text: "Marca Ciudad Sevilla o Marca Ciudad Huelva", highlight: true },
+      ". Su obra ha sido expuesta en Madrid, Barcelona, Valencia o Bélgica. En cine, ha creado ",
+      { text: "el cartel de la película Elio", highlight: true },
+      ".",
+    ],
   },
   {
     name: "José Pedraza",
     role: "Jurado gráfico",
     image: "/jurado/jose-pedraza.png",
     imagePosition: "center 16%",
-    bio: "Miembro del jurado gráfico. Biografía pendiente de incorporar.",
+    bio: [{ text: "Miembro del jurado gráfico.", highlight: true }, " Biografía pendiente de incorporar."],
   },
   {
     name: "Emilia Jiménez",
     role: "Dirección de arte y vestuario",
     image: "/jurado/emilia-jimenez.png",
     imagePosition: "center 22%",
-    bio:
-      "Graduada en Bellas Artes y Máster en Artes del Espectáculo Vivo por la Universidad de Sevilla. Ha trabajado en dirección de arte y vestuario tanto en moda como en cine. Entre sus proyectos destacan Cuando las cigarras callen, Casa típica, Lava y Pepe, el mudo, spot para Cruzcampo - Carne al Corte.",
+    bio: [
+      { text: "Graduada en Bellas Artes y Máster en Artes del Espectáculo Vivo por la Universidad de Sevilla.", highlight: true },
+      " Ha trabajado en ",
+      { text: "dirección de arte y vestuario", highlight: true },
+      " tanto en moda como en cine. Entre sus proyectos destacan ",
+      { text: "Cuando las cigarras callen, Casa típica, Lava y Pepe, el mudo", highlight: true },
+      ".",
+    ],
   },
 ];
 
@@ -980,6 +1016,7 @@ function JuryMemberCard({ member, index }) {
     .map((part) => part[0])
     .join("")
     .slice(0, 2);
+  const bioParts = Array.isArray(member.bio) ? member.bio : [member.bio];
 
   return (
     <motion.article
@@ -1010,7 +1047,17 @@ function JuryMemberCard({ member, index }) {
         </div>
       </div>
       <div className="p-6">
-        <p className="leading-7 text-[#1b294e]/75">{member.bio}</p>
+        <p className="leading-7 text-[#1b294e]/75">
+          {bioParts.map((part, partIndex) =>
+            typeof part === "string" ? (
+              <span key={`${member.name}-bio-${partIndex}`}>{part}</span>
+            ) : (
+              <strong key={`${member.name}-bio-${partIndex}`} className="font-semibold text-[#101a36]">
+                {part.text}
+              </strong>
+            )
+          )}
+        </p>
       </div>
     </motion.article>
   );
