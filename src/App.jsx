@@ -389,6 +389,72 @@ const collaborationTiers = [
   { name: "Patrocinador principal", amount: "500 €", benefits: "Máximo reconocimiento: dar nombre de empresa a uno de los premios oficiales." },
 ];
 
+const filmIndustryJury = [
+  {
+    name: "Samantha Hudson",
+    role: "Artista, cantante, actriz y creadora de contenido",
+    image: "/jurado/samantha-hudson.jpg",
+    bio:
+      "Artista vinculada a la performance, la comunicación audiovisual, la cultura pop y el activismo. Ha desarrollado proyectos cinematográficos, televisivos y musicales para plataformas, productoras y marcas como Netflix, RTVE, Podimo o Spotify, trabajando desde la sátira, el activismo LGBTIQ+ y la deconstrucción de los códigos de la cultura de masas.",
+  },
+  {
+    name: "Beatriz Molinero",
+    role: "Educadora social, arte dramático y pedagogía teatral",
+    image: "/jurado/beatriz-molinero.jpeg",
+    bio:
+      "Educadora social con formación en arte dramático, pedagogía teatral, cine e interpretación. Ha impulsado proyectos socioeducativos y de comunicación para entidades sociales, fundaciones y empresas como Coca-Cola, IKEA o Fundación La Caixa, especialmente con jóvenes y colectivos en situación de vulnerabilidad.",
+  },
+  {
+    name: "César Vicente",
+    role: "Actor",
+    image: "/jurado/cesar-vicente.jpg",
+    bio:
+      "Actor sevillano de reconocido prestigio nacional. Ha sido dirigido por Pedro Almodóvar en Dolor y gloria, nominada al Oscar a Mejor Película Extranjera y Premio Goya 2020 a Mejor Película. También ha trabajado en Los tigres, de Alberto Rodríguez, y en series como Franklin, Amar es para siempre, La otra mirada y Hernán Cortés.",
+  },
+  {
+    name: "Luís Calderón",
+    role: "Director, guionista, montador y productor audiovisual",
+    image: "/jurado/luis-calderon.png",
+    bio:
+      "Cineasta sevillano especializado en cine de género y ficción cinematográfica. Ha desarrollado su carrera desde La Barbería Films, impulsando proyectos para festivales y salas comerciales. Destaca su largometraje de terror psicológico y slasher La casa en el árbol, seleccionado en el Festival de Cine Europeo de Sevilla.",
+  },
+  {
+    name: "Lola Buzón",
+    role: "Actriz",
+    image: "/jurado/lola-buzon.jpg",
+    bio:
+      "Actriz andaluza con formación en arte dramático e interpretación cinematográfica. Formada en espacios como la ESAD de Sevilla o Work in Progress, destaca por su papel de Paca en Te estoy amando locamente, película ganadora de un Goya, trabajo por el que obtuvo candidatura a los Premios Goya como Mejor Actriz de Reparto.",
+  },
+  {
+    name: "David Díaz",
+    role: "Jurado industria del cine",
+    bio: "Miembro del jurado de la industria del cine. Biografía pendiente de incorporar.",
+  },
+];
+
+const graphicJury = [
+  {
+    name: "Beatriz Pavón",
+    role: "Diseñadora gráfica y artista visual",
+    image: "/jurado/beatriz-pavon.png",
+    bio:
+      "Diseñadora gráfica y artista visual. Ha desarrollado su carrera en proyectos gráficos, de arquitectura, diseño colaborativo, social y cultural. Ha trabajado en proyectos de branding como la Marca Ciudad Sevilla o la Marca Ciudad Huelva. Su obra ha sido expuesta en ciudades como Madrid, Barcelona, Valencia o Bélgica. En cine, ha creado el cartel de la película Elio.",
+  },
+  {
+    name: "José Pedraza",
+    role: "Jurado gráfico",
+    image: "/jurado/jose-pedraza.png",
+    bio: "Miembro del jurado gráfico. Biografía pendiente de incorporar.",
+  },
+  {
+    name: "Emilia Jiménez",
+    role: "Dirección de arte y vestuario",
+    image: "/jurado/emilia-jimenez.png",
+    bio:
+      "Graduada en Bellas Artes y Máster en Artes del Espectáculo Vivo por la Universidad de Sevilla. Ha trabajado en dirección de arte y vestuario tanto en moda como en cine. Entre sus proyectos destacan Cuando las cigarras callen, Casa típica, Lava y Pepe, el mudo, spot para Cruzcampo - Carne al Corte.",
+  },
+];
+
 const schedule = [
   { time: "10:15 - 10:55", title: "Recepción", text: "Llegada de participantes, jurado e invitados." },
   { time: "11:00", title: "Actuación inicial", text: ""},
@@ -900,6 +966,75 @@ function Candidates() {
   );
 }
 
+function JuryMemberCard({ member, index }) {
+  const initials = member.name
+    .split(" ")
+    .map((part) => part[0])
+    .join("")
+    .slice(0, 2);
+
+  return (
+    <motion.article
+      variants={fadeUp}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true }}
+      transition={{ duration: 0.65, delay: index * 0.06 }}
+      className="group overflow-hidden rounded-[2rem] border border-[#101a36]/10 bg-white/65 shadow-xl shadow-[#101a36]/10"
+    >
+      <div className="relative h-80 overflow-hidden bg-[#101a36]">
+        {member.image ? (
+          <img src={member.image} alt={member.name} className="h-full w-full object-cover transition duration-700 group-hover:scale-105" />
+        ) : (
+          <div className="flex h-full w-full items-center justify-center bg-gradient-to-br from-[#101a36] to-[#1b294e] text-6xl font-light tracking-[0.12em] text-[#d5a449]">
+            {initials}
+          </div>
+        )}
+        <div className="absolute inset-0 bg-gradient-to-t from-[#101a36]/90 via-[#101a36]/10 to-transparent" />
+        <div className="absolute bottom-5 left-5 right-5">
+          <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[#d5a449]">{member.role}</p>
+          <h3 className="mt-2 text-3xl font-light uppercase tracking-[0.1em] text-[#fbf7ed]">{member.name}</h3>
+        </div>
+      </div>
+      <div className="p-6">
+        <p className="leading-7 text-[#1b294e]/75">{member.bio}</p>
+      </div>
+    </motion.article>
+  );
+}
+
+function JuryShowcase() {
+  return (
+    <div className="space-y-16">
+      <section>
+        <SectionTitle
+          eyebrow="Jurado profesional"
+          title="Industria del cine"
+          text="Referentes de la interpretación, la creación audiovisual, la educación, la cultura pop y el cine de género acompañan la valoración de los cortos de esta edición."
+        />
+        <div className="grid gap-7 md:grid-cols-2 xl:grid-cols-3">
+          {filmIndustryJury.map((member, index) => (
+            <JuryMemberCard key={member.name} member={member} index={index} />
+          ))}
+        </div>
+      </section>
+
+      <section>
+        <SectionTitle
+          eyebrow="Jurado especializado"
+          title="Jurado gráfico"
+          text="Un bloque dedicado a la valoración de la identidad visual, cartel, diseño, dirección artística y propuestas gráficas de los proyectos."
+        />
+        <div className="grid gap-7 md:grid-cols-2 xl:grid-cols-3">
+          {graphicJury.map((member, index) => (
+            <JuryMemberCard key={member.name} member={member} index={index} />
+          ))}
+        </div>
+      </section>
+    </div>
+  );
+}
+
 function JuryVideos() {
   const [password, setPassword] = useState("");
   const [isUnlocked, setIsUnlocked] = useState(false);
@@ -932,10 +1067,20 @@ function JuryVideos() {
         </div>
 
         <SectionTitle
-          eyebrow="Zona privada"
-          title="Visionado del jurado"
-          text="Acceso reservado para revisar los cortos de la II Edición antes de la gala. Esta página está pensada para ver los vídeos con calma y sin el resto de contenido de la web."
+          eyebrow="II Edición"
+          title="Jurado Premios Europa"
+          text="El jurado combina miradas profesionales del cine, la interpretación, la comunicación, el diseño y la cultura visual para acompañar la valoración de los proyectos del alumnado."
         />
+
+        <JuryShowcase />
+
+        <div className="mt-20">
+          <SectionTitle
+            eyebrow="Zona privada"
+            title="Visionado del jurado"
+            text="Acceso reservado para revisar los cortos de la II Edición antes de la gala. Esta página mantiene el formulario de acceso para ver los vídeos con calma."
+          />
+        </div>
 
         {!isUnlocked ? (
           <motion.div
