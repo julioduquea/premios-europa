@@ -290,7 +290,7 @@ const firstEditionShorts = [
   },
   {
     title: "Mejor logo",
-    group: "Candidatura destacada",
+    group: "Productora Conax Films",
     award: "Mejor logo",
     description: "Proyecto reconocido por su planificación, puesta en escena y mirada audiovisual.",
     image: "/i-edicion/mejor-logo.jpg",
@@ -322,7 +322,7 @@ const firstEditionShorts = [
   },
   {
     title: "Mejor presupuesto",
-    group: "Equipo presupuesto",
+    group: "Venganza",
     award: "Mejor presupuesto",
     description: "Corto premiado por su gestión de recursos, creatividad y eficiencia en la producción.",
     image: "/i-edicion/mejor-presupuesto.jpg",
@@ -331,7 +331,7 @@ const firstEditionShorts = [
 
   {
     title: "Mejor cartel",
-    group: "Equipo cartel",
+    group: "Un sueño terrorifico",
     award: "Mejor cartel",
     description: "Corto premiado por su diseño gráfico, creatividad y capacidad de transmitir la esencia del proyecto.",
     image: "/i-edicion/mejor-cartel.jpg",
