@@ -394,6 +394,7 @@ const filmIndustryJury = [
     name: "Samantha Hudson",
     role: "Artista, cantante, actriz y creadora de contenido",
     image: "/jurado/samantha-hudson.jpg",
+    imagePosition: "center 18%",
     bio:
       "Artista vinculada a la performance, la comunicación audiovisual, la cultura pop y el activismo. Ha desarrollado proyectos cinematográficos, televisivos y musicales para plataformas, productoras y marcas como Netflix, RTVE, Podimo o Spotify, trabajando desde la sátira, el activismo LGBTIQ+ y la deconstrucción de los códigos de la cultura de masas.",
   },
@@ -401,6 +402,7 @@ const filmIndustryJury = [
     name: "Beatriz Molinero",
     role: "Educadora social, arte dramático y pedagogía teatral",
     image: "/jurado/beatriz-molinero.jpeg",
+    imagePosition: "center 18%",
     bio:
       "Educadora social con formación en arte dramático, pedagogía teatral, cine e interpretación. Ha impulsado proyectos socioeducativos y de comunicación para entidades sociales, fundaciones y empresas como Coca-Cola, IKEA o Fundación La Caixa, especialmente con jóvenes y colectivos en situación de vulnerabilidad.",
   },
@@ -408,6 +410,7 @@ const filmIndustryJury = [
     name: "César Vicente",
     role: "Actor",
     image: "/jurado/cesar-vicente.jpg",
+    imagePosition: "center 28%",
     bio:
       "Actor sevillano de reconocido prestigio nacional. Ha sido dirigido por Pedro Almodóvar en Dolor y gloria, nominada al Oscar a Mejor Película Extranjera y Premio Goya 2020 a Mejor Película. También ha trabajado en Los tigres, de Alberto Rodríguez, y en series como Franklin, Amar es para siempre, La otra mirada y Hernán Cortés.",
   },
@@ -415,6 +418,7 @@ const filmIndustryJury = [
     name: "Luís Calderón",
     role: "Director, guionista, montador y productor audiovisual",
     image: "/jurado/luis-calderon.png",
+    imagePosition: "center 18%",
     bio:
       "Cineasta sevillano especializado en cine de género y ficción cinematográfica. Ha desarrollado su carrera desde La Barbería Films, impulsando proyectos para festivales y salas comerciales. Destaca su largometraje de terror psicológico y slasher La casa en el árbol, seleccionado en el Festival de Cine Europeo de Sevilla.",
   },
@@ -422,6 +426,7 @@ const filmIndustryJury = [
     name: "Lola Buzón",
     role: "Actriz",
     image: "/jurado/lola-buzon.jpg",
+    imagePosition: "center 18%",
     bio:
       "Actriz andaluza con formación en arte dramático e interpretación cinematográfica. Formada en espacios como la ESAD de Sevilla o Work in Progress, destaca por su papel de Paca en Te estoy amando locamente, película ganadora de un Goya, trabajo por el que obtuvo candidatura a los Premios Goya como Mejor Actriz de Reparto.",
   },
@@ -437,6 +442,7 @@ const graphicJury = [
     name: "Beatriz Pavón",
     role: "Diseñadora gráfica y artista visual",
     image: "/jurado/beatriz-pavon.png",
+    imagePosition: "center 28%",
     bio:
       "Diseñadora gráfica y artista visual. Ha desarrollado su carrera en proyectos gráficos, de arquitectura, diseño colaborativo, social y cultural. Ha trabajado en proyectos de branding como la Marca Ciudad Sevilla o la Marca Ciudad Huelva. Su obra ha sido expuesta en ciudades como Madrid, Barcelona, Valencia o Bélgica. En cine, ha creado el cartel de la película Elio.",
   },
@@ -444,12 +450,14 @@ const graphicJury = [
     name: "José Pedraza",
     role: "Jurado gráfico",
     image: "/jurado/jose-pedraza.png",
+    imagePosition: "center 16%",
     bio: "Miembro del jurado gráfico. Biografía pendiente de incorporar.",
   },
   {
     name: "Emilia Jiménez",
     role: "Dirección de arte y vestuario",
     image: "/jurado/emilia-jimenez.png",
+    imagePosition: "center 22%",
     bio:
       "Graduada en Bellas Artes y Máster en Artes del Espectáculo Vivo por la Universidad de Sevilla. Ha trabajado en dirección de arte y vestuario tanto en moda como en cine. Entre sus proyectos destacan Cuando las cigarras callen, Casa típica, Lava y Pepe, el mudo, spot para Cruzcampo - Carne al Corte.",
   },
@@ -982,9 +990,14 @@ function JuryMemberCard({ member, index }) {
       transition={{ duration: 0.65, delay: index * 0.06 }}
       className="group overflow-hidden rounded-[2rem] border border-[#101a36]/10 bg-white/65 shadow-xl shadow-[#101a36]/10"
     >
-      <div className="relative h-80 overflow-hidden bg-[#101a36]">
+      <div className="relative h-96 overflow-hidden bg-[#101a36] md:h-[28rem]">
         {member.image ? (
-          <img src={member.image} alt={member.name} className="h-full w-full object-cover transition duration-700 group-hover:scale-105" />
+          <img
+            src={member.image}
+            alt={member.name}
+            className="h-full w-full object-cover transition duration-700 group-hover:scale-105"
+            style={{ objectPosition: member.imagePosition || "center 22%" }}
+          />
         ) : (
           <div className="flex h-full w-full items-center justify-center bg-gradient-to-br from-[#101a36] to-[#1b294e] text-6xl font-light tracking-[0.12em] text-[#d5a449]">
             {initials}
