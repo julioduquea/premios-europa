@@ -297,9 +297,9 @@ const firstEditionShorts = [
     video: "https://www.youtube.com/embed/tgbNymZ7vqY",
   },
   {
-    title: "Mejor guion",
+    title: "Mejor guión",
     group: "Productora Fries Films por EspejO",
-    award: "Mejor guion",
+    award: "Mejor guión",
     description: "Corto premiado por la construcción de la historia, diálogos y estructura narrativa.",
     image: "/i-edicion/mejor-guion.jpg",
     //video: "https://www.youtube.com/embed/dQw4w9WgXcQ",
