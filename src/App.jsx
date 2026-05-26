@@ -88,6 +88,15 @@ const candidates = [
 
 const juryPassword = "jurado2026";
 
+const juryPlaylist = {
+  title: "Lista de reproducción del jurado",
+  category: "Zona privada",
+  group: "YouTube privado",
+  description: "Todos los cortos ocultos de YouTube solo accesibles para el jurado tras introducir la contraseña.",
+  embed: "https://www.youtube.com/embed/videoseries?list=PLFe_gKuKvRXWlW1KjrPOXzjTTuEvb11z_",
+  url: "https://www.youtube.com/playlist?list=PLFe_gKuKvRXWlW1KjrPOXzjTTuEvb11z_",
+};
+
 const juryShorts = [
   {
     title: "Corto 01 · Pendiente de título",
@@ -100,17 +109,78 @@ const juryShorts = [
     title: "Corto 02 · Pendiente de título",
     group: "Grupo participante",
     category: "Selección oficial",
-    description: "Sustituye este enlace por el vídeo real cuando esté subido.",
+    description: "Vídeo pendiente de definición. Se añadirá cuando esté preparado.",
+    hidden: true,
     embed: "https://player.vimeo.com/video/76979871",
   },
   {
     title: "Corto 03 · Pendiente de título",
     group: "Grupo participante",
     category: "Selección oficial",
-    description: "Espacio reservado para otra candidatura de la II Edición.",
+    description: "Vídeo pendiente de definición. Se añadirá cuando esté preparado.",
+    hidden: true,
     embed: "https://www.youtube.com/embed/dQw4w9WgXcQ",
   },
 ];
+
+const juryPrivateMaterials = [
+  juryPlaylist,
+];
+
+function JuryMediaCard({ item, index }) {
+  const isHiddenItem = item.hidden;
+  return (
+    <motion.div
+      key={item.title}
+      variants={fadeUp}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true }}
+      transition={{ duration: 0.65, delay: index * 0.08 }}
+    >
+      <Card className="overflow-hidden rounded-[2rem] border-[#101a36]/10 bg-white/65 shadow-xl shadow-[#101a36]/10">
+        <div className="aspect-video bg-[#101a36] lg:aspect-[16/9]">
+          {isHiddenItem ? (
+            <div className="flex h-full items-center justify-center px-6 text-center text-sm font-semibold uppercase tracking-[0.14em] text-[#fbf7ed]">
+              Vídeo por definir. Se añadirá cuando esté listo.
+            </div>
+          ) : (
+            <iframe
+              className="h-full w-full"
+              src={item.embed}
+              title={item.title}
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowFullScreen
+            />
+          )}
+        </div>
+        <CardContent className="p-6">
+          <span className="rounded-full bg-[#d5a449]/20 px-3 py-1 text-xs font-bold uppercase tracking-[0.16em] text-[#b56b24]">
+            {item.category}
+          </span>
+          <h3 className="mt-4 text-xl font-semibold text-[#101a36]">{item.title}</h3>
+          <p className="mt-2 text-sm uppercase tracking-[0.18em] text-[#b56b24]">{item.group}</p>
+          <p className="mt-3 leading-7 text-[#1b294e]/70">{item.description}</p>
+          {item.url && !isHiddenItem && (
+            <a
+              href={item.url}
+              target="_blank"
+              rel="noreferrer"
+              className="mt-4 inline-flex rounded-full bg-[#d5a449] px-5 py-3 text-sm font-semibold text-[#101a36] transition hover:bg-[#fbf7ed]"
+            >
+              Abrir playlist en YouTube
+            </a>
+          )}
+          {isHiddenItem && (
+            <p className="mt-4 rounded-2xl bg-[#f3ecd9]/80 px-4 py-3 text-sm font-semibold text-[#101a36]">
+              Contenido oculto hasta que el vídeo esté disponible.
+            </p>
+          )}
+        </CardContent>
+      </Card>
+    </motion.div>
+  );
+}
 
 const firstEditionGallery = [
   {
@@ -278,7 +348,7 @@ const firstEditionShorts = [
     award: "Mejor interpretación protagonista",
     description: "Reconocimiento a la interpretación principal más destacada de la I Edición",
     image: "/i-edicion/mejor-interpretacion-protagonista.jpg",
-    video: "https://youtu.be/-5EsJkgyDFk",
+    video: "https://youtu.be/embed/-5EsJkgyDFk",
   },
   {
     title: "Mejor interpretación de reparto",
@@ -286,7 +356,7 @@ const firstEditionShorts = [
     award: "Mejor interpretación de reparto",
     description: "Reconocimiento a la interpretación secundaria más destacada de la I Edición.",
     image: "/i-edicion/entrega-premios-01.jpg",
-    video: "https://drive.google.com/file/d/1zyqWYDfZiAy6u5iPFA2Mw9-HdQCASlQp/view?usp=sharing",
+   // video: "https://drive.google.com/file/d/1zyqWYDfZiAy6u5iPFA2Mw9-HdQCASlQp/view?usp=sharing",
   },
   {
     title: "Mejor logo",
@@ -294,7 +364,7 @@ const firstEditionShorts = [
     award: "Mejor logo",
     description: "Proyecto reconocido por su planificación, puesta en escena y mirada audiovisual.",
     image: "/i-edicion/mejor-logo.jpg",
-    video: "https://www.youtube.com/embed/tgbNymZ7vqY",
+    //video: "https://www.youtube.com/embed/tgbNymZ7vqY",
   },
   {
     title: "Mejor guión",
@@ -318,7 +388,7 @@ const firstEditionShorts = [
     award: "Mejor storyboard",
     description: "Corto premiado por su planificación, puesta en escena y mirada audiovisual.",
     image: "/i-edicion/mejor-storyboard.jpg",
-    video: "https://www.youtube.com/embed/dQw4w9WgXcQ",
+    //video: "https://www.youtube.com/embed/dQw4w9WgXcQ",
   },
   {
     title: "Mejor presupuesto",
@@ -326,7 +396,7 @@ const firstEditionShorts = [
     award: "Mejor presupuesto",
     description: "Corto premiado por su gestión de recursos, creatividad y eficiencia en la producción.",
     image: "/i-edicion/mejor-presupuesto.jpg",
-    video: "https://www.youtube.com/embed/dQw4w9WgXcQ",
+    video: "https://youtu.be/embed/9vXlCFxzjU4",
   },
 
   {
@@ -335,7 +405,7 @@ const firstEditionShorts = [
     award: "Mejor cartel",
     description: "Corto premiado por su diseño gráfico, creatividad y capacidad de transmitir la esencia del proyecto.",
     image: "/i-edicion/mejor-cartel.jpg",
-    video: "https://www.youtube.com/embed/dQw4w9WgXcQ",
+   // video: "https://www.youtube.com/embed/dQw4w9WgXcQ",
   },
 
   {
@@ -344,9 +414,9 @@ const firstEditionShorts = [
     award: "Mejor BSO",
     description: "Corto premiado por su banda sonora original, composición musical y capacidad para potenciar la narrativa audiovisual.",
     image: "/i-edicion/mejor-bso.jpg",
-    video: "https://www.youtube.com/embed/dQw4w9WgXcQ",
+  //  video: "https://www.youtube.com/embed/dQw4w9WgXcQ",
   },
-
+/*
   {
     title: "Premio formato arriesgado",
     group: "Equipo formato arriesgado",
@@ -355,6 +425,7 @@ const firstEditionShorts = [
     image: "/i-edicion/premio-formato-arriesgado.jpg",
     video: "https://player.vimeo.com/video/76979871",
   },
+  */
 ];
 
 const categories = [
@@ -396,10 +467,14 @@ const filmIndustryJury = [
     image: "/jurado/samantha-hudson.jpg",
     imagePosition: "center 18%",
     bio: [
-      { text: "Artista vinculada a la performance, la comunicación audiovisual, la cultura pop y el activismo.", highlight: true },
-      " Ha desarrollado proyectos cinematográficos, televisivos y musicales para plataformas, productoras y marcas como ",
+      {
+        text: "Artista, cantante, actriz y creadora de contenido vinculada a la performance, la comunicación audiovisual, cultura pop y el activismo.",
+        highlight: true,
+      },
+      " Ha desarrollado la mayor parte de su trayectoria profesional a nivel nacional, impulsando proyectos cinematográficos, televisivos y musicales para plataformas de streaming, productoras y grandes marcas como ",
       { text: "Netflix, RTVE, Podimo o Spotify", highlight: true },
       ", trabajando desde la sátira, el activismo LGBTIQ+ y la deconstrucción de los códigos de la cultura de masas.",
+      " Su trayectoria conecta contracultura, entretenimiento masivo y transformación social, explorando el poder del medio audiovisual y el shock value como herramientas de agitación cultural y visibilidad.",
     ],
   },
   {
@@ -409,9 +484,10 @@ const filmIndustryJury = [
     imagePosition: "center 18%",
     bio: [
       { text: "Educadora social con formación en arte dramático, pedagogía teatral, cine e interpretación.", highlight: true },
-      " Ha impulsado proyectos socioeducativos y de comunicación para entidades sociales, fundaciones y empresas como ",
+      " Ha desarrollado la mayor parte de su trayectoria profesional entre Barcelona y Sevilla, impulsando proyectos socioeducativos y de comunicación para entidades sociales, fundaciones y empresas como ",
       { text: "Coca-Cola, IKEA o Fundación La Caixa", highlight: true },
       ", especialmente con jóvenes y colectivos en situación de vulnerabilidad.",
+      " Su trayectoria conecta cultura, educación y transformación social, explorando el poder del arte y la comunicación como herramientas de cambio.",
     ],
   },
   {
@@ -420,12 +496,13 @@ const filmIndustryJury = [
     image: "/jurado/cesar-vicente.jpg",
     imagePosition: "center 28%",
     bio: [
-      { text: "Actor sevillano de reconocido prestigio nacional.", highlight: true },
+      { text: "César Vicente (Sevilla) es un actor de reconocido prestigio nacional.", highlight: true },
       " Ha sido dirigido por ",
       { text: "Pedro Almodóvar en Dolor y gloria", highlight: true },
-      ", nominada al Oscar a Mejor Película Extranjera y Premio Goya 2020 a Mejor Película. También ha trabajado en ",
+      ", nominada al Oscar a la Mejor Película Extranjera y Premio Goya 2020 a la Mejor Película. Su último trabajo ha sido en ",
       { text: "Los tigres, de Alberto Rodríguez", highlight: true },
-      ", y en series como Franklin, Amar es para siempre, La otra mirada y Hernán Cortés.",
+      ", consiguiendo una nominación para los premios Carmen del Cine Andaluz.",
+      " En teatro ha colaborado en Los locos de Valencia, de la compañía El Tiempo, y Woyzeck, de la compañía Teatro Viento Sur; en televisión ha trabajado en series como Franklin, dirigida por Óscar Pedraza, Amar es para siempre, La otra mirada y Hernán Cortés, de Amazon.",
     ],
   },
   {
@@ -434,12 +511,15 @@ const filmIndustryJury = [
     image: "/jurado/luis-calderon.png",
     imagePosition: "center 18%",
     bio: [
-      { text: "Cineasta sevillano especializado en cine de género y ficción cinematográfica.", highlight: true },
-      " Ha desarrollado su carrera desde ",
+      {
+        text: "Director, guionista, montador y productor audiovisual sevillano con formación y trayectoria especializada en el cine de género y la ficción cinematográfica.",
+        highlight: true,
+      },
+      " Ha desarrollado su carrera cinematográfica impulsando proyectos desde su productora, ",
       { text: "La Barbería Films", highlight: true },
-      ", impulsando proyectos para festivales y salas comerciales. Destaca su largometraje ",
+      ", para festivales y salas comerciales, destacando la escritura y dirección de su largometraje de terror psicológico y slasher ",
       { text: "La casa en el árbol", highlight: true },
-      ", seleccionado en el Festival de Cine Europeo de Sevilla.",
+      ", una ópera prima seleccionada en el Festival de Cine Europeo de Sevilla que reúne a figuras diversas de la cultura pop y la interpretación.",
     ],
   },
   {
@@ -448,16 +528,28 @@ const filmIndustryJury = [
     image: "/jurado/lola-buzon.jpg",
     imagePosition: "center 18%",
     bio: [
-      { text: "Actriz andaluza con formación en arte dramático e interpretación cinematográfica.", highlight: true },
-      " Formada en espacios como la ESAD de Sevilla o Work in Progress, destaca por su papel de ",
+      {
+        text: "Actriz andaluza con formación en arte dramático e interpretación cinematográfica, con una trayectoria emergente en el ámbito audiovisual y teatral.",
+        highlight: true,
+      },
+      " Ha desarrollado sus principales proyectos desde Sevilla y Madrid, formándose en escuelas de referencia como la ESAD de Sevilla o Work in Progress y destacando en la gran pantalla por su papel de ",
       { text: "Paca en Te estoy amando locamente", highlight: true },
-      ", película ganadora de un Goya, trabajo por el que obtuvo candidatura a los Premios Goya como Mejor Actriz de Reparto.",
+      ", largometraje ganador de un premio Goya y trabajo de gran repercusión con el que obtuvo la candidatura a los Premios Goya como Mejor Actriz de Reparto.",
     ],
   },
   {
     name: "David Díaz",
-    role: "Jurado industria del cine",
-    bio: [{ text: "Miembro del jurado de la industria del cine.", highlight: true }, " Biografía pendiente de incorporar."],
+    role: "Locutor, DJ, técnico de sonido e iluminación",
+    image: "/jurado/david-diaz.png",
+    imagePosition: "center 18%",
+    bio: [
+      {
+        text: "Nacido en Marchena, durante más de 30 años ha llevado las riendas técnicas de Cadena Dial Europa, en Arahal.",
+        highlight: true,
+      },
+      " Esta tarea la ha compatibilizado con todo tipo de ocupaciones relacionadas con el mundo de los eventos, medios de comunicación y espectáculos: organizador de eventos, locutor, DJ, manager, técnico de sonido e iluminación. Actualmente trabaja en 101TV.",
+      " David es un melómano y cinéfilo empedernido, que disfruta y conoce tanto la historia musical y cinematográfica como las últimas novedades en ambos sectores.",
+    ],
   },
 ];
 
@@ -469,9 +561,9 @@ const graphicJury = [
     imagePosition: "center 28%",
     bio: [
       { text: "Diseñadora gráfica y artista visual.", highlight: true },
-      " Ha desarrollado su carrera en proyectos gráficos, arquitectura, diseño colaborativo, social y cultural. Ha trabajado en branding como ",
-      { text: "Marca Ciudad Sevilla o Marca Ciudad Huelva", highlight: true },
-      ". Su obra ha sido expuesta en Madrid, Barcelona, Valencia o Bélgica. En cine, ha creado ",
+      " Ha desarrollado su carrera, además de en proyectos gráficos, en proyectos de arquitectura, diseño colaborativo, social y cultural. Ha trabajado en proyectos de branding como ",
+      { text: "la Marca Ciudad Sevilla o la Marca Ciudad Huelva", highlight: true },
+      ". Su obra ha sido expuesta en ciudades como Madrid, Barcelona, Valencia o Bélgica. En cine, ha creado ",
       { text: "el cartel de la película Elio", highlight: true },
       ".",
     ],
@@ -481,7 +573,14 @@ const graphicJury = [
     role: "Jurado gráfico",
     image: "/jurado/jose-pedraza.png",
     imagePosition: "center 16%",
-    bio: [{ text: "Miembro del jurado gráfico.", highlight: true }, " Biografía pendiente de incorporar."],
+    bio: [
+      {
+        text: "Profesor de Diseño de Interiores en la Escuela de Arte y Superior de Diseño de Jerez, con formación como Arquitecto y experiencia como artista plástico.",
+        highlight: true,
+      },
+      " Desde sus labores en el ámbito de la arquitectura, siempre ha trabajado en proyectos y estudios multidisciplinares dando cabida a la artesanía, el arte y la reflexión sobre la sociedad a todos los niveles. En el ámbito educativo, su docencia se centra en distintos ámbitos, desde el entrenamiento del alumnado en torno al lenguaje visual, el diseño de espacios comerciales y la impartición de Diseño en bachillerato.",
+      " Actualmente gestiona una investigación en torno a la artesanía como herramienta de cohesión social y regeneración de las relaciones humanas.",
+    ],
   },
   {
     name: "Emilia Jiménez",
@@ -489,14 +588,31 @@ const graphicJury = [
     image: "/jurado/emilia-jimenez.png",
     imagePosition: "center 22%",
     bio: [
-      { text: "Graduada en Bellas Artes y Máster en Artes del Espectáculo Vivo por la Universidad de Sevilla.", highlight: true },
-      " Ha trabajado en ",
+      {
+        text: "Emilia Jiménez (Vejer de la Frontera, Cádiz, 1996) es graduada en Bellas Artes y Máster en Artes del Espectáculo Vivo por la Universidad de Sevilla.",
+        highlight: true,
+      },
+      " Ha trabajado en el ámbito de la ",
       { text: "dirección de arte y vestuario", highlight: true },
-      " tanto en moda como en cine. Entre sus proyectos destacan ",
-      { text: "Cuando las cigarras callen, Casa típica, Lava y Pepe, el mudo", highlight: true },
-      ".",
+      " tanto en el mundo de la moda como en el del cine.",
+      " Su trabajo se ha desarrollado en múltiples proyectos, comenzando como directora de vestuario en ",
+      { text: "Cuando las cigarras callen", highlight: true },
+      ", corto de Bea Hohenlaiter, o Casa típica, de Jesús Pascual y Antonio Bonilla. Otros trabajos han sido Lava, de Carmen Jiménez, como ayudante de vestuario, y Pepe, el mudo, spot para Cruzcampo - Carne al Corte, como directora de vestuario.",
     ],
   },
+];
+
+const filmIndustryAwards = [
+  { name: "Mejor cortometraje", icon: Trophy },
+  { name: "Mejor interpretación protagonista", icon: UserRound },
+  { name: "Mejor interpretación de reparto", icon: UsersRound },
+  { name: "Mejor formato arriesgado", icon: Sparkles },
+];
+
+const graphicJuryAwards = [
+  { name: "Mejor cartel", icon: Image },
+  { name: "Mejor diseño de personajes y vestuario", icon: Shirt },
+  { name: "Mejor logo de productora", icon: Palette },
 ];
 
 const schedule = [
@@ -987,6 +1103,12 @@ function Candidates() {
           title="Candidaturas"
           text="Los vídeos de esta edición quedan reservados para el jurado hasta la gala."
         />
+        <div className="rounded-[2rem] border border-white/10 bg-white/[0.05] p-12 text-center text-[#fbf7ed]/85 shadow-2xl shadow-black/10">
+          <p className="mx-auto max-w-2xl text-lg leading-8">
+            Las candidaturas aún no han sido seleccionadas. En cuanto estén disponibles, se añadirán aquí.
+          </p>
+        </div>
+        { /*
         <div className="grid gap-7 md:grid-cols-3">
           {candidates.map((candidate, index) => (
             <motion.article key={candidate.title} variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} transition={{ duration: 0.65, delay: index * 0.08 }} className="group overflow-hidden rounded-[2rem] border border-white/10 bg-white/[0.06] shadow-2xl shadow-black/20">
@@ -1005,6 +1127,7 @@ function Candidates() {
             </motion.article>
           ))}
         </div>
+        */ }
       </div>
     </section>
   );
@@ -1063,6 +1186,46 @@ function JuryMemberCard({ member, index }) {
   );
 }
 
+function JuryAwardsPanel({ title, awards }) {
+  return (
+    <motion.div
+      variants={fadeUp}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true }}
+      transition={{ duration: 0.7 }}
+      className="mb-9 overflow-hidden rounded-[2rem] border border-[#101a36]/10 bg-[#101a36] shadow-2xl shadow-[#101a36]/15"
+    >
+      <div className="grid gap-0 lg:grid-cols-[0.38fr_1fr]">
+        <div className="flex min-h-48 flex-col justify-between bg-[#d5a449] p-6 text-[#101a36] md:p-8">
+          <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-[#101a36] text-[#fbf7ed] shadow-lg shadow-[#101a36]/20">
+            <Award className="h-7 w-7" />
+          </div>
+          <div>
+            <p className="text-sm font-bold uppercase tracking-[0.24em]">Entrega de premios</p>
+            <h3 className="mt-2 text-3xl font-light uppercase tracking-[0.1em] md:text-4xl">{title}</h3>
+          </div>
+        </div>
+
+        <div className="grid grid-cols-[repeat(auto-fit,minmax(13rem,1fr))] gap-4 p-5 md:p-7">
+          {awards.map((award, index) => (
+            <div
+              key={award.name}
+              className="group flex min-h-32 flex-col justify-between rounded-[1.35rem] border border-[#fbf7ed]/10 bg-[#fbf7ed]/8 p-5 text-[#fbf7ed] transition hover:-translate-y-1 hover:border-[#d5a449]/60 hover:bg-[#fbf7ed]/12"
+            >
+              <div className="flex items-center justify-between gap-3">
+                <span className="text-xs font-semibold uppercase tracking-[0.2em] text-[#d5a449]"></span>
+                <award.icon className="h-5 w-5 text-[#d5a449]" />
+              </div>
+              <p className="mt-5 text-xl font-light uppercase leading-snug tracking-[0.06em]">{award.name}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </motion.div>
+  );
+}
+
 function JuryShowcase() {
   return (
     <div className="space-y-16">
@@ -1072,6 +1235,7 @@ function JuryShowcase() {
           title="Industria del cine"
           text="Referentes de la interpretación, la creación audiovisual, la educación, la cultura pop y el cine de género acompañan la valoración de los cortos de esta edición."
         />
+        <JuryAwardsPanel title="Industria del cine" awards={filmIndustryAwards} />
         <div className="grid gap-7 md:grid-cols-2 xl:grid-cols-3">
           {filmIndustryJury.map((member, index) => (
             <JuryMemberCard key={member.name} member={member} index={index} />
@@ -1085,6 +1249,7 @@ function JuryShowcase() {
           title="Jurado gráfico"
           text="Un bloque dedicado a la valoración de la identidad visual, cartel, diseño, dirección artística y propuestas gráficas de los proyectos."
         />
+        <JuryAwardsPanel title="Jurado gráfico" awards={graphicJuryAwards} />
         <div className="grid gap-7 md:grid-cols-2 xl:grid-cols-3">
           {graphicJury.map((member, index) => (
             <JuryMemberCard key={member.name} member={member} index={index} />
@@ -1138,7 +1303,7 @@ function JuryVideos() {
           <SectionTitle
             eyebrow="Zona privada"
             title="Visionado del jurado"
-            text="Acceso reservado para revisar los cortos de la II Edición antes de la gala. Esta página mantiene el formulario de acceso para ver los vídeos con calma."
+            text="Acceso reservado para revisar los cortos de la II Edición antes de la gala. Visualización de los cortos."
           />
         </div>
 
@@ -1175,28 +1340,8 @@ function JuryVideos() {
           </motion.div>
         ) : (
           <div className="grid gap-8 xl:grid-cols-2">
-            {juryShorts.map((short, index) => (
-              <motion.div key={short.title} variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} transition={{ duration: 0.65, delay: index * 0.08 }}>
-                <Card className="overflow-hidden rounded-[2rem] border-[#101a36]/10 bg-white/65 shadow-xl shadow-[#101a36]/10">
-                  <div className="aspect-video bg-[#101a36] lg:aspect-[16/9]">
-                    <iframe
-                      className="h-full w-full"
-                      src={short.embed}
-                      title={short.title}
-                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                      allowFullScreen
-                    />
-                  </div>
-                  <CardContent className="p-6">
-                    <span className="rounded-full bg-[#d5a449]/20 px-3 py-1 text-xs font-bold uppercase tracking-[0.16em] text-[#b56b24]">
-                      {short.category}
-                    </span>
-                    <h3 className="mt-4 text-xl font-semibold text-[#101a36]">{short.title}</h3>
-                    <p className="mt-2 text-sm uppercase tracking-[0.18em] text-[#b56b24]">{short.group}</p>
-                    <p className="mt-3 leading-7 text-[#1b294e]/70">{short.description}</p>
-                  </CardContent>
-                </Card>
-              </motion.div>
+            {juryPrivateMaterials.map((item, index) => (
+              <JuryMediaCard key={item.title} item={item} index={index} />
             ))}
           </div>
         )}
