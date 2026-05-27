@@ -53,36 +53,321 @@ const fadeUp = {
   visible: { opacity: 1, y: 0 },
 };
 
-const candidates = [
+const nominationCategories = [
   {
-    title: "El último plano",
-    group: "2º ESO · Grupo Lumière",
-    category: "Mejor cortometraje",
-    description:
-      "Una historia breve sobre amistad, decisiones y el poder de contar lo que sentimos a través de una cámara.",
-    image:
-      "https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&w=900&q=80",
-    video: "https://www.youtube.com/embed/dQw4w9WgXcQ",
+    title: "Mejor corto",
+    shortTitle: "Corto",
+    icon: Trophy,
+    candidates: 12,
+    nominations: 6,
+    nominees: [
+      { title: "Justo a tiempo", group: "JISOL", course: "3º ESO" },
+      { title: "La ausencia que respira", group: "Estrella Co.", course: "3º ESO" },
+      { title: "Plutón", group: "Lampedusa Films", course: "3º ESO" },
+      { title: "Servicio público", group: "OOPS Studios", course: "3º ESO" },
+      { title: "Píxeles", group: "Paralelo", course: "3º ESO · Erasmus" },
+      { title: "Puntas abiertas", group: "Chandal y Tacón", course: "3º ESO · 2025" },
+    ],
+    entries: [
+      { title: "Cuando todo era gris", group: "Las Grecas", course: "1º ESO" },
+      { title: "Directo y sin filtros", group: "Opalite Studios", course: "3º ESO" },
+      { title: "El secreto", group: "Spaicy Sausage", course: "1º ESO" },
+      { title: "Justo a tiempo", group: "JISOL", course: "3º ESO" },
+      { title: "La ausencia que respira", group: "Estrella Co.", course: "3º ESO" },
+      { title: "La voz de la experiencia", group: "Moonlight", course: "3º ESO" },
+      { title: "Lo abstracto", group: "Epic Screen", course: "3º ESO" },
+      { title: "Plutón", group: "Lampedusa Films", course: "3º ESO" },
+      { title: "Píxeles", group: "Paralelo", course: "3º ESO · Erasmus" },
+      { title: "Sabores de mi tierra", group: "RBM", course: "1º ESO" },
+      { title: "Servicio público", group: "OOPS Studios", course: "3º ESO" },
+      { title: "Puntas abiertas", group: "Chandal y Tacón", course: "3º ESO · 2025" },
+    ],
   },
   {
-    title: "Ruido en el pasillo",
-    group: "3º ESO · Aula 3B",
-    category: "Mejor montaje",
-    description:
-      "Thriller escolar construido con ritmo, silencios y una cuidada edición visual y sonora.",
-    image:
-      "https://images.unsplash.com/photo-1505686994434-e3cc5abf1330?auto=format&fit=crop&w=900&q=80",
-    video: "https://player.vimeo.com/video/76979871",
+    title: "Mejor guion",
+    shortTitle: "Guion",
+    icon: ScrollText,
+    candidates: 10,
+    nominations: 6,
+    nominees: [
+      { title: "Sabores de mi tierra", group: "RBM", course: "1º ESO" },
+      { title: "Justo a tiempo", group: "JISOL", course: "3º ESO" },
+      { title: "La ausencia que respira", group: "Estrella Co.", course: "3º ESO" },
+      { title: "La voz de la experiencia", group: "Moonlight", course: "3º ESO" },
+      { title: "Plutón", group: "Lampedusa Films", course: "3º ESO" },
+      { title: "Servicio público", group: "OOPS Studios", course: "3º ESO" },
+    ],
+    entries: [
+      { title: "Cuando todo era gris", group: "Las Grecas", course: "1º ESO" },
+      { title: "El fantasma del verdeo", group: "HOLIF", course: "3º ESO · 2025" },
+      { title: "El secreto", group: "Spaicy Sausage", course: "1º ESO" },
+      { title: "Justo a tiempo", group: "JISOL", course: "3º ESO" },
+      { title: "La ausencia que respira", group: "Estrella Co.", course: "3º ESO" },
+      { title: "La voz de la experiencia", group: "Moonlight", course: "3º ESO" },
+      { title: "Los días sin luz", group: "CAAM", course: "3º ESO · 2025" },
+      { title: "Plutón", group: "Lampedusa Films", course: "3º ESO" },
+      { title: "Sabores de mi tierra", group: "RBM", course: "1º ESO" },
+      { title: "Servicio público", group: "OOPS Studios", course: "3º ESO" },
+    ],
   },
   {
-    title: "Azul de tarde",
-    group: "4º ESO · Equipo Atlas",
-    category: "Mejor fotografía",
-    description:
-      "Un proyecto poético que juega con la luz natural, los reflejos y la mirada adolescente.",
-    image:
-      "https://images.unsplash.com/photo-1516035069371-29a1b244cc32?auto=format&fit=crop&w=900&q=80",
-    video: "https://www.youtube.com/embed/tgbNymZ7vqY",
+    title: "Mejor interpretación protagonista",
+    shortTitle: "Protagonista",
+    icon: UserRound,
+    candidates: 12,
+    nominations: 6,
+    nominees: [
+      { title: "Julia Gamboa", role: "Almudena", work: "Justo a tiempo", group: "JISOL", course: "3º ESO" },
+      { title: "Sara Camacho", role: "Sara", work: "La ausencia que respira", group: "Estrella Co.", course: "3º ESO" },
+      { title: "Abel Hurtado", role: "Daniel", work: "Plutón", group: "Lampedusa Films", course: "3º ESO" },
+      { title: "Reparto", role: "Pascualito", work: "Servicio público", group: "OOPS Studios", course: "3º ESO" },
+      { title: "Tamara Mateo", role: "Tamara", work: "Píxeles", group: "Paralelo Films", course: "3º ESO" },
+      { title: "Ana Gallegos / Alejandra Romero", role: "La Rebe / Gala", work: "Puntas abiertas", group: "Chandal y Tacón", course: "3º ESO · 2025" },
+    ],
+    entries: [
+      { title: "Abel Hurtado", role: "Daniel", work: "Plutón", group: "Lampedusa Films", course: "3º ESO" },
+      { title: "Alejandra Romero", role: "Gala", work: "Puntas abiertas", group: "Chandal y Tacón", course: "3º ESO · 2025" },
+      { title: "Alonso Vázquez", role: "Lucas", work: "El secreto", group: "Spaicy Sausage", course: "1º ESO" },
+      { title: "Ana Gallegos", role: "La Rebe", work: "Puntas abiertas", group: "Chandal y Tacón", course: "3º ESO · 2025" },
+      { title: "Benjamín Cruces", role: "el presentador", work: "Sabores de mi tierra", group: "RBM", course: "1º ESO" },
+      { title: "Carmen B / Andrea S / Laura S / Estrella P", role: "Pascualito", work: "Servicio público", group: "OOPS Studios", course: "3º ESO" },
+      { title: "Hugo Bermúdez", role: "jornalero", work: "¡Corre que no llegamos!", group: "JJHH", course: "1º ESO" },
+      { title: "Julia Gamboa", role: "Almudena", work: "Justo a tiempo", group: "JISOL", course: "3º ESO" },
+      { title: "Lucía Toledano", role: "Celia", work: "Lo abstracto", group: "Epic Screen", course: "3º ESO" },
+      { title: "Sara Camacho", role: "Sara", work: "La ausencia que respira", group: "Estrella Co.", course: "3º ESO" },
+      { title: "Sofía García", role: "Natalia", work: "Cuando todo era gris", group: "Las Grecas", course: "1º ESO" },
+      { title: "Tamara Mateo", role: "Tamara", work: "Píxeles", group: "Paralelo Films", course: "3º ESO" },
+    ],
+  },
+  {
+    title: "Mejor interpretación de reparto",
+    shortTitle: "Reparto",
+    icon: UsersRound,
+    candidates: 12,
+    nominations: 6,
+    nominees: [
+      { title: "Sara", role: "agresora choni", work: "Cuando todo era gris", group: "Las Grecas", course: "1º ESO" },
+      { title: "Natalia Morales", role: "Aitana de Almudena", work: "Justo a tiempo", group: "JISOL", course: "3º ESO" },
+      { title: "Reparto", role: "amigas de Sara", work: "La ausencia que respira", group: "Estrella Co.", course: "3º ESO" },
+      { title: "Alba", role: "amiga de Daniel", work: "Plutón", group: "Lampedusa Films", course: "3º ESO" },
+      { title: "Laura Sánchez", role: "influencer argentina", work: "Servicio público", group: "OOPS Studios", course: "3º ESO" },
+      { title: "Ángel Avecilla", role: "Ángel", work: "Píxeles", group: "Paralelo Films", course: "3º ESO" },
+    ],
+    entries: [
+      { title: "Abel Núñez", role: "Víctor", work: "Jugar para salir", group: "Horizonte Plus", course: "3º ESO" },
+      { title: "Adriana M. / Beatriz M. / Naiara R.", role: "acosadoras", work: "El secreto", group: "Spaicy Sausage", course: "1º ESO" },
+      { title: "Alba Gómez", role: "amiga de Daniel", work: "Plutón", group: "Lampedusa Films", course: "3º ESO" },
+      { title: "Ángel Avecilla", role: "Ángel", work: "Píxeles", group: "Paralelo Films", course: "3º ESO" },
+      { title: "Laura Sánchez", role: "influencer argentina", work: "Servicio público", group: "OOPS Studios", course: "3º ESO" },
+      { title: "Mario Sánchez", role: "cocinero", work: "Sabores de mi tierra", group: "RBM", course: "1º ESO" },
+      { title: "Natalia Morales", role: "Aitana", work: "Justo a tiempo", group: "JISOL", course: "3º ESO" },
+      { title: "Raúl Romay", role: "cocinero", work: "Sabores de mi tierra", group: "RBM", course: "1º ESO" },
+      { title: "Reparto", role: "amigas de Almudena", work: "Justo a tiempo", group: "JISOL", course: "3º ESO" },
+      { title: "Reparto", role: "amigas de Sara", work: "La ausencia que respira", group: "Estrella Co.", course: "3º ESO" },
+      { title: "Sara Mena", role: "agresora choni", work: "Cuando todo era gris", group: "Las Grecas", course: "1º ESO" },
+      { title: "Saray Pérez", role: "Saray", work: "Las flechas misteriosas", group: "Film Action", course: "3º ESO" },
+    ],
+  },
+  {
+    title: "Mejor diseño de vestuario y personajes",
+    shortTitle: "Vestuario",
+    icon: Shirt,
+    candidates: 12,
+    nominations: 6,
+    entries: [
+      { title: "Brujas del presente", group: "Bouchee Beef", course: "3º ESO · 2025" },
+      { title: "¡Corre que no llegamos!", group: "JJHH", course: "1º ESO" },
+      { title: "Cuando todo era gris", group: "Las Grecas", course: "1º ESO" },
+      { title: "El eco de las decisiones", group: "Fashion Films", course: "3º ESO · 2025" },
+      { title: "El secreto", group: "Spaicy Sausage", course: "1º ESO" },
+      { title: "Justo a tiempo", group: "JISOL", course: "3º ESO" },
+      { title: "La ausencia que respira", group: "Estrella Co.", course: "3º ESO" },
+      { title: "Lo abstracto", group: "Epic Screen", course: "3º ESO" },
+      { title: "Los días sin luz", group: "CAAM", course: "3º ESO · 2025" },
+      { title: "Lucía en el país de la magia", group: "AZEA", course: "1º ESO · 2025" },
+      { title: "Puntas abiertas", group: "Chandal y Tacón", course: "3º ESO · 2025" },
+      { title: "Servicio público", group: "OOPS Studios", course: "3º ESO" },
+    ],
+  },
+  {
+    title: "Mejor storyboard",
+    shortTitle: "Storyboard",
+    icon: Camera,
+    candidates: 12,
+    nominations: 6,
+    entries: [
+      { title: "Cuando todo era gris", group: "Las Grecas", course: "1º ESO" },
+      { title: "Directo y sin filtros", group: "Opalite Studios", course: "3º ESO" },
+      { title: "El eco de las decisiones", group: "Fashion Films", course: "3º ESO · 2025" },
+      { title: "El fantasma del verdeo", group: "HOLIF", course: "3º ESO · 2025" },
+      { title: "Justo a tiempo", group: "JISOL", course: "3º ESO" },
+      { title: "La ausencia que respira", group: "Estrella Co.", course: "3º ESO" },
+      { title: "La niña de las coletas", group: "Dark Films", course: "1º ESO · 2025" },
+      { title: "Lo abstracto", group: "Epic Screen", course: "3º ESO" },
+      { title: "Lucía en el país de la magia", group: "AZEA", course: "1º ESO · 2025" },
+      { title: "Puntas abiertas", group: "Chandal y Tacón", course: "3º ESO · 2025" },
+      { title: "Sabores de mi tierra", group: "RBM", course: "1º ESO" },
+      { title: "Servicio público", group: "OOPS Studios", course: "3º ESO" },
+    ],
+  },
+  {
+    title: "Mejor cartel",
+    shortTitle: "Cartel",
+    icon: Image,
+    candidates: 12,
+    nominations: 6,
+    entries: [
+      { title: "¡Corre que no llegamos!", group: "JJHH", course: "1º ESO" },
+      { title: "Directo y sin filtros", group: "Opalite Studios", course: "3º ESO" },
+      { title: "El secreto", group: "Spaicy Sausage", course: "1º ESO" },
+      { title: "El tarot", group: "Dark Cinema", course: "3º ESO" },
+      { title: "Ganar para salir", group: "Horizonte Pluz", course: "3º ESO" },
+      { title: "Justo a tiempo", group: "Chandal y Tacón", course: "3º ESO · 2025" },
+      { title: "La voz de la experiencia", group: "Moonlight", course: "3º ESO" },
+      { title: "Las flechas misteriosas", group: "Films Action", course: "3º ESO" },
+      { title: "Lo abstracto", group: "Epic Screen", course: "3º ESO" },
+      { title: "Plutón", group: "Lampedusa", course: "3º ESO" },
+      { title: "Sabores de mi tierra", group: "RBM", course: "1º ESO" },
+      { title: "Servicio público", group: "OOPS Studios", course: "3º ESO" },
+    ],
+  },
+  {
+    title: "Mejor logo",
+    shortTitle: "Logo",
+    icon: Palette,
+    candidates: 20,
+    nominations: 10,
+    entries: [
+      { title: "Aurex", course: "1º ESO" },
+      { title: "Chandal y Tacón", course: "3º ESO · 2025" },
+      { title: "Estrella Co.", course: "3º ESO" },
+      { title: "Epic Screen", course: "3º ESO" },
+      { title: "Fashion Films", course: "3º ESO · 2025" },
+      { title: "Film Action", course: "1º ESO" },
+      { title: "HOLIF", course: "3º ESO · 2025" },
+      { title: "Indigo", course: "1º ESO" },
+      { title: "JISOL", course: "3º ESO" },
+      { title: "JJHH", course: "1º ESO" },
+      { title: "KASK", course: "1º ESO" },
+      { title: "Lampedusa", course: "3º ESO" },
+      { title: "Las Grecas", course: "1º ESO" },
+      { title: "Modo Avión", course: "3º ESO" },
+      { title: "Moonlight", course: "3º ESO" },
+      { title: "OOPS Studios", course: "3º ESO" },
+      { title: "Opalite Films", course: "3º ESO" },
+      { title: "RBM", course: "1º ESO" },
+      { title: "Tracatá", course: "1º ESO" },
+      { title: "Yako", course: "1º ESO" },
+    ],
+  },
+  {
+    title: "Mejor presupuesto",
+    shortTitle: "Presupuesto",
+    icon: Calculator,
+    candidates: 12,
+    nominations: 6,
+    nominees: [
+      { title: "Justo a tiempo", group: "JISOL", course: "3º ESO" },
+      { title: "Lo abstracto", group: "Epic Screen", course: "3º ESO" },
+      { title: "La ausencia que respira", group: "Estrella Co.", course: "3º ESO" },
+      { title: "Lo que nunca dijimos", group: "Modo Avión", course: "3º ESO" },
+      { title: "Servicio público", group: "OOPS Studios", course: "3º ESO" },
+      { title: "Puntas abiertas", group: "Chandal y Tacón", course: "3º ESO · 2025" },
+    ],
+    entries: [
+      { title: "Cuando todo era gris", group: "Las Grecas", course: "1º ESO" },
+      { title: "Directo y sin filtros", group: "Opalite Studios", course: "3º ESO" },
+      { title: "El peso de ser yo", group: "VDM Movie", course: "3º ESO · 2025" },
+      { title: "El secreto", group: "Spaicy Sausage", course: "1º ESO" },
+      { title: "Justo a tiempo", group: "JISOL", course: "3º ESO" },
+      { title: "La ausencia que respira", group: "Estrella Co.", course: "3º ESO" },
+      { title: "Lo abstracto", group: "Epic Screen", course: "3º ESO" },
+      { title: "Lo que nunca dijimos", group: "Modo Avión", course: "3º ESO" },
+      { title: "Los días sin luz", group: "CAAM", course: "3º ESO · 2025" },
+      { title: "Las voces del pasillo", group: "Tracatá", course: "1º ESO" },
+      { title: "Puntas abiertas", group: "Chandal y Tacón", course: "3º ESO · 2025" },
+      { title: "Servicio público", group: "OOPS Studios", course: "3º ESO" },
+    ],
+  },
+  {
+    title: "Mejor traducción de guion",
+    shortTitle: "Traducción",
+    icon: ScrollText,
+    candidates: 12,
+    nominations: 6,
+    entries: [
+      { title: "Acoso sin necesidad", group: "MNM3", course: "3º ESO" },
+      { title: "Directo y sin filtros", group: "Opalite Studios", course: "3º ESO" },
+      { title: "El bicho raro", group: "Kinki Producciones", course: "3º ESO" },
+      { title: "El tarot", group: "Dark Cinema", course: "3º ESO" },
+      { title: "Ganar para salir", group: "Horizonte Pluz", course: "3º ESO" },
+      { title: "Justo a tiempo", group: "JISOL", course: "3º ESO" },
+      { title: "La ausencia que respira", group: "Estrella Co.", course: "3º ESO" },
+      { title: "Las flechas misteriosas", group: "Film Action", course: "3º ESO" },
+      { title: "Las voces del pasillo", group: "Tracatá", course: "1º ESO" },
+      { title: "Sabores de mi tierra", group: "RBM", course: "1º ESO" },
+      { title: "Servicio público", group: "OOPS Studios", course: "3º ESO" },
+      { title: "Una semana sin móviles", group: "YAKO", course: "1º ESO" },
+    ],
+  },
+  {
+    title: "Mejor formato arriesgado",
+    shortTitle: "Formato arriesgado",
+    icon: Sparkles,
+    candidates: 6,
+    nominations: 6,
+    nominees: [
+      { title: "Arahal, pasado y presente", group: "Equipo participante", course: "Premios Europa 2026" },
+      { title: "Sabores de mi tierra", group: "RBM", course: "1º ESO" },
+      { title: "La misteriosa noche", group: "KASK", course: "1º ESO" },
+      { title: "La voz de la experiencia", group: "Moonlight", course: "3º ESO" },
+      { title: "Directo y sin filtros", group: "Opalite Studios", course: "3º ESO" },
+      { title: "Who finds a treasure... finds a friend", group: "Aviano Films Production", course: "Erasmus Italia" },
+    ],
+    entries: [
+      { title: "Arahal, pasado y presente", group: "Equipo participante", course: "Premios Europa 2026" },
+      { title: "Directo y sin filtros", group: "Opalite Studios", course: "3º ESO" },
+      { title: "La misteriosa noche", group: "KASK", course: "1º ESO" },
+      { title: "La voz de la experiencia", group: "Moonlight", course: "3º ESO" },
+      { title: "Sabores de mi tierra", group: "RBM", course: "1º ESO" },
+      { title: "Who finds a treasure... finds a friend", group: "Aviano Films Production", course: "Erasmus Italia" },
+    ],
+  },
+  {
+    title: "Compromiso social",
+    shortTitle: "Compromiso social",
+    icon: Handshake,
+    candidates: 8,
+    nominations: 6,
+    entries: [
+      { title: "Acoso sin necesidad", group: "MNM3", course: "3º ESO" },
+      { title: "Cuando todo era gris", group: "Las Grecas", course: "1º ESO" },
+      { title: "El bicho raro", group: "Kinki Producciones", course: "3º ESO" },
+      { title: "El secreto", group: "Spaicy Sausage", course: "1º ESO" },
+      { title: "Justo a tiempo", group: "JISOL", course: "3º ESO" },
+      { title: "La voz de la experiencia", group: "Moonlight", course: "3º ESO" },
+      { title: "Lo abstracto", group: "JISOL", course: "3º ESO" },
+      { title: "Plutón", group: "Lampedusa", course: "3º ESO" },
+    ],
+  },
+  {
+    title: "Premio espacio sonoro",
+    shortTitle: "Espacio sonoro",
+    icon: Music,
+    candidates: 10,
+    nominations: 6,
+    entries: [
+      { title: "Directo y sin filtros", group: "Opalite Studios", course: "3º ESO" },
+      { title: "Cuando todo era gris", group: "Las Grecas", course: "1º ESO" },
+      { title: "Justo a tiempo", group: "JISOL", course: "3º ESO" },
+      { title: "La ausencia que respira", group: "Estrella Co.", course: "3º ESO" },
+      { title: "Las flechas misteriosas", group: "Film Action", course: "3º ESO" },
+      { title: "La misteriosa noche", group: "KASK", course: "1º ESO" },
+      { title: "Lo abstracto", group: "JISOL", course: "3º ESO" },
+      { title: "Plutón", group: "Lampedusa", course: "3º ESO" },
+      { title: "Sabores de mi tierra", group: "RBM", course: "1º ESO" },
+      { title: "Servicio público", group: "OOPS Studios", course: "1º ESO" },
+    ],
   },
 ];
 
@@ -96,32 +381,6 @@ const juryPlaylist = {
   embed: "https://www.youtube.com/embed/videoseries?list=PLFe_gKuKvRXWlW1KjrPOXzjTTuEvb11z_",
   url: "https://www.youtube.com/playlist?list=PLFe_gKuKvRXWlW1KjrPOXzjTTuEvb11z_",
 };
-
-const juryShorts = [
-  {
-    title: "Corto 01 · Pendiente de título",
-    group: "Grupo participante",
-    category: "Selección oficial",
-    description: "Ficha privada para que el jurado valore el corto antes de la gala.",
-    embed: "https://www.youtube.com/embed/tgbNymZ7vqY",
-  },
-  {
-    title: "Corto 02 · Pendiente de título",
-    group: "Grupo participante",
-    category: "Selección oficial",
-    description: "Vídeo pendiente de definición. Se añadirá cuando esté preparado.",
-    hidden: true,
-    embed: "https://player.vimeo.com/video/76979871",
-  },
-  {
-    title: "Corto 03 · Pendiente de título",
-    group: "Grupo participante",
-    category: "Selección oficial",
-    description: "Vídeo pendiente de definición. Se añadirá cuando esté preparado.",
-    hidden: true,
-    embed: "https://www.youtube.com/embed/dQw4w9WgXcQ",
-  },
-];
 
 const juryPrivateMaterials = [
   juryPlaylist,
@@ -348,7 +607,7 @@ const firstEditionShorts = [
     award: "Mejor interpretación protagonista",
     description: "Reconocimiento a la interpretación principal más destacada de la I Edición",
     image: "/i-edicion/mejor-interpretacion-protagonista.jpg",
-    video: "https://youtu.be/embed/-5EsJkgyDFk",
+    video: "https://youtu.be/-5EsJkgyDFk",
   },
   {
     title: "Mejor interpretación de reparto",
@@ -356,7 +615,7 @@ const firstEditionShorts = [
     award: "Mejor interpretación de reparto",
     description: "Reconocimiento a la interpretación secundaria más destacada de la I Edición.",
     image: "/i-edicion/entrega-premios-01.jpg",
-   // video: "https://drive.google.com/file/d/1zyqWYDfZiAy6u5iPFA2Mw9-HdQCASlQp/view?usp=sharing",
+    video: "https://youtu.be/8t3hOwGvOrM",
   },
   {
     title: "Mejor logo",
@@ -364,7 +623,7 @@ const firstEditionShorts = [
     award: "Mejor logo",
     description: "Proyecto reconocido por su planificación, puesta en escena y mirada audiovisual.",
     image: "/i-edicion/mejor-logo.jpg",
-    //video: "https://www.youtube.com/embed/tgbNymZ7vqY",
+    video: "https://youtu.be/8t3hOwGvOrM",
   },
   {
     title: "Mejor guión",
@@ -396,7 +655,7 @@ const firstEditionShorts = [
     award: "Mejor presupuesto",
     description: "Corto premiado por su gestión de recursos, creatividad y eficiencia en la producción.",
     image: "/i-edicion/mejor-presupuesto.jpg",
-    video: "https://youtu.be/embed/9vXlCFxzjU4",
+    video: "https://youtu.be/9vXlCFxzjU4",
   },
 
   {
@@ -1095,39 +1354,227 @@ function FirstEdition() {
 }
 
 function Candidates() {
+  const [selectedCategory, setSelectedCategory] = useState(nominationCategories[0].title);
+  const activeCategory = nominationCategories.find((category) => category.title === selectedCategory) ?? nominationCategories[0];
+  const totalCandidates = nominationCategories.reduce((total, category) => total + category.candidates, 0);
+  const totalNominations = nominationCategories.reduce((total, category) => total + category.nominations, 0);
+  const ActiveIcon = activeCategory.icon;
+  const activeNominees = activeCategory.nominees ?? [];
+
   return (
-    <section id="candidaturas" className="bg-[#101a36] px-4 py-20 text-[#fbf7ed] md:px-8">
+    <section id="candidaturas" className="relative overflow-hidden bg-[#101a36] px-4 py-20 text-[#fbf7ed] md:px-8">
+      <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[#d5a449]/70 to-transparent" />
+      <div className="absolute -right-24 top-20 h-72 w-72 rounded-full border border-[#d5a449]/20" />
+      <div className="absolute -left-24 bottom-24 h-64 w-64 rounded-full border border-[#fbf7ed]/10" />
       <div className="mx-auto max-w-7xl">
-        <SectionTitle
-          eyebrow="Selección oficial"
-          title="Candidaturas"
-          text="Los vídeos de esta edición quedan reservados para el jurado hasta la gala."
-        />
-        <div className="rounded-[2rem] border border-white/10 bg-white/[0.05] p-12 text-center text-[#fbf7ed]/85 shadow-2xl shadow-black/10">
-          <p className="mx-auto max-w-2xl text-lg leading-8">
-            Las candidaturas aún no han sido seleccionadas. En cuanto estén disponibles, se añadirán aquí.
+        <motion.div
+          variants={fadeUp}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-80px" }}
+          transition={{ duration: 0.7 }}
+          className="relative mx-auto mb-12 max-w-4xl text-center"
+        >
+          <p className="mb-3 text-sm font-semibold uppercase tracking-[0.35em] text-[#d5a449]">Selección oficial 2026</p>
+          <h2 className="text-4xl font-light uppercase tracking-[0.12em] md:text-6xl">Candidaturas</h2>
+          <p className="mx-auto mt-5 max-w-2xl text-base leading-7 text-[#fbf7ed]/72 md:text-lg">
+            Presentación de las candidaturas por categoría, con el paso de candidaturas a nominaciones y todos los trabajos seleccionados por orden alfabético.
           </p>
-        </div>
-        { /*
-        <div className="grid gap-7 md:grid-cols-3">
-          {candidates.map((candidate, index) => (
-            <motion.article key={candidate.title} variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} transition={{ duration: 0.65, delay: index * 0.08 }} className="group overflow-hidden rounded-[2rem] border border-white/10 bg-white/[0.06] shadow-2xl shadow-black/20">
-              <div className="relative h-64 overflow-hidden">
-                <img src={candidate.image} alt={`Cartel de ${candidate.title}`} className="h-full w-full object-cover transition duration-700 group-hover:scale-105" />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#101a36] via-[#101a36]/25 to-transparent" />
-                <span className="absolute left-5 top-5 rounded-full bg-[#d5a449] px-4 py-1.5 text-xs font-bold uppercase tracking-[0.16em] text-[#101a36]">
-                  {candidate.category}
-                </span>
-              </div>
-              <div className="p-6">
-                <h3 className="text-2xl font-light tracking-[0.08em]">{candidate.title}</h3>
-                <p className="mt-2 text-sm uppercase tracking-[0.18em] text-[#d5a449]">{candidate.group}</p>
-                <p className="mt-4 leading-7 text-[#fbf7ed]/72">{candidate.description}</p>
-              </div>
-            </motion.article>
+        </motion.div>
+
+        <div className="mb-8 grid gap-4 md:grid-cols-3">
+          {[
+            { label: "Categorías", value: nominationCategories.length },
+            { label: "Candidaturas", value: totalCandidates },
+            { label: "Nominaciones", value: totalNominations },
+          ].map((stat, index) => (
+            <motion.div
+              key={stat.label}
+              variants={fadeUp}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: index * 0.06 }}
+              className="border border-[#fbf7ed]/10 bg-[#fbf7ed]/[0.06] p-6 text-center shadow-xl shadow-black/10"
+            >
+              <p className="font-display text-5xl text-[#d5a449] md:text-6xl">{stat.value}</p>
+              <p className="mt-2 text-xs font-bold uppercase tracking-[0.28em] text-[#fbf7ed]/70">{stat.label}</p>
+            </motion.div>
           ))}
         </div>
-        */ }
+
+        <div className="grid gap-7 lg:grid-cols-[0.64fr_1.36fr]">
+          <motion.aside
+            variants={fadeUp}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            transition={{ duration: 0.7 }}
+            className="border border-[#fbf7ed]/10 bg-[#fbf7ed]/[0.055] p-4 shadow-2xl shadow-black/20 md:p-5"
+          >
+            <div className="mb-4 flex items-center justify-between gap-4 border-b border-[#fbf7ed]/10 px-2 pb-4">
+              <div>
+                <p className="text-xs font-bold uppercase tracking-[0.28em] text-[#d5a449]">Categorías</p>
+                <p className="mt-1 text-sm text-[#fbf7ed]/60">Elige una para ver el detalle</p>
+              </div>
+              <Award className="h-8 w-8 text-[#d5a449]" />
+            </div>
+            <div className="grid gap-2 sm:grid-cols-2 lg:grid-cols-1">
+              {nominationCategories.map((category) => {
+                const CategoryIcon = category.icon;
+                const isActive = category.title === activeCategory.title;
+                return (
+                  <button
+                    key={category.title}
+                    type="button"
+                    onClick={() => setSelectedCategory(category.title)}
+                    className={`group flex min-h-16 items-center justify-between gap-4 border px-4 py-3 text-left transition ${
+                      isActive
+                        ? "border-[#d5a449] bg-[#d5a449] text-[#101a36] shadow-lg shadow-[#d5a449]/15"
+                        : "border-[#fbf7ed]/10 bg-[#101a36]/40 text-[#fbf7ed] hover:border-[#d5a449]/70 hover:bg-[#fbf7ed]/10"
+                    }`}
+                  >
+                    <span className="flex min-w-0 items-center gap-3">
+                      <span className={`flex h-10 w-10 shrink-0 items-center justify-center border ${isActive ? "border-[#101a36]/15 bg-[#101a36]/10" : "border-[#fbf7ed]/10 bg-[#fbf7ed]/5"}`}>
+                        <CategoryIcon className="h-5 w-5" />
+                      </span>
+                      <span className="min-w-0">
+                        <span className="block text-sm font-bold uppercase leading-tight tracking-[0.08em]">{category.shortTitle}</span>
+                        <span className={`mt-1 block text-xs font-semibold ${isActive ? "text-[#101a36]/65" : "text-[#fbf7ed]/50"}`}>
+                          {category.candidates} candidaturas · {category.nominations} nominaciones
+                        </span>
+                      </span>
+                    </span>
+                    <ChevronRight className={`h-5 w-5 shrink-0 transition ${isActive ? "translate-x-1 text-[#101a36]" : "text-[#d5a449] group-hover:translate-x-1"}`} />
+                  </button>
+                );
+              })}
+            </div>
+          </motion.aside>
+
+          <motion.article
+            key={activeCategory.title}
+            variants={fadeUp}
+            initial="hidden"
+            animate="visible"
+            transition={{ duration: 0.45 }}
+            className="relative overflow-hidden border border-[#fbf7ed]/10 bg-[#fbf7ed] text-[#101a36] shadow-2xl shadow-black/20"
+          >
+            <div className="grid gap-0">
+              <div>
+                <div className="relative border-b border-[#101a36]/10 bg-[#fbf7ed] p-6 md:p-8">
+                  <div className="absolute right-6 top-6 hidden h-20 w-20 items-center justify-center text-[#d5a449]/20 md:flex">
+                    <Star className="h-20 w-20 fill-current" />
+                  </div>
+                  <div className="flex flex-col gap-6 xl:flex-row xl:items-start xl:justify-between">
+                    <div className="max-w-2xl">
+                      <div className="mb-5 inline-flex max-w-full items-center gap-3 bg-[#101a36] px-5 py-3 text-[#fbf7ed]">
+                        <Star className="h-5 w-5 fill-[#d5a449] text-[#d5a449]" />
+                        <span className="text-sm font-black uppercase tracking-[0.22em]">Candidaturas</span>
+                      </div>
+                      <p className="text-xs font-bold uppercase tracking-[0.32em] text-[#b56b24]">Mejor</p>
+                      <h3 className="mt-2 max-w-full break-words text-3xl font-light uppercase leading-tight tracking-[0.06em] text-[#101a36] [overflow-wrap:anywhere] md:text-5xl">
+                        {activeCategory.title.replace(/^Mejor\s+/i, "")}
+                      </h3>
+                    </div>
+                    <div className="grid max-w-sm grid-cols-[1fr_auto_1fr] items-center gap-3 border border-[#101a36]/15 bg-white/60 p-4 text-center">
+                      <div>
+                        <p className="font-display text-5xl text-[#101a36]">{activeCategory.candidates}</p>
+                        <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#101a36]/55">Candidaturas</p>
+                      </div>
+                      <div className="flex flex-col items-center gap-1 text-[#d5a449]">
+                        <span className="h-10 w-px bg-[#d5a449]/45" />
+                        <ChevronRight className="h-5 w-5 rotate-90" />
+                        <span className="h-10 w-px bg-[#d5a449]/45" />
+                      </div>
+                      <div>
+                        <p className="font-display text-5xl text-[#101a36]">{activeCategory.nominations}</p>
+                        <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#101a36]/55">Nominaciones</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {activeNominees.length > 0 && (
+                  <div className="border-b border-[#101a36]/10 bg-[#101a36] p-5 text-[#fbf7ed] md:p-8">
+                    <div className="mb-5 flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
+                      <div>
+                        <p className="text-xs font-bold uppercase tracking-[0.28em] text-[#d5a449]">Nominaciones oficiales</p>
+                        <h4 className="mt-1 text-2xl font-light uppercase tracking-[0.08em] text-[#fbf7ed]">Finalistas</h4>
+                      </div>
+                      <span className="w-fit border border-[#d5a449]/45 px-4 py-2 text-sm font-black text-[#d5a449]">
+                        {activeNominees.length} nominadas
+                      </span>
+                    </div>
+                    <div className="grid gap-3 md:grid-cols-2">
+                      {activeNominees.map((entry, index) => (
+                        <div key={`${activeCategory.title}-nominee-${entry.title}-${index}`} className="border border-[#fbf7ed]/10 bg-[#fbf7ed]/[0.06] p-4">
+                          <div className="flex gap-3">
+                            <Star className="mt-1 h-5 w-5 shrink-0 fill-[#d5a449] text-[#d5a449]" />
+                            <div className="min-w-0">
+                              <p className="break-words text-lg font-black uppercase leading-tight tracking-normal text-[#fbf7ed] [overflow-wrap:anywhere]">
+                                {entry.title}
+                                {entry.role && <span className="font-light normal-case text-[#fbf7ed]/82"> por {entry.role}</span>}
+                              </p>
+                              {entry.work ? (
+                                <p className="mt-1 break-words text-sm leading-snug text-[#fbf7ed]/68 [overflow-wrap:anywhere]">
+                                  en <span className="font-semibold uppercase italic text-[#d5a449]">{entry.work}</span>, de {entry.group} - {entry.course}
+                                </p>
+                              ) : (
+                                <p className="mt-1 break-words text-sm leading-snug text-[#fbf7ed]/68 [overflow-wrap:anywhere]">
+                                  {entry.group && `${entry.group} - `}
+                                  {entry.course}
+                                </p>
+                              )}
+                            </div>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+
+                <div className="grid gap-3 p-5 md:p-8">
+                  <p className="text-xs font-bold uppercase tracking-[0.28em] text-[#b56b24]">Todas las candidaturas</p>
+                  {activeCategory.entries.map((entry, index) => {
+                    const titleLength = entry.title.length + (entry.role?.length ?? 0);
+                    const titleSize = titleLength > 58 ? "text-lg md:text-xl" : "text-xl md:text-[1.65rem]";
+
+                    return (
+                      <div
+                        key={`${activeCategory.title}-${entry.title}-${index}`}
+                        className="grid grid-cols-[1.7rem_minmax(0,1fr)] gap-3 border-b border-[#101a36]/10 pb-4 last:border-b-0 last:pb-0 md:grid-cols-[2.1rem_minmax(0,1fr)]"
+                      >
+                        <div className="pt-1 text-[#263f97]">
+                          <Star className="h-5 w-5 fill-current" />
+                        </div>
+                        <div className="min-w-0">
+                          <p className={`${titleSize} max-w-full whitespace-normal break-words font-black uppercase leading-tight tracking-normal text-[#263f97] [overflow-wrap:anywhere]`}>
+                            {entry.title}
+                            {entry.role && <span className="font-light normal-case tracking-normal text-[#263f97]/85"> por {entry.role}</span>}
+                          </p>
+                          {entry.work ? (
+                            <p className="mt-1 max-w-full break-words text-base leading-snug text-[#263f97]/80 [overflow-wrap:anywhere] md:text-lg">
+                              en <span className="font-semibold uppercase italic">{entry.work}</span>, de {entry.group} - {entry.course}
+                            </p>
+                          ) : (
+                            <p className="mt-1 max-w-full break-words text-base leading-snug text-[#263f97]/75 [overflow-wrap:anywhere] md:text-lg">
+                              {entry.group && `${entry.group} - `}
+                              {entry.course}
+                            </p>
+                          )}
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+            </div>
+            <div className="absolute bottom-5 right-5 hidden text-[#101a36]/5 md:block">
+              <ActiveIcon className="h-32 w-32" />
+            </div>
+          </motion.article>
+        </div>
       </div>
     </section>
   );
@@ -1208,7 +1655,7 @@ function JuryAwardsPanel({ title, awards }) {
         </div>
 
         <div className="grid grid-cols-[repeat(auto-fit,minmax(13rem,1fr))] gap-4 p-5 md:p-7">
-          {awards.map((award, index) => (
+          {awards.map((award) => (
             <div
               key={award.name}
               className="group flex min-h-32 flex-col justify-between rounded-[1.35rem] border border-[#fbf7ed]/10 bg-[#fbf7ed]/8 p-5 text-[#fbf7ed] transition hover:-translate-y-1 hover:border-[#d5a449]/60 hover:bg-[#fbf7ed]/12"
@@ -1257,6 +1704,187 @@ function JuryShowcase() {
         </div>
       </section>
     </div>
+  );
+}
+
+function JuryVotingForm() {
+  const [jurorName, setJurorName] = useState("");
+  const [jurorEmail, setJurorEmail] = useState("");
+  const [selectedCategory, setSelectedCategory] = useState(nominationCategories[0].title);
+  const [votes, setVotes] = useState({});
+
+  const activeCategory = nominationCategories.find((category) => category.title === selectedCategory) ?? nominationCategories[0];
+  const votingEntries = activeCategory.nominees?.length ? activeCategory.nominees : activeCategory.entries;
+  const scoreOptions = [10, 8, 6, 4];
+
+  const getEntryKey = (entry, index) => `${activeCategory.title}-${entry.title}-${entry.work ?? entry.group ?? ""}-${index}`;
+
+  const updateVote = (entryKey, field, value) => {
+    setVotes((current) => ({
+      ...current,
+      [entryKey]: {
+        ...(current[entryKey] ?? {}),
+        [field]: value,
+      },
+    }));
+  };
+
+  const formatEntry = (entry) => {
+    if (entry.work) {
+      return `${entry.title}${entry.role ? ` por ${entry.role}` : ""} en ${entry.work}, de ${entry.group} - ${entry.course}`;
+    }
+    return `${entry.title}${entry.group ? ` - ${entry.group}` : ""} - ${entry.course}`;
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    const subject = `Votación jurado Premios Europa - ${activeCategory.title}`;
+    const body = [
+      "Votación del jurado - Premios Europa 2026",
+      "",
+      `Especialidad/categoría: ${activeCategory.title}`,
+      `Nombre del jurado: ${jurorName}`,
+      `Email del jurado: ${jurorEmail}`,
+      "",
+      activeCategory.nominees?.length ? "Valoraciones de nominaciones:" : "Valoraciones:",
+      ...votingEntries.flatMap((entry, index) => {
+        const entryKey = getEntryKey(entry, index);
+        const vote = votes[entryKey] ?? {};
+        return [
+          "",
+          `${index + 1}. ${formatEntry(entry)}`,
+          `Nota: ${vote.score || "Sin nota"}`,
+          `Comentario positivo: ${vote.comment || "Sin comentario"}`,
+        ];
+      }),
+    ].join("\n");
+
+    window.location.assign(`mailto:abonesl857@ieseuropa.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`);
+  };
+
+  return (
+    <motion.form
+      onSubmit={handleSubmit}
+      variants={fadeUp}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true }}
+      transition={{ duration: 0.7 }}
+      className="mt-14 overflow-hidden rounded-[2rem] border border-[#101a36]/10 bg-[#fbf7ed] shadow-2xl shadow-[#101a36]/12"
+    >
+      <div className="grid gap-0 lg:grid-cols-[0.34fr_1fr]">
+        <div className="flex min-h-72 flex-col justify-between bg-[#101a36] p-7 text-[#fbf7ed] md:p-9">
+          <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-[#d5a449] text-[#101a36]">
+            <ShieldCheck className="h-7 w-7" />
+          </div>
+          <div>
+            <p className="text-sm font-bold uppercase tracking-[0.24em] text-[#d5a449]">Zona privada</p>
+            <h3 className="mt-3 text-3xl font-light uppercase leading-tight tracking-[0.1em] md:text-4xl">Votación del jurado</h3>
+            <p className="mt-4 leading-7 text-[#fbf7ed]/72">
+              Valoración por especialidad con nota cerrada y comentario positivo para cada corto.
+            </p>
+          </div>
+        </div>
+
+        <div className="p-6 md:p-8">
+          <div className="grid gap-4 md:grid-cols-2">
+            <label className="space-y-2">
+              <span className="text-sm font-semibold text-[#101a36]">Nombre del jurado</span>
+              <input
+                value={jurorName}
+                onChange={(event) => setJurorName(event.target.value)}
+                required
+                className="w-full rounded-2xl border border-[#101a36]/10 bg-white/70 px-4 py-3 text-[#101a36] outline-none transition focus:border-[#b56b24] focus:ring-4 focus:ring-[#d5a449]/20"
+                placeholder="Nombre y apellidos"
+              />
+            </label>
+            <label className="space-y-2">
+              <span className="text-sm font-semibold text-[#101a36]">Email del jurado</span>
+              <input
+                type="email"
+                value={jurorEmail}
+                onChange={(event) => setJurorEmail(event.target.value)}
+                className="w-full rounded-2xl border border-[#101a36]/10 bg-white/70 px-4 py-3 text-[#101a36] outline-none transition focus:border-[#b56b24] focus:ring-4 focus:ring-[#d5a449]/20"
+                placeholder="correo@ejemplo.com"
+              />
+            </label>
+            <label className="space-y-2 md:col-span-2">
+              <span className="text-sm font-semibold text-[#101a36]">Especialidad</span>
+              <select
+                value={selectedCategory}
+                onChange={(event) => setSelectedCategory(event.target.value)}
+                className="w-full rounded-2xl border border-[#101a36]/10 bg-white/70 px-4 py-3 text-[#101a36] outline-none transition focus:border-[#b56b24] focus:ring-4 focus:ring-[#d5a449]/20"
+              >
+                {nominationCategories.map((category) => (
+                  <option key={category.title} value={category.title}>
+                    {category.title}
+                  </option>
+                ))}
+              </select>
+            </label>
+          </div>
+
+          <div className="mt-8 space-y-4">
+            {votingEntries.map((entry, index) => {
+              const entryKey = getEntryKey(entry, index);
+              const currentVote = votes[entryKey] ?? {};
+
+              return (
+                <div key={entryKey} className="rounded-[1.4rem] border border-[#101a36]/10 bg-white/65 p-5">
+                  <div className="flex flex-col gap-3 lg:flex-row lg:items-start lg:justify-between">
+                    <div className="min-w-0">
+                      <p className="break-words text-xl font-black uppercase leading-tight tracking-normal text-[#263f97] [overflow-wrap:anywhere]">
+                        {entry.title}
+                        {entry.role && <span className="font-light normal-case text-[#263f97]/85"> por {entry.role}</span>}
+                      </p>
+                      <p className="mt-1 break-words text-sm font-semibold uppercase tracking-[0.08em] text-[#101a36]/55 [overflow-wrap:anywhere]">
+                        {entry.work ? `${entry.work} · ${entry.group} · ${entry.course}` : `${entry.group ? `${entry.group} · ` : ""}${entry.course}`}
+                      </p>
+                    </div>
+                    <div className="grid grid-cols-4 gap-2">
+                      {scoreOptions.map((score) => (
+                        <label
+                          key={score}
+                          className={`flex h-11 w-11 cursor-pointer items-center justify-center rounded-full border text-sm font-black transition ${
+                            Number(currentVote.score) === score
+                              ? "border-[#101a36] bg-[#101a36] text-[#fbf7ed]"
+                              : "border-[#101a36]/15 bg-[#fbf7ed] text-[#101a36] hover:border-[#d5a449]"
+                          }`}
+                        >
+                          <input
+                            type="radio"
+                            name={`score-${entryKey}`}
+                            value={score}
+                            checked={Number(currentVote.score) === score}
+                            onChange={(event) => updateVote(entryKey, "score", event.target.value)}
+                            className="sr-only"
+                          />
+                          {score}
+                        </label>
+                      ))}
+                    </div>
+                  </div>
+                  <label className="mt-4 block space-y-2">
+                    <span className="text-sm font-semibold text-[#101a36]">Comentario positivo</span>
+                    <textarea
+                      value={currentVote.comment ?? ""}
+                      onChange={(event) => updateVote(entryKey, "comment", event.target.value)}
+                      className="min-h-24 w-full rounded-2xl border border-[#101a36]/10 bg-[#fbf7ed] px-4 py-3 text-[#101a36] outline-none transition focus:border-[#b56b24] focus:ring-4 focus:ring-[#d5a449]/20"
+                      placeholder="Fortalezas del corto, interpretación, idea, diseño, guion..."
+                    />
+                  </label>
+                </div>
+              );
+            })}
+          </div>
+
+          <Button type="submit" className="mt-7 w-full rounded-full bg-[#101a36] py-6 text-base font-semibold text-[#fbf7ed] hover:bg-[#1b294e] md:w-auto md:px-8">
+            <Mail className="mr-2 h-5 w-5" />
+            Enviar votación
+          </Button>
+        </div>
+      </div>
+    </motion.form>
   );
 }
 
@@ -1339,11 +1967,14 @@ function JuryVideos() {
             {error && <p className="mt-4 text-sm font-semibold text-[#d5a449]">{error}</p>}
           </motion.div>
         ) : (
-          <div className="grid gap-8 xl:grid-cols-2">
-            {juryPrivateMaterials.map((item, index) => (
-              <JuryMediaCard key={item.title} item={item} index={index} />
-            ))}
-          </div>
+          <>
+            <div className="grid gap-8 xl:grid-cols-2">
+              {juryPrivateMaterials.map((item, index) => (
+                <JuryMediaCard key={item.title} item={item} index={index} />
+              ))}
+            </div>
+            <JuryVotingForm />
+          </>
         )}
       </div>
     </section>
