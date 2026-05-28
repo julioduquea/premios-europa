@@ -84,7 +84,7 @@ const nominationCategories = [
     ],
   },
   {
-    title: "Mejor guion",
+    title: "Mejor guión",
     shortTitle: "Guion",
     icon: ScrollText,
     candidates: 10,
@@ -122,7 +122,7 @@ const nominationCategories = [
       { title: "Abel Hurtado", role: "Daniel", work: "Plutón", group: "Lampedusa Films", course: "3º ESO" },
       { title: "Reparto", role: "Pascualito", work: "Servicio público", group: "OOPS Studios", course: "3º ESO" },
       { title: "Tamara Mateo", role: "Tamara", work: "Píxeles", group: "Paralelo Films", course: "3º ESO" },
-      { title: "Ana Gallegos / Alejandra Romero", role: "La Rebe / Gala", work: "Puntas abiertas", group: "Chandal y Tacón", course: "3º ESO · 2025" },
+      { title: "Ana Gallegos", role: "La Rebe", work: "Puntas abiertas", group: "Chandal y Tacón", course: "3º ESO · 2025" },
     ],
     entries: [
       { title: "Abel Hurtado", role: "Daniel", work: "Plutón", group: "Lampedusa Films", course: "3º ESO" },
@@ -174,6 +174,14 @@ const nominationCategories = [
     icon: Shirt,
     candidates: 12,
     nominations: 6,
+    nominees: [
+      { title: "El secreto", group: "Spaicy Sausage", course: "1º ESO" },
+      { title: "Lo abstracto", group: "Epic Screen", course: "3º ESO" },
+      { title: "La ausencia que respira", group: "Estrella Co.", course: "3º ESO" },
+      { title: "Servicio público", group: "OOPS Studios", course: "3º ESO" },
+      { title: "Brujas del presente", group: "Bouchee Beef", course: "3º ESO · 2025" },
+      { title: "Lucía en el país de la magia", group: "AZEA", course: "1º ESO · 2025" },
+    ],
     entries: [
       { title: "Brujas del presente", group: "Bouchee Beef", course: "3º ESO · 2025" },
       { title: "¡Corre que no llegamos!", group: "JJHH", course: "1º ESO" },
@@ -195,6 +203,14 @@ const nominationCategories = [
     icon: Camera,
     candidates: 12,
     nominations: 6,
+    nominees: [
+      { title: "Cuando todo era gris", group: "Las Grecas", course: "1º ESO" },
+      { title: "Justo a tiempo", group: "JISOL", course: "3º ESO" },
+      { title: "Lo abstracto", group: "Epic Screen", course: "3º ESO" },
+      { title: "La ausencia que respira", group: "Estrella Co.", course: "3º ESO" },
+      { title: "Lucía en el país de la magia", group: "AZEA", course: "1º ESO · 2025" },
+      { title: "La niña de las coletas", group: "Dark Films", course: "1º ESO · 2025" },
+    ],
     entries: [
       { title: "Cuando todo era gris", group: "Las Grecas", course: "1º ESO" },
       { title: "Directo y sin filtros", group: "Opalite Studios", course: "3º ESO" },
@@ -216,6 +232,14 @@ const nominationCategories = [
     icon: Image,
     candidates: 12,
     nominations: 6,
+    nominees: [
+      { title: "El secreto", group: "Spaicy Sausage", course: "1º ESO" },
+      { title: "Lo abstracto", group: "Epic Screen", course: "3º ESO" },
+      { title: "La voz de la experiencia", group: "Moonlight", course: "3º ESO" },
+      { title: "Plutón", group: "Lampedusa", course: "3º ESO" },
+      { title: "Las flechas misteriosas", group: "Films Action", course: "3º ESO" },
+      { title: "Ganar para salir", group: "Horizonte Pluz", course: "3º ESO" },
+    ],
     entries: [
       { title: "¡Corre que no llegamos!", group: "JJHH", course: "1º ESO" },
       { title: "Directo y sin filtros", group: "Opalite Studios", course: "3º ESO" },
@@ -269,7 +293,7 @@ const nominationCategories = [
     nominees: [
       { title: "Justo a tiempo", group: "JISOL", course: "3º ESO" },
       { title: "Lo abstracto", group: "Epic Screen", course: "3º ESO" },
-      { title: "La ausencia que respira", group: "Estrella Co.", course: "3º ESO" },
+      { title: "La voz de la experiencia", group: "Moonlight", course: "3º ESO" },
       { title: "Lo que nunca dijimos", group: "Modo Avión", course: "3º ESO" },
       { title: "Servicio público", group: "OOPS Studios", course: "3º ESO" },
       { title: "Puntas abiertas", group: "Chandal y Tacón", course: "3º ESO · 2025" },
@@ -1148,6 +1172,36 @@ function EventIntro() {
   );
 }
 
+function OfficialSponsor() {
+  return (
+    <section className="px-4 pb-20 md:px-8">
+      <motion.div
+        variants={fadeUp}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        transition={{ duration: 0.7 }}
+        className="mx-auto grid max-w-7xl items-center gap-6 border border-[#101a36]/10 bg-white/60 p-6 shadow-xl shadow-[#101a36]/5 md:grid-cols-[0.9fr_1.1fr] md:p-8"
+      >
+        <div>
+          <p className="text-sm font-semibold uppercase tracking-[0.3em] text-[#b56b24]">Patrocinador oficial</p>
+          <h3 className="mt-2 text-3xl font-light uppercase tracking-[0.08em] text-[#101a36] md:text-4xl">Gala Premios Europa 2026</h3>
+          <p className="mt-4 leading-7 text-[#1b294e]/70">
+            Gracias a Jimeca por apoyar una gala que impulsa el talento joven, la creación audiovisual y la cultura local.
+          </p>
+        </div>
+        <div className="flex items-center justify-center border border-[#101a36]/10 bg-[#fbf7ed] p-6 md:p-8">
+          <img
+            src="/patrocinadores/jimeca.png"
+            alt="Jimeca, patrocinador oficial de la gala Premios Europa"
+            className="h-auto max-h-24 w-full max-w-sm object-contain"
+          />
+        </div>
+      </motion.div>
+    </section>
+  );
+}
+
 function AwardPhotosCarousel() {
   const [currentPhoto, setCurrentPhoto] = useState(0);
   const selectedPhoto = firstEditionAwardPhotos[currentPhoto];
@@ -1353,98 +1407,6 @@ function FirstEdition() {
   );
 }
 
-function MobileCandidateDetail({ category }) {
-  const nominees = category.nominees ?? [];
-
-  return (
-    <motion.article
-      key={`${category.title}-mobile`}
-      variants={fadeUp}
-      initial="hidden"
-      animate="visible"
-      transition={{ duration: 0.35 }}
-      className="mt-3 overflow-hidden border border-[#fbf7ed]/10 bg-[#fbf7ed] text-[#101a36] shadow-xl shadow-black/15"
-    >
-      <div className="border-b border-[#101a36]/10 p-5">
-        <p className="text-xs font-bold uppercase tracking-[0.26em] text-[#b56b24]">Mejor</p>
-        <h3 className="mt-2 break-words text-3xl font-light uppercase leading-tight tracking-[0.05em] [overflow-wrap:anywhere]">
-          {category.title.replace(/^Mejor\s+/i, "")}
-        </h3>
-        <div className="mt-4 grid grid-cols-[1fr_auto_1fr] items-center gap-3 border border-[#101a36]/15 bg-white/60 p-3 text-center">
-          <div>
-            <p className="font-display text-4xl text-[#101a36]">{category.candidates}</p>
-            <p className="text-[0.68rem] font-bold uppercase tracking-[0.16em] text-[#101a36]/55">Candidaturas</p>
-          </div>
-          <ChevronRight className="h-5 w-5 rotate-90 text-[#d5a449]" />
-          <div>
-            <p className="font-display text-4xl text-[#101a36]">{category.nominations}</p>
-            <p className="text-[0.68rem] font-bold uppercase tracking-[0.16em] text-[#101a36]/55">Nominaciones</p>
-          </div>
-        </div>
-      </div>
-
-      {nominees.length > 0 && (
-        <div className="border-b border-[#101a36]/10 bg-[#101a36] p-5 text-[#fbf7ed]">
-          <div className="mb-4 flex items-center justify-between gap-3">
-            <p className="text-xs font-bold uppercase tracking-[0.24em] text-[#d5a449]">Nominaciones oficiales</p>
-            <span className="border border-[#d5a449]/45 px-3 py-1 text-xs font-black text-[#d5a449]">{nominees.length}</span>
-          </div>
-          <div className="grid gap-3">
-            {nominees.map((entry, index) => (
-              <div key={`${category.title}-mobile-nominee-${entry.title}-${index}`} className="border border-[#fbf7ed]/10 bg-[#fbf7ed]/[0.06] p-3">
-                <div className="flex gap-3">
-                  <Star className="mt-1 h-4 w-4 shrink-0 fill-[#d5a449] text-[#d5a449]" />
-                  <div className="min-w-0">
-                    <p className="break-words text-base font-black uppercase leading-tight tracking-normal [overflow-wrap:anywhere]">
-                      {entry.title}
-                      {entry.role && <span className="font-light normal-case text-[#fbf7ed]/82"> por {entry.role}</span>}
-                    </p>
-                    {entry.work ? (
-                      <p className="mt-1 break-words text-sm leading-snug text-[#fbf7ed]/68 [overflow-wrap:anywhere]">
-                        en <span className="font-semibold uppercase italic text-[#d5a449]">{entry.work}</span>, de {entry.group} - {entry.course}
-                      </p>
-                    ) : (
-                      <p className="mt-1 break-words text-sm leading-snug text-[#fbf7ed]/68 [overflow-wrap:anywhere]">
-                        {entry.group && `${entry.group} - `}
-                        {entry.course}
-                      </p>
-                    )}
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      )}
-
-      <div className="grid gap-3 p-5">
-        <p className="text-xs font-bold uppercase tracking-[0.24em] text-[#b56b24]">Todas las candidaturas</p>
-        {category.entries.map((entry, index) => (
-          <div key={`${category.title}-mobile-entry-${entry.title}-${index}`} className="grid grid-cols-[1.5rem_minmax(0,1fr)] gap-2 border-b border-[#101a36]/10 pb-3 last:border-b-0 last:pb-0">
-            <Star className="mt-1 h-4 w-4 fill-current text-[#263f97]" />
-            <div className="min-w-0">
-              <p className="break-words text-lg font-black uppercase leading-tight tracking-normal text-[#263f97] [overflow-wrap:anywhere]">
-                {entry.title}
-                {entry.role && <span className="font-light normal-case text-[#263f97]/85"> por {entry.role}</span>}
-              </p>
-              {entry.work ? (
-                <p className="mt-1 break-words text-sm leading-snug text-[#263f97]/78 [overflow-wrap:anywhere]">
-                  en <span className="font-semibold uppercase italic">{entry.work}</span>, de {entry.group} - {entry.course}
-                </p>
-              ) : (
-                <p className="mt-1 break-words text-sm leading-snug text-[#263f97]/75 [overflow-wrap:anywhere]">
-                  {entry.group && `${entry.group} - `}
-                  {entry.course}
-                </p>
-              )}
-            </div>
-          </div>
-        ))}
-      </div>
-    </motion.article>
-  );
-}
-
 function Candidates() {
   const [selectedCategory, setSelectedCategory] = useState(nominationCategories[0].title);
   const activeCategory = nominationCategories.find((category) => category.title === selectedCategory) ?? nominationCategories[0];
@@ -1495,41 +1457,7 @@ function Candidates() {
           ))}
         </div>
 
-        <div className="grid gap-3 lg:hidden">
-          {nominationCategories.map((category) => {
-            const CategoryIcon = category.icon;
-            const isActive = category.title === activeCategory.title;
-            return (
-              <div key={`${category.title}-mobile-wrap`}>
-                <button
-                  type="button"
-                  onClick={() => setSelectedCategory(category.title)}
-                  className={`group flex min-h-16 w-full items-center justify-between gap-4 border px-4 py-3 text-left transition ${
-                    isActive
-                      ? "border-[#d5a449] bg-[#d5a449] text-[#101a36] shadow-lg shadow-[#d5a449]/15"
-                      : "border-[#fbf7ed]/10 bg-[#fbf7ed]/[0.055] text-[#fbf7ed] hover:border-[#d5a449]/70 hover:bg-[#fbf7ed]/10"
-                  }`}
-                >
-                  <span className="flex min-w-0 items-center gap-3">
-                    <span className={`flex h-10 w-10 shrink-0 items-center justify-center border ${isActive ? "border-[#101a36]/15 bg-[#101a36]/10" : "border-[#fbf7ed]/10 bg-[#fbf7ed]/5"}`}>
-                      <CategoryIcon className="h-5 w-5" />
-                    </span>
-                    <span className="min-w-0">
-                      <span className="block text-sm font-bold uppercase leading-tight tracking-[0.08em]">{category.shortTitle}</span>
-                      <span className={`mt-1 block text-xs font-semibold ${isActive ? "text-[#101a36]/65" : "text-[#fbf7ed]/50"}`}>
-                        {category.candidates} candidaturas · {category.nominations} nominaciones
-                      </span>
-                    </span>
-                  </span>
-                  <ChevronRight className={`h-5 w-5 shrink-0 transition ${isActive ? "rotate-90 text-[#101a36]" : "text-[#d5a449]"}`} />
-                </button>
-                {isActive && <MobileCandidateDetail category={category} />}
-              </div>
-            );
-          })}
-        </div>
-
-        <div className="hidden gap-7 lg:grid lg:grid-cols-[0.64fr_1.36fr]">
+        <div className="grid gap-7 lg:grid-cols-[0.64fr_1.36fr]">
           <motion.aside
             variants={fadeUp}
             initial="hidden"
@@ -2510,6 +2438,7 @@ export default function PremiosEuropaLanding() {
       <Nav isAdmin={isAdmin} onAdminLogin={handleAdminLogin} onAdminLogout={() => setIsAdmin(false)} />
       <Hero isAdmin={isAdmin} />
       <EventIntro />
+      <OfficialSponsor />
       <FirstEdition />
       <Candidates />
       {isAdmin && <AdminUploadSection />}
