@@ -1187,7 +1187,7 @@ function OfficialSponsor() {
           <p className="text-sm font-semibold uppercase tracking-[0.3em] text-[#b56b24]">Patrocinador oficial</p>
           <h3 className="mt-2 text-3xl font-light uppercase tracking-[0.08em] text-[#101a36] md:text-4xl">Gala Premios Europa 2026</h3>
           <p className="mt-4 leading-7 text-[#1b294e]/70">
-            Gracias a Jimeca por apoyar una gala que impulsa el talento joven, la creación audiovisual y la cultura local.
+            Gracias a JIMECA por apoyar una gala que impulsa el talento joven, la creación audiovisual y la cultura local.
           </p>
         </div>
         <div className="flex items-center justify-center border border-[#101a36]/10 bg-[#fbf7ed] p-6 md:p-8">
