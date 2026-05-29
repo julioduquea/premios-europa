@@ -204,12 +204,12 @@ const nominationCategories = [
     candidates: 12,
     nominations: 6,
     nominees: [
-      { title: "Cuando todo era gris", group: "Las Grecas", course: "1º ESO" },
-      { title: "Justo a tiempo", group: "JISOL", course: "3º ESO" },
-      { title: "Lo abstracto", group: "Epic Screen", course: "3º ESO" },
-      { title: "La ausencia que respira", group: "Estrella Co.", course: "3º ESO" },
-      { title: "Lucía en el país de la magia", group: "AZEA", course: "1º ESO · 2025" },
-      { title: "La niña de las coletas", group: "Dark Films", course: "1º ESO · 2025" },
+      { title: "Cuando todo era gris", group: "Las Grecas", course: "1º ESO", pdf: "https://drive.google.com/file/d/1eSLkK8nACyuQYK-ehHSNMBneZ6F47oC-/view?usp=drive_link" },
+      { title: "Justo a tiempo", group: "JISOL", course: "3º ESO", pdf: "https://drive.google.com/file/d/1PuceLaH07jh1xpjEWN4D1c4iYcjSjEh_/view?usp=drive_link" },
+      { title: "Lo abstracto", group: "Epic Screen", course: "3º ESO", pdf: "https://drive.google.com/file/d/1jndI7kZxtnpnH0iFDkGEoXcoioP70yZ9/view?usp=drive_link" },
+      { title: "La ausencia que respira", group: "Estrella Co.", course: "3º ESO", pdf: "https://drive.google.com/file/d/1kAlz2adph72mkhLvKzTxN5qXNyP-S6mW/view?usp=drive_link" },
+      { title: "Lucía en el país de la magia", group: "AZEA", course: "1º ESO · 2025", pdf: "https://drive.google.com/file/d/1ZgfT8gzdrBYbkOrKx_X_Vab_VeqshFPD/view?usp=drive_link" },
+      { title: "La niña de las coletas", group: "Dark Films", course: "1º ESO · 2025", pdf: "https://drive.google.com/file/d/1cE98hI7_6faGvohx9OUpcY84nMmkPycb/view?usp=drive_link" },
     ],
     entries: [
       { title: "Cuando todo era gris", group: "Las Grecas", course: "1º ESO" },
@@ -1580,6 +1580,17 @@ function Candidates() {
                                   {entry.course}
                                 </p>
                               )}
+                              {entry.pdf && (
+                                <a
+                                  href={entry.pdf}
+                                  target="_blank"
+                                  rel="noreferrer"
+                                  className="mt-3 inline-flex items-center gap-2 border border-[#d5a449]/45 px-3 py-2 text-xs font-black uppercase tracking-[0.14em] text-[#d5a449] transition hover:bg-[#d5a449] hover:text-[#101a36]"
+                                >
+                                  <ScrollText className="h-4 w-4" />
+                                  Ver storyboard
+                                </a>
+                              )}
                             </div>
                           </div>
                         </div>
@@ -1894,6 +1905,17 @@ function JuryVotingForm() {
                       <p className="mt-1 break-words text-sm font-semibold uppercase tracking-[0.08em] text-[#101a36]/55 [overflow-wrap:anywhere]">
                         {entry.work ? `${entry.work} · ${entry.group} · ${entry.course}` : `${entry.group ? `${entry.group} · ` : ""}${entry.course}`}
                       </p>
+                      {entry.pdf && (
+                        <a
+                          href={entry.pdf}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="mt-3 inline-flex items-center gap-2 rounded-full border border-[#101a36]/15 bg-[#fbf7ed] px-4 py-2 text-xs font-black uppercase tracking-[0.14em] text-[#101a36] transition hover:border-[#d5a449] hover:bg-[#d5a449]"
+                        >
+                          <ScrollText className="h-4 w-4" />
+                          Ver storyboard
+                        </a>
+                      )}
                     </div>
                     <div className="grid grid-cols-4 gap-2">
                       {scoreOptions.map((score) => (
