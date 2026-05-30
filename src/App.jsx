@@ -1198,14 +1198,14 @@ function GalaDirector() {
         >
           <img
             src="/direccion/antonio-miguel-bonilla-eslava.jpeg"
-            alt="Antonio Miguel Bonilla Eslava, creador y director de la gala Premios Europa"
+            alt="Antonio Bonilla Eslava, creador y director de la gala Premios Europa"
             className="absolute inset-0 h-full w-full scale-[1.38] object-cover object-[center_48%]"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-[#101a36]/85 via-transparent to-[#101a36]/10" />
           <div className="absolute inset-x-0 bottom-0 p-6 md:p-8">
             <p className="text-xs font-bold uppercase tracking-[0.28em] text-[#d5a449]">Creador y director de la gala</p>
             <h3 className="mt-2 text-3xl font-light uppercase leading-tight tracking-[0.08em] text-[#fbf7ed] md:text-4xl">
-              Antonio Miguel Bonilla Eslava
+              Antonio Bonilla Eslava
             </h3>
           </div>
         </motion.div>
@@ -1225,7 +1225,7 @@ function GalaDirector() {
           <p className="mt-5 text-lg font-semibold text-[#d5a449]">Arquitecto, productor audiovisual y docente</p>
           <div className="mt-6 space-y-4 leading-8 text-[#fbf7ed]/76">
             <p>
-              Antonio Miguel Bonilla Eslava destaca en el panorama cultural andaluz por entrelazar la arquitectura, la creación audiovisual y la educación. Graduado por la Escuela Técnica Superior de Arquitectura de Sevilla, su trabajo investiga la relación entre el patrimonio, el territorio y la identidad. Ha sido becario de la Fundación Arquitectura Contemporánea y galardonado en el prestigioso certamen internacional de urbanismo Europan.
+              Antonio Miguel Bonilla Eslava destaca en el panorama cultural andaluz por entrelazar la arquitectura, la creación audiovisual y la educación. Graduado por la Escuela Técnica Superior de Arquitectura de Sevilla, su trabajo investiga la relación entre el patrimonio, el territorio y la identidad. Fue becado por la Fundación Arquitectura Contemporánea, donde desarrolló su labor profesional durante tres años, y galardonado en el prestigioso certamen internacional de urbanismo Europan.
             </p>
             <p>
               En el plano cinematográfico, es productor del aclamado largometraje documental <span className="font-semibold italic text-[#fbf7ed]">¡Dolores, guapa!</span> (2021). La obra explora la relación del colectivo LGTBIQ+ con la Semana Santa de Sevilla, logrando un destacado recorrido por certámenes como el Festival de Cine Europeo de Sevilla (SEFF) y estando disponible en plataformas como Filmin.
