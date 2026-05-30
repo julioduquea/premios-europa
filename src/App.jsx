@@ -1184,6 +1184,62 @@ function EventIntro() {
   );
 }
 
+function GalaDirector() {
+  return (
+    <section className="bg-[#101a36] px-4 py-20 text-[#fbf7ed] md:px-8">
+      <div className="mx-auto grid max-w-7xl items-stretch gap-0 overflow-hidden border border-[#fbf7ed]/10 bg-[#fbf7ed]/[0.045] shadow-2xl shadow-black/20 lg:grid-cols-[0.85fr_1.15fr]">
+        <motion.div
+          variants={fadeUp}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          transition={{ duration: 0.7 }}
+          className="relative min-h-[30rem] overflow-hidden bg-[#1b294e] lg:min-h-[44rem]"
+        >
+          <img
+            src="/direccion/antonio-miguel-bonilla-eslava.jpeg"
+            alt="Antonio Miguel Bonilla Eslava, creador y director de la gala Premios Europa"
+            className="absolute inset-0 h-full w-full scale-[1.38] object-cover object-[center_48%]"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#101a36]/85 via-transparent to-[#101a36]/10" />
+          <div className="absolute inset-x-0 bottom-0 p-6 md:p-8">
+            <p className="text-xs font-bold uppercase tracking-[0.28em] text-[#d5a449]">Creador y director de la gala</p>
+            <h3 className="mt-2 text-3xl font-light uppercase leading-tight tracking-[0.08em] text-[#fbf7ed] md:text-4xl">
+              Antonio Miguel Bonilla Eslava
+            </h3>
+          </div>
+        </motion.div>
+
+        <motion.div
+          variants={fadeUp}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          transition={{ duration: 0.7, delay: 0.08 }}
+          className="flex flex-col justify-center p-7 md:p-10 lg:p-12"
+        >
+          <p className="text-sm font-semibold uppercase tracking-[0.3em] text-[#d5a449]">Dirección artística y producción</p>
+          <h2 className="mt-3 text-3xl font-light uppercase leading-tight tracking-[0.08em] text-[#fbf7ed] md:text-5xl">
+            Arquitectura, cine y educación
+          </h2>
+          <p className="mt-5 text-lg font-semibold text-[#d5a449]">Arquitecto, productor audiovisual y docente</p>
+          <div className="mt-6 space-y-4 leading-8 text-[#fbf7ed]/76">
+            <p>
+              Antonio Miguel Bonilla Eslava destaca en el panorama cultural andaluz por entrelazar la arquitectura, la creación audiovisual y la educación. Graduado por la Escuela Técnica Superior de Arquitectura de Sevilla, su trabajo investiga la relación entre el patrimonio, el territorio y la identidad. Ha sido becario de la Fundación Arquitectura Contemporánea y galardonado en el prestigioso certamen internacional de urbanismo Europan.
+            </p>
+            <p>
+              En el plano cinematográfico, es productor del aclamado largometraje documental <span className="font-semibold italic text-[#fbf7ed]">¡Dolores, guapa!</span> (2021). La obra explora la relación del colectivo LGTBIQ+ con la Semana Santa de Sevilla, logrando un destacado recorrido por certámenes como el Festival de Cine Europeo de Sevilla (SEFF) y estando disponible en plataformas como Filmin.
+            </p>
+            <p>
+              Actualmente, compagina su labor creativa con la docencia pública como profesor de Educación Plástica, Visual y Audiovisual en el IES Europa de Arahal (Sevilla), donde coordina proyectos artísticos internacionales como el programa Erasmus+ en Italia.
+            </p>
+          </div>
+        </motion.div>
+      </div>
+    </section>
+  );
+}
+
 function OfficialSponsor() {
   return (
     <section className="px-4 pb-20 md:px-8">
@@ -2492,6 +2548,7 @@ export default function PremiosEuropaLanding() {
       <Nav isAdmin={isAdmin} onAdminLogin={handleAdminLogin} onAdminLogout={() => setIsAdmin(false)} />
       <Hero isAdmin={isAdmin} />
       <EventIntro />
+      <GalaDirector />
       <OfficialSponsor />
       <FirstEdition />
       <Candidates />
