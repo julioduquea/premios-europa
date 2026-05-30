@@ -261,6 +261,18 @@ const nominationCategories = [
     icon: Palette,
     candidates: 20,
     nominations: 10,
+    nominees: [
+      { title: "Aurex", course: "1º ESO", logo: "/nominaciones/logo/aurex.png" },
+      { title: "Epic Screen", course: "3º ESO", logo: "/nominaciones/logo/epic-screen.png" },
+      { title: "JISOL", course: "3º ESO", logo: "/nominaciones/logo/jisol.jpg" },
+      { title: "JJHN", course: "1º ESO", logo: "/nominaciones/logo/jjhn.jpg" },
+      { title: "KASK", course: "1º ESO", logo: "/nominaciones/logo/kask.png" },
+      { title: "Lampedusa", course: "3º ESO", logo: "/nominaciones/logo/lampedusa.png" },
+      { title: "Las Grecas", course: "1º ESO", logo: "/nominaciones/logo/las-grecas.jpg" },
+      { title: "OOPS Studios", course: "3º ESO", logo: "/nominaciones/logo/oops-studios.png" },
+      { title: "RBM", course: "1º ESO", logo: "/nominaciones/logo/rbm.png" },
+      { title: "Yako", course: "1º ESO", logo: "/nominaciones/logo/yako.jpeg" },
+    ],
     entries: [
       { title: "Aurex", course: "1º ESO" },
       { title: "Chandal y Tacón", course: "3º ESO · 2025" },
@@ -271,7 +283,7 @@ const nominationCategories = [
       { title: "HOLIF", course: "3º ESO · 2025" },
       { title: "Indigo", course: "1º ESO" },
       { title: "JISOL", course: "3º ESO" },
-      { title: "JJHH", course: "1º ESO" },
+      { title: "JJHN", course: "1º ESO" },
       { title: "KASK", course: "1º ESO" },
       { title: "Lampedusa", course: "3º ESO" },
       { title: "Las Grecas", course: "1º ESO" },
@@ -1563,6 +1575,16 @@ function Candidates() {
                     <div className="grid gap-3 md:grid-cols-2">
                       {activeNominees.map((entry, index) => (
                         <div key={`${activeCategory.title}-nominee-${entry.title}-${index}`} className="border border-[#fbf7ed]/10 bg-[#fbf7ed]/[0.06] p-4">
+                          {entry.logo && (
+                            <div className="mb-4 flex aspect-[16/10] items-center justify-center border border-[#fbf7ed]/10 bg-white p-4 shadow-inner shadow-[#101a36]/10">
+                              <img
+                                src={entry.logo}
+                                alt={`Logo de ${entry.title}`}
+                                className="h-full w-full object-contain"
+                                loading="lazy"
+                              />
+                            </div>
+                          )}
                           <div className="flex gap-3">
                             <Star className="mt-1 h-5 w-5 shrink-0 fill-[#d5a449] text-[#d5a449]" />
                             <div className="min-w-0">
@@ -1898,6 +1920,16 @@ function JuryVotingForm() {
                 <div key={entryKey} className="rounded-[1.4rem] border border-[#101a36]/10 bg-white/65 p-5">
                   <div className="flex flex-col gap-3 lg:flex-row lg:items-start lg:justify-between">
                     <div className="min-w-0">
+                      {entry.logo && (
+                        <div className="mb-4 flex aspect-[16/9] max-w-sm items-center justify-center rounded-2xl border border-[#101a36]/10 bg-white p-4">
+                          <img
+                            src={entry.logo}
+                            alt={`Logo de ${entry.title}`}
+                            className="h-full w-full object-contain"
+                            loading="lazy"
+                          />
+                        </div>
+                      )}
                       <p className="break-words text-xl font-black uppercase leading-tight tracking-normal text-[#263f97] [overflow-wrap:anywhere]">
                         {entry.title}
                         {entry.role && <span className="font-light normal-case text-[#263f97]/85"> por {entry.role}</span>}
