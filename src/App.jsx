@@ -353,7 +353,7 @@ const nominationCategories = [
     candidates: 6,
     nominations: 6,
     nominees: [
-      { title: "Arahal, pasado y presente", group: "Equipo participante", course: "Premios Europa 2026" },
+      { title: "Arahal, pasado y presente", group: "Indigo", course: "1º ESO" },
       { title: "Sabores de mi tierra", group: "RBM", course: "1º ESO" },
       { title: "La misteriosa noche", group: "KASK", course: "1º ESO" },
       { title: "La voz de la experiencia", group: "Moonlight", course: "3º ESO" },
@@ -361,7 +361,7 @@ const nominationCategories = [
       { title: "Who finds a treasure... finds a friend", group: "Aviano Films Production", course: "Erasmus Italia" },
     ],
     entries: [
-      { title: "Arahal, pasado y presente", group: "Equipo participante", course: "Premios Europa 2026" },
+      { title: "Arahal, pasado y presente", group: "Indigo", course: "1º ESO" },
       { title: "Directo y sin filtros", group: "Opalite Studios", course: "3º ESO" },
       { title: "La misteriosa noche", group: "KASK", course: "1º ESO" },
       { title: "La voz de la experiencia", group: "Moonlight", course: "3º ESO" },
@@ -390,9 +390,13 @@ const nominationCategories = [
     title: "Premio espacio sonoro",
     shortTitle: "Espacio sonoro",
     icon: Music,
-    candidates: 10,
+    candidates: 11,
     nominations: 6,
+    nominees: [
+      { title: "Lo abstracto", group: "JISOL", course: "3º ESO", author: "Lucía Toledano", audio: "/nominaciones/espacio-sonoro/lo-abstracto-lucia-toledano.mp3" },
+    ],
     entries: [
+      { title: "Arahal, pasado y presente", group: "Indigo", course: "1º ESO" },
       { title: "Directo y sin filtros", group: "Opalite Studios", course: "3º ESO" },
       { title: "Cuando todo era gris", group: "Las Grecas", course: "1º ESO" },
       { title: "Justo a tiempo", group: "JISOL", course: "3º ESO" },
@@ -859,7 +863,7 @@ const graphicJury = [
       " Ha desarrollado su carrera, además de en proyectos gráficos, en proyectos de arquitectura, diseño colaborativo, social y cultural. Ha trabajado en proyectos de branding como ",
       { text: "la Marca Ciudad Sevilla o la Marca Ciudad Huelva", highlight: true },
       ". Su obra ha sido expuesta en ciudades como Madrid, Barcelona, Valencia o Bélgica. En cine, ha creado ",
-      { text: "el cartel de la película Elio", highlight: true },
+      { text: "el cartel del documental Elio", highlight: true },
       ".",
     ],
   },
@@ -1658,6 +1662,12 @@ function Candidates() {
                                   {entry.course}
                                 </p>
                               )}
+                              {entry.author && <p className="mt-2 text-sm font-semibold text-[#d5a449]">Creación sonora: {entry.author}</p>}
+                              {entry.audio && (
+                                <audio controls preload="metadata" className="mt-3 h-10 w-full max-w-sm">
+                                  <source src={entry.audio} type="audio/mpeg" />
+                                </audio>
+                              )}
                               {entry.pdf && (
                                 <a
                                   href={entry.pdf}
@@ -1993,6 +2003,12 @@ function JuryVotingForm() {
                       <p className="mt-1 break-words text-sm font-semibold uppercase tracking-[0.08em] text-[#101a36]/55 [overflow-wrap:anywhere]">
                         {entry.work ? `${entry.work} · ${entry.group} · ${entry.course}` : `${entry.group ? `${entry.group} · ` : ""}${entry.course}`}
                       </p>
+                      {entry.author && <p className="mt-2 text-sm font-semibold text-[#b56b24]">Creación sonora: {entry.author}</p>}
+                      {entry.audio && (
+                        <audio controls preload="metadata" className="mt-3 h-10 w-full max-w-sm">
+                          <source src={entry.audio} type="audio/mpeg" />
+                        </audio>
+                      )}
                       {entry.pdf && (
                         <a
                           href={entry.pdf}
