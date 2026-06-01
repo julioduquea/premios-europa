@@ -175,12 +175,12 @@ const nominationCategories = [
     candidates: 12,
     nominations: 6,
     nominees: [
-      { title: "El secreto", group: "Spaicy Sausage", course: "1º ESO" },
-      { title: "Lo abstracto", group: "Epic Screen", course: "3º ESO" },
-      { title: "La ausencia que respira", group: "Estrella Co.", course: "3º ESO" },
-      { title: "Servicio público", group: "OOPS Studios", course: "3º ESO" },
-      { title: "Brujas del presente", group: "Bouchee Beef", course: "3º ESO · 2025" },
-      { title: "Lucía en el país de la magia", group: "AZEA", course: "1º ESO · 2025" },
+      { title: "El secreto", group: "Spaicy Sausage", course: "1º ESO", pdf: "https://drive.google.com/file/d/1MBsNAEr-xq2Xi6aB-Goq5pN-hffl_dJH/view?usp=sharing", pdfLabel: "Ver vestuario" },
+      { title: "Lo abstracto", group: "Epic Screen", course: "3º ESO", pdf: "https://drive.google.com/file/d/1H7ysmWNHIGRd_ZadxcqCU0iJefUts6Sh/view?usp=sharing", pdfLabel: "Ver vestuario" },
+      { title: "La ausencia que respira", group: "Estrella Co.", course: "3º ESO", pdf: "https://drive.google.com/file/d/1XG4J4GERd3wTeZvwrIDlmhD7Eka0yBLW/view?usp=sharing", pdfLabel: "Ver vestuario" },
+      { title: "Servicio público", group: "OOPS Studios", course: "3º ESO", pdf: "https://drive.google.com/file/d/1JvQQfE3D9Bw3TK1OPnf0rJbL1wg3Wl1i/view?usp=sharing", pdfLabel: "Ver vestuario" },
+      { title: "Brujas del presente", group: "Bouchee Beef", course: "3º ESO · 2025", pdf: "https://drive.google.com/file/d/1a2stoXqiS0VVC24N9WLQg0F7k3CTRTlC/view?usp=drive_link", pdfLabel: "Ver vestuario" },
+      { title: "Lucía en el país de la magia", group: "AZEA", course: "1º ESO · 2025", pdf: "https://drive.google.com/file/d/1sfOJu6N5Baht8FwVyWHkcAr2lDTfspNj/view?usp=sharing", pdfLabel: "Ver vestuario" },
     ],
     entries: [
       { title: "Brujas del presente", group: "Bouchee Beef", course: "3º ESO · 2025" },
