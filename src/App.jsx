@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import {
   Award,
@@ -9,6 +9,7 @@ import {
   ChevronLeft,
   ChevronRight,
   Film,
+  Globe2,
   Handshake,
   Image,
   ImagePlus,
@@ -52,6 +53,354 @@ const fadeUp = {
   hidden: { opacity: 0, y: 28 },
   visible: { opacity: 1, y: 0 },
 };
+
+const italianTranslations = {
+  "Evento": "Evento",
+  "I Edición": "I Edizione",
+  "Candidaturas": "Candidature",
+  "Colaboración": "Collaborazione",
+  "Jurado": "Giuria",
+  "Programa": "Programma",
+  "II Edición": "II Edizione",
+  "Festival de Cine Adolescente": "Festival del Cinema Adolescenziale",
+  "Jueves 04.JUN.26": "Giovedì 04.GIU.26",
+  "Ver candidaturas": "Vedi candidature",
+  "Subir cortos": "Carica cortometraggi",
+  "Salir admin": "Esci da admin",
+  "Cerrar menú": "Chiudi menu",
+  "Abrir menú": "Apri menu",
+  "Gala": "Cerimonia",
+  "Selección oficial": "Selezione ufficiale",
+  "¿Estáis preparados?": "Siete pronti?",
+  "Cine": "Cinema",
+  "La gala": "La cerimonia",
+  "Una mañana para celebrar el talento joven": "Una mattina per celebrare il talento dei giovani",
+  "Premios Europa es una gala para mostrar y premiar trabajos audiovisuales realizados por adolescentes, cuidando tanto el proceso creativo como la presentación final ante público.": "Premios Europa è una cerimonia pensata per presentare e premiare opere audiovisive realizzate da adolescenti, valorizzando sia il processo creativo sia la presentazione finale davanti al pubblico.",
+  "Cine hecho por adolescentes": "Cinema realizzato da adolescenti",
+  "Un espacio para dar valor a historias, miradas y proyectos audiovisuales creados desde el aula.": "Uno spazio per valorizzare storie, sguardi e progetti audiovisivi nati in classe.",
+  "Gala con espíritu profesional": "Una cerimonia dallo spirito professionale",
+  "Una celebración cuidada, elegante y cercana, con proyecciones, reconocimientos y premios.": "Una celebrazione curata, elegante e accogliente, con proiezioni, riconoscimenti e premi.",
+  "Aprendizaje compartido": "Apprendimento condiviso",
+  "El alumnado presenta su trabajo, explica su proceso y comparte creatividad con toda la comunidad.": "Gli studenti presentano il proprio lavoro, spiegano il processo creativo e condividono la loro creatività con tutta la comunità.",
+  "Creador y director de la gala": "Ideatore e direttore della cerimonia",
+  "Dirección artística y producción": "Direzione artistica e produzione",
+  "Arquitectura, cine y educación": "Architettura, cinema ed educazione",
+  "Arquitecto, productor audiovisual y docente": "Architetto, produttore audiovisivo e docente",
+  "Patrocinador oficial": "Sponsor ufficiale",
+  "Gracias a JIMECA por apoyar una gala que impulsa el talento joven, la creación audiovisual y la cultura local.": "Grazie a JIMECA per sostenere una cerimonia che promuove il talento dei giovani, la creazione audiovisiva e la cultura locale.",
+  "Archivo histórico": "Archivio storico",
+  "Un espacio para recordar la primera gala: reportaje gráfico, momentos destacados y cortos ganadores.": "Uno spazio per ricordare la prima cerimonia: reportage fotografico, momenti salienti e cortometraggi vincitori.",
+  "Primera gala": "Prima cerimonia",
+  "Recuerdos de la I Edición": "Ricordi della I Edizione",
+  "Galería que muestra fotografías de la gala, entrega de premios, alumnado participante y una selección de los cortos ganadores.": "Galleria con fotografie della cerimonia, della consegna dei premi, degli studenti partecipanti e una selezione dei cortometraggi vincitori.",
+  "Ver reportaje gráfico": "Vedi reportage fotografico",
+  "Ver entrega de premios": "Vedi consegna dei premi",
+  "Ver cortos ganadores": "Vedi cortometraggi vincitori",
+  "Galería especial": "Galleria speciale",
+  "Entrega de premios": "Consegna dei premi",
+  "Palmarés": "Albo d'oro",
+  "Cortos premiados": "Cortometraggi premiati",
+  "Ver vídeo": "Guarda il video",
+  "Selección oficial 2026": "Selezione ufficiale 2026",
+  "Presentación de las candidaturas por categoría, con el paso de candidaturas a nominaciones y todos los trabajos seleccionados por orden alfabético.": "Presentazione delle candidature per categoria, con il passaggio dalle candidature alle nomination e tutte le opere selezionate in ordine alfabetico.",
+  "Categorías": "Categorie",
+  "Nominaciones": "Nomination",
+  "Elige una para ver el detalle": "Scegline una per vedere i dettagli",
+  "Mejor": "Miglior",
+  "Nominaciones oficiales": "Nomination ufficiali",
+  "Finalistas": "Finalisti",
+  "Todas las candidaturas": "Tutte le candidature",
+  "Ver storyboard": "Vedi storyboard",
+  "Ver guión": "Vedi sceneggiatura",
+  "Ver vestuario": "Vedi costumi",
+  "Creación sonora:": "Creazione sonora:",
+  "Jurado profesional": "Giuria professionale",
+  "Industria del cine": "Industria cinematografica",
+  "Referentes de la interpretación, la creación audiovisual, la educación, la cultura pop y el cine de género acompañan la valoración de los cortos de esta edición.": "Professionisti della recitazione, della creazione audiovisiva, dell'educazione, della cultura pop e del cinema di genere partecipano alla valutazione dei cortometraggi di questa edizione.",
+  "Jurado especializado": "Giuria specializzata",
+  "Jurado gráfico": "Giuria grafica",
+  "Un bloque dedicado a la valoración de la identidad visual, cartel, diseño, dirección artística y propuestas gráficas de los proyectos.": "Una sezione dedicata alla valutazione dell'identità visiva, del poster, del design, della direzione artistica e delle proposte grafiche dei progetti.",
+  "Mejor cortometraje": "Miglior cortometraggio",
+  "Mejor interpretación protagonista": "Miglior interpretazione protagonista",
+  "Mejor interpretación de reparto": "Miglior interpretazione non protagonista",
+  "Mejor formato arriesgado": "Miglior formato sperimentale",
+  "Mejor cartel": "Miglior poster",
+  "Mejor diseño de personajes y vestuario": "Miglior design dei personaggi e dei costumi",
+  "Mejor logo de productora": "Miglior logo della casa di produzione",
+  "Mejor personaje protagonista": "Miglior personaggio protagonista",
+  "Mejor personaje de reparto": "Miglior personaggio non protagonista",
+  "Mejor logo": "Miglior logo",
+  "Mejor guión": "Miglior sceneggiatura",
+  "Mejor vestuario": "Migliori costumi",
+  "Mejor presupuesto": "Miglior budget",
+  "Mejor BSO": "Miglior colonna sonora originale",
+  "Volver a la web principal": "Torna al sito principale",
+  "Jurado Premios Europa": "Giuria Premios Europa",
+  "El jurado combina miradas profesionales del cine, la interpretación, la comunicación, el diseño y la cultura visual para acompañar la valoración de los proyectos del alumnado.": "La giuria riunisce prospettive professionali del cinema, della recitazione, della comunicazione, del design e della cultura visiva per valutare i progetti degli studenti.",
+  "Zona privada": "Area riservata",
+  "Visionado del jurado": "Visione della giuria",
+  "Acceso reservado para revisar los cortos de la II Edición antes de la gala. Visualización de los cortos.": "Accesso riservato per visionare i cortometraggi della II Edizione prima della cerimonia.",
+  "Acceso con clave": "Accesso con password",
+  "Introduce la contraseña privada del jurado para ver los cortos.": "Inserisci la password privata della giuria per vedere i cortometraggi.",
+  "Contraseña del jurado": "Password della giuria",
+  "Entrar": "Entra",
+  "Votación del jurado": "Votazione della giuria",
+  "Valoración por especialidad con nota cerrada y comentario positivo para cada corto.": "Valutazione per specialità con punteggio prestabilito e commento positivo per ogni cortometraggio.",
+  "Nombre del jurado": "Nome del giurato",
+  "Email del jurado": "Email del giurato",
+  "Especialidad": "Specialità",
+  "Comentario positivo": "Commento positivo",
+  "Fortalezas del corto, interpretación, idea, diseño, guion...": "Punti di forza del cortometraggio, recitazione, idea, design, sceneggiatura...",
+  "Enviar votación": "Invia valutazione",
+  "Colaboración oficial": "Collaborazione ufficiale",
+  "Apoya el talento joven": "Sostieni il talento dei giovani",
+  "Premios Europa es el festival de cine adolescente del IES Europa de Arahal. Buscamos comercios, empresas e instituciones que quieran impulsar la cultura, el emprendimiento escolar y la creatividad audiovisual del alumnado.": "Premios Europa è il festival del cinema adolescenziale dell'IES Europa di Arahal. Cerchiamo negozi, aziende e istituzioni che vogliano sostenere la cultura, l'iniziativa scolastica e la creatività audiovisiva degli studenti.",
+  "La II Edición 2026 da un salto de calidad con una gala en el Teatro Municipal de Arahal, alianza Erasmus con el Liceo de Aviano y cobertura de Medial TV. También estamos abiertos a propuestas en material o colaboraciones adaptadas a cada entidad.": "La II Edizione 2026 compie un salto di qualità con una cerimonia presso il Teatro Municipale di Arahal, un'alleanza Erasmus con il Liceo di Aviano e la copertura di Medial TV. Siamo inoltre aperti a proposte di materiali o collaborazioni adatte a ogni realtà.",
+  "Por qué colaborar": "Perché collaborare",
+  "Impacto local": "Impatto locale",
+  "Primera edición con más de 300 asistentes, 40 productoras escolares y cobertura televisiva.": "Prima edizione con oltre 300 partecipanti, 40 case di produzione scolastiche e copertura televisiva.",
+  "La II Edición se celebrará el 4 de junio en el Teatro Municipal de Arahal, con 412 butacas.": "La II Edizione si terrà il 4 giugno presso il Teatro Municipale di Arahal, con 412 posti.",
+  "Proyección cultural": "Proiezione culturale",
+  "Festival internacional gracias a la alianza Erasmus con el Liceo de Aviano, Italia.": "Festival internazionale grazie all'alleanza Erasmus con il Liceo di Aviano, Italia.",
+  "Participación de referentes de la cultura, la interpretación, el diseño y el audiovisual.": "Partecipazione di professionisti della cultura, della recitazione, del design e dell'audiovisivo.",
+  "Modalidades": "Modalità",
+  "Formas de colaboración": "Forme di collaborazione",
+  "Puedes elegir una modalidad económica, proponer una colaboración en material o plantearnos una fórmula personalizada.": "Puoi scegliere una modalità economica, proporre una collaborazione con materiali o presentarci una formula personalizzata.",
+  "Hablemos": "Parliamone",
+  "Si representas a una empresa, comercio local, librería, asociación o entidad cultural, puedes escribirnos para valorar una colaboración. Escuchamos propuestas económicas, aportaciones en material y acuerdos especiales.": "Se rappresenti un'azienda, un negozio locale, una libreria, un'associazione o un ente culturale, puoi scriverci per valutare una collaborazione. Ascoltiamo proposte economiche, contributi in materiali e accordi speciali.",
+  "Persona de contacto": "Persona di contatto",
+  "Empresa o comercio": "Azienda o attività commerciale",
+  "Nombre de la empresa": "Nome dell'azienda",
+  "Nombre y apellidos": "Nome e cognome",
+  "Teléfono": "Telefono",
+  "Teléfono de contacto": "Numero di telefono",
+  "Tipo de colaboración": "Tipo di collaborazione",
+  "Colaboración en material": "Collaborazione con materiali",
+  "Propuesta personalizada": "Proposta personalizzata",
+  "Mensaje o propuesta": "Messaggio o proposta",
+  "Cuéntanos cómo te gustaría colaborar": "Raccontaci come vorresti collaborare",
+  "Enviar propuesta": "Invia proposta",
+  "Reconocimientos": "Riconoscimenti",
+  "Categorías de premios": "Categorie dei premi",
+  "Programa de la gala": "Programma della cerimonia",
+  "Recepción": "Accoglienza",
+  "Llegada de participantes, jurado e invitados.": "Arrivo di partecipanti, giuria e ospiti.",
+  "Actuación inicial": "Spettacolo iniziale",
+  "Presentación": "Presentazione",
+  "Bienvenida y apertura oficial de la II Edición.": "Benvenuto e apertura ufficiale della II Edizione.",
+  "Proyección": "Proiezione",
+  "Visionado de candidaturas y piezas seleccionadas.": "Visione delle candidature e delle opere selezionate.",
+  "Descanso": "Pausa",
+  "Momento para comentar cortos y valoración del jurado.": "Momento per commentare i cortometraggi e per la valutazione della giuria.",
+  "Anuncio de ganadores y menciones especiales.": "Annuncio dei vincitori e delle menzioni speciali.",
+  "Cierre de gala": "Chiusura della cerimonia",
+  "Foto final y despedida del festival.": "Foto finale e saluti del festival.",
+  "II Edición · Festival de Cine Adolescente": "II Edizione · Festival del Cinema Adolescenziale",
+  "Corto": "Cortometraggio",
+  "Guion": "Sceneggiatura",
+  "Protagonista": "Protagonista",
+  "Reparto": "Non protagonista",
+  "Vestuario": "Costumi",
+  "Storyboard": "Storyboard",
+  "Cartel": "Poster",
+  "Logo": "Logo",
+  "Presupuesto": "Budget",
+  "Traducción": "Traduzione",
+  "Formato arriesgado": "Formato sperimentale",
+  "Compromiso social": "Impegno sociale",
+  "Espacio sonoro": "Spazio sonoro",
+  "Mejor corto": "Miglior cortometraggio",
+  "Mejor traducción de guion": "Miglior traduzione della sceneggiatura",
+  "Mejor diseño de vestuario y personajes": "Miglior design dei costumi e dei personaggi",
+  "Premio espacio sonoro": "Premio spazio sonoro",
+  "Alfombra roja": "Tappeto rosso",
+  "Recepción del alumnado, familias e invitados durante la I Edición.": "Accoglienza degli studenti, delle famiglie e degli ospiti durante la I Edizione.",
+  "Presentación de la gala": "Presentazione della cerimonia",
+  "Inicio de la ceremonia y presentación de los cortos finalistas.": "Inizio della cerimonia e presentazione dei cortometraggi finalisti.",
+  "Momentos destacados de la entrega de galardones.": "Momenti salienti della consegna dei premi.",
+  "Foto final": "Foto finale",
+  "Participantes y organización al cierre de la primera gala.": "Partecipanti e organizzatori alla chiusura della prima cerimonia.",
+  "Entrega de galardones durante la I Edición.": "Consegna dei premi durante la I Edizione.",
+  "Momento de reconocimiento a los cortos premiados.": "Momento di riconoscimento per i cortometraggi premiati.",
+  "Participantes recogiendo su premio sobre el escenario.": "Partecipanti che ritirano il premio sul palco.",
+  "Fotografía de una de las categorías de la primera gala.": "Fotografia di una delle categorie della prima cerimonia.",
+  "Celebración de los equipos premiados en la I Edición.": "Celebrazione dei gruppi premiati nella I Edizione.",
+  "Corto ganador de la primera edición de los Premios Europa.": "Cortometraggio vincitore della prima edizione dei Premios Europa.",
+  "Reconocimiento a la interpretación principal más destacada de la I Edición": "Riconoscimento alla migliore interpretazione protagonista della I Edizione.",
+  "Reconocimiento a la interpretación secundaria más destacada de la I Edición.": "Riconoscimento alla migliore interpretazione non protagonista della I Edizione.",
+  "Proyecto reconocido por su planificación, puesta en escena y mirada audiovisual.": "Progetto premiato per la pianificazione, la messa in scena e lo sguardo audiovisivo.",
+  "Corto premiado por la construcción de la historia, diálogos y estructura narrativa.": "Cortometraggio premiato per la costruzione della storia, i dialoghi e la struttura narrativa.",
+  "Corto premiado por su dirección artística, diseño de vestuario y ambientación visual.": "Cortometraggio premiato per la direzione artistica, il design dei costumi e l'ambientazione visiva.",
+  "Corto premiado por su planificación, puesta en escena y mirada audiovisual.": "Cortometraggio premiato per la pianificazione, la messa in scena e lo sguardo audiovisivo.",
+  "Corto premiado por su gestión de recursos, creatividad y eficiencia en la producción.": "Cortometraggio premiato per la gestione delle risorse, la creatività e l'efficienza produttiva.",
+  "Corto premiado por su diseño gráfico, creatividad y capacidad de transmitir la esencia del proyecto.": "Cortometraggio premiato per il design grafico, la creatività e la capacità di trasmettere l'essenza del progetto.",
+  "Corto premiado por su banda sonora original, composición musical y capacidad para potenciar la narrativa audiovisual.": "Cortometraggio premiato per la colonna sonora originale, la composizione musicale e la capacità di rafforzare la narrazione audiovisiva.",
+  "Bronce": "Bronzo",
+  "Plata": "Argento",
+  "Oro": "Oro",
+  "Especial": "Speciale",
+  "Destacada": "In evidenza",
+  "Patrocinador principal": "Sponsor principale",
+  "Marca en cartelería pequeña y difusión especial en redes sociales.": "Logo su poster di piccolo formato e diffusione speciale sui social network.",
+  "Cartelería mediana, redes sociales y mención de honor durante la gala.": "Poster di medio formato, social network e menzione d'onore durante la cerimonia.",
+  "Todo lo anterior y proyección del logotipo en la pantalla principal del teatro.": "Tutto quanto sopra e proiezione del logo sullo schermo principale del teatro.",
+  "Todo lo anterior y presencia destacada en cartelería de gran formato.": "Tutto quanto sopra e presenza in evidenza sui poster di grande formato.",
+  "Todo lo anterior y 2 entradas exclusivas para asistir a la gala.": "Tutto quanto sopra e 2 ingressi esclusivi per partecipare alla cerimonia.",
+  "Todo lo anterior y entrega de uno de los premios oficiales en el escenario.": "Tutto quanto sopra e consegna di uno dei premi ufficiali sul palco.",
+  "Todo lo anterior y 2 minutos de discurso ante el público asistente.": "Tutto quanto sopra e 2 minuti di intervento davanti al pubblico.",
+  "Máximo reconocimiento: dar nombre de empresa a uno de los premios oficiales.": "Massimo riconoscimento: associare il nome dell'azienda a uno dei premi ufficiali.",
+  "Artista, cantante, actriz y creadora de contenido": "Artista, cantante, attrice e content creator",
+  "Educadora social, arte dramático y pedagogía teatral": "Educatrice sociale, arte drammatica e pedagogia teatrale",
+  "Actor": "Attore",
+  "Director, guionista, montador y productor audiovisual": "Regista, sceneggiatore, montatore e produttore audiovisivo",
+  "Actriz": "Attrice",
+  "Locutor, DJ, técnico de sonido e iluminación": "Speaker, DJ, tecnico del suono e delle luci",
+  "Diseñadora gráfica y artista visual": "Graphic designer e artista visiva",
+  "Dirección de arte y vestuario": "Direzione artistica e costumi",
+  "Comunicación visual, marketing y diseño gráfico": "Comunicazione visiva, marketing e graphic design",
+  "Profesional de la comunicación visual especializado en marketing, publicidad y diseño gráfico.": "Professionista della comunicazione visiva specializzato in marketing, pubblicità e graphic design.",
+  "Inició su formación en Marketing y Publicidad en EUSA, ampliando posteriormente su perfil creativo con estudios de Diseño Gráfico en la Escuela Superior de Arte y Diseño de Sevilla.": "Ha iniziato la sua formazione in Marketing e Pubblicità presso EUSA, ampliando successivamente il proprio profilo creativo con studi di Graphic Design presso la Scuola Superiore di Arte e Design di Siviglia.",
+  "A lo largo de su trayectoria ha desarrollado proyectos de identidad visual, comunicación y diseño gráfico para diferentes entidades e iniciativas culturales. Su actividad creativa también se extiende al ámbito artístico, habiendo expuesto obra fotográfica en la Galería Zunino de Sevilla.": "Nel corso della sua carriera ha sviluppato progetti di identità visiva, comunicazione e graphic design per diverse organizzazioni e iniziative culturali. La sua attività creativa si estende anche all'ambito artistico, con opere fotografiche esposte presso la Galleria Zunino di Siviglia.",
+  "Ha realizado trabajos gráficos para diversas hermandades de Andalucía, así como proyectos de cartelería y comunicación visual entre los que destacan los realizados para la Pastora de Cantillana y la Virgen de la Soledad de La Rambla (Córdoba). Asimismo, ha desarrollado la identidad visual y la estrategia de comunicación de OCAÑA, asociación LGTBIQ+ de Cantillana que promueve el diálogo entre tradición, diversidad y expresión artística.": "Ha realizzato lavori grafici per diverse confraternite dell'Andalusia e progetti di poster e comunicazione visiva, tra cui quelli per la Pastora de Cantillana e la Virgen de la Soledad de La Rambla (Cordova). Ha inoltre sviluppato l'identità visiva e la strategia di comunicazione di OCAÑA, associazione LGTBIQ+ di Cantillana che promuove il dialogo tra tradizione, diversità ed espressione artistica.",
+  "Su trabajo combina tradición, sensibilidad estética y comunicación visual contemporánea, explorando la imagen como vehículo para transmitir ideas, emociones y relatos.": "Il suo lavoro combina tradizione, sensibilità estetica e comunicazione visiva contemporanea, esplorando l'immagine come strumento per trasmettere idee, emozioni e narrazioni.",
+  "Antonio Bonilla Eslava destaca en el panorama cultural andaluz por entrelazar la arquitectura, la creación audiovisual y la educación. Graduado por la Escuela Técnica Superior de Arquitectura de Sevilla, su trabajo investiga la relación entre el patrimonio, el territorio y la identidad. Fue becado por la Fundación Arquitectura Contemporánea, donde desarrolló su labor profesional durante tres años, y galardonado en el prestigioso certamen internacional de urbanismo Europan.": "Antonio Miguel Bonilla Eslava si distingue nel panorama culturale andaluso per il dialogo tra architettura, creazione audiovisiva ed educazione. Laureato presso la Scuola Tecnica Superiore di Architettura di Siviglia, il suo lavoro esplora il rapporto tra patrimonio, territorio e identità. Ha ricevuto una borsa di studio dalla Fundación Arquitectura Contemporánea, dove ha lavorato per tre anni, ed è stato premiato nel prestigioso concorso internazionale di urbanistica Europan.",
+  "En el plano cinematográfico, es productor del aclamado largometraje documental": "In ambito cinematografico è produttore dell'acclamato lungometraggio documentario",
+  "La obra explora la relación del colectivo LGTBIQ+ con la Semana Santa de Sevilla, logrando un destacado recorrido por certámenes como el Festival de Cine Europeo de Sevilla (SEFF) y estando disponible en plataformas como Filmin.": "L'opera esplora il rapporto della comunità LGTBIQ+ con la Settimana Santa di Siviglia, ottenendo un importante percorso in festival come il Festival del Cinema Europeo di Siviglia (SEFF) ed essendo disponibile su piattaforme come Filmin.",
+  "Actualmente, compagina su labor creativa con la docencia pública como profesor de Educación Plástica, Visual y Audiovisual en el IES Europa de Arahal (Sevilla), donde coordina proyectos artísticos internacionales como el programa Erasmus+ en Italia.": "Attualmente affianca il lavoro creativo all'insegnamento pubblico come docente di Educazione Plastica, Visiva e Audiovisiva presso l'IES Europa di Arahal (Siviglia), dove coordina progetti artistici internazionali come il programma Erasmus+ in Italia.",
+  "Artista, cantante, actriz y creadora de contenido vinculada a la performance, la comunicación audiovisual, cultura pop y el activismo.": "Artista, cantante, attrice e content creator legata alla performance, alla comunicazione audiovisiva, alla cultura pop e all'attivismo.",
+  "Ha desarrollado la mayor parte de su trayectoria profesional a nivel nacional, impulsando proyectos cinematográficos, televisivos y musicales para plataformas de streaming, productoras y grandes marcas como": "Ha sviluppato gran parte della sua carriera a livello nazionale, promuovendo progetti cinematografici, televisivi e musicali per piattaforme di streaming, case di produzione e grandi marchi come",
+  "trabajando desde la sátira, el activismo LGBTIQ+ y la deconstrucción de los códigos de la cultura de masas.": "lavorando attraverso la satira, l'attivismo LGBTIQ+ e la decostruzione dei codici della cultura di massa.",
+  "Su trayectoria conecta contracultura, entretenimiento masivo y transformación social, explorando el poder del medio audiovisual y el shock value como herramientas de agitación cultural y visibilidad.": "Il suo percorso unisce controcultura, intrattenimento di massa e trasformazione sociale, esplorando il potere dell'audiovisivo e dello shock value come strumenti di fermento culturale e visibilità.",
+  "Educadora social con formación en arte dramático, pedagogía teatral, cine e interpretación.": "Educatrice sociale con formazione in arte drammatica, pedagogia teatrale, cinema e recitazione.",
+  "Ha desarrollado la mayor parte de su trayectoria profesional entre Barcelona y Sevilla, impulsando proyectos socioeducativos y de comunicación para entidades sociales, fundaciones y empresas como": "Ha sviluppato gran parte della sua carriera tra Barcellona e Siviglia, promuovendo progetti socioeducativi e di comunicazione per enti sociali, fondazioni e aziende come",
+  "especialmente con jóvenes y colectivos en situación de vulnerabilidad.": "in particolare con giovani e gruppi in situazioni di vulnerabilità.",
+  "Su trayectoria conecta cultura, educación y transformación social, explorando el poder del arte y la comunicación como herramientas de cambio.": "Il suo percorso unisce cultura, educazione e trasformazione sociale, esplorando il potere dell'arte e della comunicazione come strumenti di cambiamento.",
+  "César Vicente (Sevilla) es un actor de reconocido prestigio nacional.": "César Vicente (Siviglia) è un attore di riconosciuto prestigio nazionale.",
+  "Ha sido dirigido por": "È stato diretto da",
+  "nominada al Oscar a la Mejor Película Extranjera y Premio Goya 2020 a la Mejor Película. Su último trabajo ha sido en": "nominato all'Oscar per il Miglior Film Straniero e vincitore del Premio Goya 2020 per il Miglior Film. Il suo ultimo lavoro è stato in",
+  "consiguiendo una nominación para los premios Carmen del Cine Andaluz.": "ottenendo una candidatura ai premi Carmen del Cinema Andaluso.",
+  "En teatro ha colaborado en Los locos de Valencia, de la compañía El Tiempo, y Woyzeck, de la compañía Teatro Viento Sur; en televisión ha trabajado en series como Franklin, dirigida por Óscar Pedraza, Amar es para siempre, La otra mirada y Hernán Cortés, de Amazon.": "In teatro ha collaborato a Los locos de Valencia della compagnia El Tiempo e Woyzeck della compagnia Teatro Viento Sur; in televisione ha lavorato in serie come Franklin, diretta da Óscar Pedraza, Amar es para siempre, La otra mirada e Hernán Cortés di Amazon.",
+  "Director, guionista, montador y productor audiovisual sevillano con formación y trayectoria especializada en el cine de género y la ficción cinematográfica.": "Regista, sceneggiatore, montatore e produttore audiovisivo sivigliano con una formazione e una carriera specializzate nel cinema di genere e nella finzione cinematografica.",
+  "Ha desarrollado su carrera cinematográfica impulsando proyectos desde su productora,": "Ha sviluppato la sua carriera cinematografica promuovendo progetti attraverso la propria casa di produzione,",
+  "para festivales y salas comerciales, destacando la escritura y dirección de su largometraje de terror psicológico y slasher": "per festival e sale cinematografiche, distinguendosi per la scrittura e la regia del suo lungometraggio horror psicologico e slasher",
+  "una ópera prima seleccionada en el Festival de Cine Europeo de Sevilla que reúne a figuras diversas de la cultura pop y la interpretación.": "un'opera prima selezionata al Festival del Cinema Europeo di Siviglia che riunisce diverse figure della cultura pop e della recitazione.",
+  "Actriz andaluza con formación en arte dramático e interpretación cinematográfica, con una trayectoria emergente en el ámbito audiovisual y teatral.": "Attrice andalusa con formazione in arte drammatica e recitazione cinematografica, con una carriera emergente in ambito audiovisivo e teatrale.",
+  "Ha desarrollado sus principales proyectos desde Sevilla y Madrid, formándose en escuelas de referencia como la ESAD de Sevilla o Work in Progress y destacando en la gran pantalla por su papel de": "Ha sviluppato i suoi principali progetti tra Siviglia e Madrid, formandosi in scuole di riferimento come l'ESAD di Siviglia o Work in Progress e distinguendosi sul grande schermo per il ruolo di",
+  "largometraje ganador de un premio Goya y trabajo de gran repercusión con el que obtuvo la candidatura a los Premios Goya como Mejor Actriz de Reparto.": "lungometraggio vincitore di un premio Goya e lavoro di grande risonanza con cui ha ottenuto la candidatura ai Premi Goya come Miglior Attrice Non Protagonista.",
+  "Nacido en Marchena, durante más de 30 años ha llevado las riendas técnicas de Cadena Dial Europa, en Arahal.": "Nato a Marchena, per oltre 30 anni ha gestito la parte tecnica di Cadena Dial Europa ad Arahal.",
+  "Esta tarea la ha compatibilizado con todo tipo de ocupaciones relacionadas con el mundo de los eventos, medios de comunicación y espectáculos: organizador de eventos, locutor, DJ, manager, técnico de sonido e iluminación. Actualmente trabaja en 101TV.": "Ha affiancato a questa attività numerosi incarichi legati al mondo degli eventi, dei media e dello spettacolo: organizzatore di eventi, speaker, DJ, manager, tecnico del suono e delle luci. Attualmente lavora presso 101TV.",
+  "David es un melómano y cinéfilo empedernido, que disfruta y conoce tanto la historia musical y cinematográfica como las últimas novedades en ambos sectores.": "David è un appassionato di musica e cinema, profondo conoscitore sia della storia musicale e cinematografica sia delle ultime novità dei due settori.",
+  "Diseñadora gráfica y artista visual.": "Graphic designer e artista visiva.",
+  "Ha desarrollado su carrera, además de en proyectos gráficos, en proyectos de arquitectura, diseño colaborativo, social y cultural. Ha trabajado en proyectos de branding como": "Oltre ai progetti grafici, ha sviluppato la sua carriera in progetti di architettura e design collaborativo, sociale e culturale. Ha lavorato a progetti di branding come",
+  "Su obra ha sido expuesta en ciudades como Madrid, Barcelona, Valencia o Bélgica. En cine, ha creado": "Le sue opere sono state esposte in città come Madrid, Barcellona, Valencia e in Belgio. Per il cinema ha creato",
+  "Profesor de Diseño de Interiores en la Escuela de Arte y Superior de Diseño de Jerez, con formación como Arquitecto y experiencia como artista plástico.": "Docente di Interior Design presso la Scuola d'Arte e Superiore di Design di Jerez, con formazione da architetto ed esperienza come artista visivo.",
+  "Desde sus labores en el ámbito de la arquitectura, siempre ha trabajado en proyectos y estudios multidisciplinares dando cabida a la artesanía, el arte y la reflexión sobre la sociedad a todos los niveles. En el ámbito educativo, su docencia se centra en distintos ámbitos, desde el entrenamiento del alumnado en torno al lenguaje visual, el diseño de espacios comerciales y la impartición de Diseño en bachillerato.": "Nel campo dell'architettura ha sempre lavorato a progetti e studi multidisciplinari che includono l'artigianato, l'arte e la riflessione sulla società a tutti i livelli. In ambito educativo, il suo insegnamento spazia dal linguaggio visivo al design di spazi commerciali fino al Design nella scuola secondaria.",
+  "Actualmente gestiona una investigación en torno a la artesanía como herramienta de cohesión social y regeneración de las relaciones humanas.": "Attualmente conduce una ricerca sull'artigianato come strumento di coesione sociale e rigenerazione delle relazioni umane.",
+  "Emilia Jiménez (Vejer de la Frontera, Cádiz, 1996) es graduada en Bellas Artes y Máster en Artes del Espectáculo Vivo por la Universidad de Sevilla.": "Emilia Jiménez (Vejer de la Frontera, Cadice, 1996) è laureata in Belle Arti e ha conseguito un Master in Arti dello Spettacolo dal Vivo presso l'Università di Siviglia.",
+  "Ha trabajado en el ámbito de la": "Ha lavorato nell'ambito della",
+  "dirección de arte y vestuario": "direzione artistica e dei costumi",
+  "tanto en el mundo de la moda como en el del cine.": "sia nel mondo della moda sia in quello del cinema.",
+  "Su trabajo se ha desarrollado en múltiples proyectos, comenzando como directora de vestuario en": "Ha lavorato a numerosi progetti, iniziando come responsabile dei costumi in",
+  "corto de Bea Hohenlaiter, o Casa típica, de Jesús Pascual y Antonio Bonilla. Otros trabajos han sido Lava, de Carmen Jiménez, como ayudante de vestuario, y Pepe, el mudo, spot para Cruzcampo - Carne al Corte, como directora de vestuario.": "cortometraggio di Bea Hohenlaiter, o Casa típica di Jesús Pascual e Antonio Bonilla. Tra gli altri lavori figurano Lava di Carmen Jiménez, come assistente ai costumi, e Pepe, el mudo, spot per Cruzcampo - Carne al Corte, come responsabile dei costumi.",
+};
+
+const translationSources = new WeakMap();
+const attributeTranslationSources = new WeakMap();
+const translatedAttributes = ["placeholder", "aria-label", "title"];
+
+function translateText(text, language) {
+  if (language !== "it") return text;
+  const leadingSpace = text.match(/^\s*/)?.[0] ?? "";
+  const trailingSpace = text.match(/\s*$/)?.[0] ?? "";
+  const content = text.trim();
+  if (!content) return text;
+  const translated = italianTranslations[content] ?? content
+    .replace(/(\d+) candidaturas/g, "$1 candidature")
+    .replace(/(\d+) nominaciones/g, "$1 nomination")
+    .replace(/(\d+) nominadas/g, "$1 finalisti");
+  return `${leadingSpace}${translated}${trailingSpace}`;
+}
+
+function LanguageSwitcher({ language, onLanguageChange }) {
+  return (
+    <div className="fixed bottom-4 right-4 z-[70] flex items-center gap-1 rounded-full border border-[#101a36]/15 bg-[#fbf7ed]/95 p-1.5 shadow-xl shadow-[#101a36]/15 backdrop-blur">
+      <Globe2 className="ml-1 h-4 w-4 text-[#b56b24]" aria-hidden="true" />
+      {["es", "it"].map((option) => (
+        <button
+          key={option}
+          type="button"
+          onClick={() => onLanguageChange(option)}
+          className={`rounded-full px-3 py-1.5 text-xs font-black uppercase tracking-[0.12em] transition ${
+            language === option ? "bg-[#101a36] text-[#fbf7ed]" : "text-[#101a36]/65 hover:bg-[#f3ecd9]"
+          }`}
+          aria-pressed={language === option}
+        >
+          {option}
+        </button>
+      ))}
+    </div>
+  );
+}
+
+function LocalizedPage({ children }) {
+  const [language, setLanguage] = useState(() => {
+    const requestedLanguage = new URLSearchParams(window.location.search).get("lang");
+    return requestedLanguage === "it" || requestedLanguage === "es"
+      ? requestedLanguage
+      : window.localStorage.getItem("premios-europa-language") || "es";
+  });
+  const contentRef = useRef(null);
+
+  useEffect(() => {
+    window.localStorage.setItem("premios-europa-language", language);
+    const url = new URL(window.location.href);
+    url.searchParams.set("lang", language);
+    window.history.replaceState({}, "", url);
+    document.documentElement.lang = language;
+    const root = contentRef.current;
+    if (!root) return undefined;
+
+    const translateNode = (node) => {
+      if (node.nodeType === Node.TEXT_NODE) {
+        const source = translationSources.get(node) ?? node.textContent;
+        translationSources.set(node, source);
+        node.textContent = translateText(source, language);
+        return;
+      }
+      if (!(node instanceof Element)) return;
+      const sourceAttributes = attributeTranslationSources.get(node) ?? {};
+      translatedAttributes.forEach((attribute) => {
+        if (!node.hasAttribute(attribute)) return;
+        const source = sourceAttributes[attribute] ?? node.getAttribute(attribute);
+        sourceAttributes[attribute] = source;
+        node.setAttribute(attribute, translateText(source, language));
+      });
+      attributeTranslationSources.set(node, sourceAttributes);
+    };
+
+    const translateTree = (treeRoot) => {
+      translateNode(treeRoot);
+      const walker = document.createTreeWalker(treeRoot, NodeFilter.SHOW_ELEMENT | NodeFilter.SHOW_TEXT);
+      while (walker.nextNode()) translateNode(walker.currentNode);
+    };
+
+    translateTree(root);
+    const observer = new MutationObserver((mutations) => {
+      mutations.forEach((mutation) => {
+        mutation.addedNodes.forEach(translateTree);
+      });
+    });
+    observer.observe(root, { childList: true, subtree: true });
+    return () => observer.disconnect();
+  }, [language]);
+
+  return (
+    <>
+      <LanguageSwitcher language={language} onLanguageChange={setLanguage} />
+      <div ref={contentRef}>{children}</div>
+    </>
+  );
+}
 
 const nominationCategories = [
   {
@@ -2508,7 +2857,7 @@ function Footer() {
   );
 }
 
-export default function PremiosEuropaLanding() {
+function PremiosEuropaContent() {
   const year = useMemo(() => new Date().getFullYear(), []);
   const [isAdmin, setIsAdmin] = useState(false);
   const getCurrentPage = () => {
@@ -2611,5 +2960,13 @@ export default function PremiosEuropaLanding() {
       <Footer />
       <div className="sr-only">Premios Europa landing page {year}</div>
     </main>
+  );
+}
+
+export default function PremiosEuropaLanding() {
+  return (
+    <LocalizedPage>
+      <PremiosEuropaContent />
+    </LocalizedPage>
   );
 }
