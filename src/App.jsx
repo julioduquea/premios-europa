@@ -233,12 +233,12 @@ const nominationCategories = [
     candidates: 12,
     nominations: 6,
     nominees: [
-      { title: "El secreto", group: "Spaicy Sausage", course: "1º ESO" },
-      { title: "Lo abstracto", group: "Epic Screen", course: "3º ESO" },
-      { title: "La voz de la experiencia", group: "Moonlight", course: "3º ESO" },
-      { title: "Plutón", group: "Lampedusa", course: "3º ESO" },
-      { title: "Las flechas misteriosas", group: "Films Action", course: "3º ESO" },
-      { title: "Ganar para salir", group: "Horizonte Pluz", course: "3º ESO" },
+      { title: "El secreto", group: "Spaicy Sausage", course: "1º ESO", poster: "/nominaciones/cartel/el-secreto.jpg" },
+      { title: "Justo a tiempo", group: "JISOL", course: "3º ESO", poster: "/nominaciones/cartel/justo-a-tiempo.jpg" },
+      { title: "La voz de la experiencia", group: "Moonlight", course: "3º ESO", poster: "/nominaciones/cartel/la-voz-de-la-experiencia.jpg" },
+      { title: "Las flechas misteriosas", group: "Films Action", course: "3º ESO", poster: "/nominaciones/cartel/las-flechas-misteriosas.jpg" },
+      { title: "Lo abstracto", group: "Epic Screen", course: "3º ESO", poster: "/nominaciones/cartel/lo-abstracto.jpg" },
+      { title: "Plutón", group: "Lampedusa", course: "3º ESO", poster: "/nominaciones/cartel/pluton.jpg" },
     ],
     entries: [
       { title: "¡Corre que no llegamos!", group: "JJHH", course: "1º ESO" },
@@ -246,7 +246,7 @@ const nominationCategories = [
       { title: "El secreto", group: "Spaicy Sausage", course: "1º ESO" },
       { title: "El tarot", group: "Dark Cinema", course: "3º ESO" },
       { title: "Ganar para salir", group: "Horizonte Pluz", course: "3º ESO" },
-      { title: "Justo a tiempo", group: "Chandal y Tacón", course: "3º ESO · 2025" },
+      { title: "Justo a tiempo", group: "JISOL", course: "3º ESO" },
       { title: "La voz de la experiencia", group: "Moonlight", course: "3º ESO" },
       { title: "Las flechas misteriosas", group: "Films Action", course: "3º ESO" },
       { title: "Lo abstracto", group: "Epic Screen", course: "3º ESO" },
@@ -1664,11 +1664,11 @@ function Candidates() {
                     <div className="grid gap-3 md:grid-cols-2">
                       {activeNominees.map((entry, index) => (
                         <div key={`${activeCategory.title}-nominee-${entry.title}-${index}`} className="border border-[#fbf7ed]/10 bg-[#fbf7ed]/[0.06] p-4">
-                          {entry.logo && (
-                            <div className="mb-4 flex aspect-[16/10] items-center justify-center border border-[#fbf7ed]/10 bg-white p-4 shadow-inner shadow-[#101a36]/10">
+                          {(entry.logo || entry.poster) && (
+                            <div className={`mb-4 flex items-center justify-center border border-[#fbf7ed]/10 bg-white p-4 shadow-inner shadow-[#101a36]/10 ${entry.poster ? "aspect-[3/4]" : "aspect-[16/10]"}`}>
                               <img
-                                src={entry.logo}
-                                alt={`Logo de ${entry.title}`}
+                                src={entry.logo ?? entry.poster}
+                                alt={`${entry.poster ? "Cartel" : "Logo"} de ${entry.title}`}
                                 className="h-full w-full object-contain"
                                 loading="lazy"
                               />
@@ -2015,11 +2015,11 @@ function JuryVotingForm() {
                 <div key={entryKey} className="rounded-[1.4rem] border border-[#101a36]/10 bg-white/65 p-5">
                   <div className="flex flex-col gap-3 lg:flex-row lg:items-start lg:justify-between">
                     <div className="min-w-0">
-                      {entry.logo && (
-                        <div className="mb-4 flex aspect-[16/9] max-w-sm items-center justify-center rounded-2xl border border-[#101a36]/10 bg-white p-4">
+                      {(entry.logo || entry.poster) && (
+                        <div className={`mb-4 flex max-w-sm items-center justify-center rounded-2xl border border-[#101a36]/10 bg-white p-4 ${entry.poster ? "aspect-[3/4]" : "aspect-[16/9]"}`}>
                           <img
-                            src={entry.logo}
-                            alt={`Logo de ${entry.title}`}
+                            src={entry.logo ?? entry.poster}
+                            alt={`${entry.poster ? "Cartel" : "Logo"} de ${entry.title}`}
                             className="h-full w-full object-contain"
                             loading="lazy"
                           />
