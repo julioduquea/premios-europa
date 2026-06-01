@@ -92,9 +92,9 @@ const nominationCategories = [
     nominees: [
       { title: "Sabores de mi tierra", group: "RBM", course: "1º ESO" },
       { title: "Justo a tiempo", group: "JISOL", course: "3º ESO" },
-      { title: "La ausencia que respira", group: "Estrella Co.", course: "3º ESO" },
-      { title: "La voz de la experiencia", group: "Moonlight", course: "3º ESO" },
-      { title: "Plutón", group: "Lampedusa Films", course: "3º ESO" },
+      { title: "La ausencia que respira", group: "Estrella Co.", course: "3º ESO", pdf: "https://drive.google.com/file/d/1-anFP9tktyo7YJbrgt6ryc6KXEJH6CkD/view?usp=sharing", pdfLabel: "Ver guión" },
+      { title: "La voz de la experiencia", group: "Moonlight", course: "3º ESO", pdf: "https://drive.google.com/file/d/1q0xVddbYdEAGfssCbVycsOHFGoVcifmn/view?usp=sharing", pdfLabel: "Ver guión" },
+      { title: "Plutón", group: "Lampedusa Films", course: "3º ESO", pdf: "https://drive.google.com/file/d/1Dy7m35vhij-MTHjEXO8CIUJ-q0g3sze_/view?usp=sharing", pdfLabel: "Ver guión" },
       { title: "Servicio público", group: "OOPS Studios", course: "3º ESO" },
     ],
     entries: [
@@ -175,12 +175,12 @@ const nominationCategories = [
     candidates: 12,
     nominations: 6,
     nominees: [
-      { title: "El secreto", group: "Spaicy Sausage", course: "1º ESO", pdf: "https://drive.google.com/file/d/1MBsNAEr-xq2Xi6aB-Goq5pN-hffl_dJH/view?usp=sharing", pdfLabel: "Ver vestuario" },
-      { title: "Lo abstracto", group: "Epic Screen", course: "3º ESO", pdf: "https://drive.google.com/file/d/1H7ysmWNHIGRd_ZadxcqCU0iJefUts6Sh/view?usp=sharing", pdfLabel: "Ver vestuario" },
-      { title: "La ausencia que respira", group: "Estrella Co.", course: "3º ESO", pdf: "https://drive.google.com/file/d/1XG4J4GERd3wTeZvwrIDlmhD7Eka0yBLW/view?usp=sharing", pdfLabel: "Ver vestuario" },
-      { title: "Servicio público", group: "OOPS Studios", course: "3º ESO", pdf: "https://drive.google.com/file/d/1JvQQfE3D9Bw3TK1OPnf0rJbL1wg3Wl1i/view?usp=sharing", pdfLabel: "Ver vestuario" },
-      { title: "Brujas del presente", group: "Bouchee Beef", course: "3º ESO · 2025", pdf: "https://drive.google.com/file/d/1a2stoXqiS0VVC24N9WLQg0F7k3CTRTlC/view?usp=drive_link", pdfLabel: "Ver vestuario" },
-      { title: "Lucía en el país de la magia", group: "AZEA", course: "1º ESO · 2025", pdf: "https://drive.google.com/file/d/1sfOJu6N5Baht8FwVyWHkcAr2lDTfspNj/view?usp=sharing", pdfLabel: "Ver vestuario" },
+      { title: "El secreto", group: "Spaicy Sausage", course: "1º ESO" },
+      { title: "Lo abstracto", group: "Epic Screen", course: "3º ESO" },
+      { title: "La ausencia que respira", group: "Estrella Co.", course: "3º ESO" },
+      { title: "Servicio público", group: "OOPS Studios", course: "3º ESO" },
+      { title: "Brujas del presente", group: "Bouchee Beef", course: "3º ESO · 2025" },
+      { title: "Lucía en el país de la magia", group: "AZEA", course: "1º ESO · 2025" },
     ],
     entries: [
       { title: "Brujas del presente", group: "Bouchee Beef", course: "3º ESO · 2025" },
@@ -233,12 +233,12 @@ const nominationCategories = [
     candidates: 12,
     nominations: 6,
     nominees: [
-      { title: "El secreto", group: "Spaicy Sausage", course: "1º ESO", poster: "/nominaciones/cartel/el-secreto.jpg" },
-      { title: "Justo a tiempo", group: "JISOL", course: "3º ESO", poster: "/nominaciones/cartel/justo-a-tiempo.jpg" },
-      { title: "La voz de la experiencia", group: "Moonlight", course: "3º ESO", poster: "/nominaciones/cartel/la-voz-de-la-experiencia.jpg" },
-      { title: "Las flechas misteriosas", group: "Films Action", course: "3º ESO", poster: "/nominaciones/cartel/las-flechas-misteriosas.jpg" },
-      { title: "Lo abstracto", group: "Epic Screen", course: "3º ESO", poster: "/nominaciones/cartel/lo-abstracto.jpg" },
-      { title: "Plutón", group: "Lampedusa", course: "3º ESO", poster: "/nominaciones/cartel/pluton.jpg" },
+      { title: "El secreto", group: "Spaicy Sausage", course: "1º ESO" },
+      { title: "Lo abstracto", group: "Epic Screen", course: "3º ESO" },
+      { title: "La voz de la experiencia", group: "Moonlight", course: "3º ESO" },
+      { title: "Plutón", group: "Lampedusa", course: "3º ESO" },
+      { title: "Las flechas misteriosas", group: "Films Action", course: "3º ESO" },
+      { title: "Ganar para salir", group: "Horizonte Pluz", course: "3º ESO" },
     ],
     entries: [
       { title: "¡Corre que no llegamos!", group: "JJHH", course: "1º ESO" },
@@ -246,7 +246,7 @@ const nominationCategories = [
       { title: "El secreto", group: "Spaicy Sausage", course: "1º ESO" },
       { title: "El tarot", group: "Dark Cinema", course: "3º ESO" },
       { title: "Ganar para salir", group: "Horizonte Pluz", course: "3º ESO" },
-      { title: "Justo a tiempo", group: "JISOL", course: "3º ESO" },
+      { title: "Justo a tiempo", group: "Chandal y Tacón", course: "3º ESO · 2025" },
       { title: "La voz de la experiencia", group: "Moonlight", course: "3º ESO" },
       { title: "Las flechas misteriosas", group: "Films Action", course: "3º ESO" },
       { title: "Lo abstracto", group: "Epic Screen", course: "3º ESO" },
@@ -375,6 +375,14 @@ const nominationCategories = [
     icon: Handshake,
     candidates: 8,
     nominations: 6,
+    nominees: [
+      { title: "Cuando todo era gris", group: "Las Grecas", course: "1º ESO" },
+      { title: "El secreto", group: "Spaicy Sausage", course: "1º ESO" },
+      { title: "Justo a tiempo", group: "JISOL", course: "3º ESO" },
+      { title: "La voz de la experiencia", group: "Moonlight", course: "3º ESO" },
+      { title: "Lo abstracto", group: "Epic Screen", course: "3º ESO" },
+      { title: "Plutón", group: "Lampedusa Films", course: "3º ESO" },
+    ],
     entries: [
       { title: "Acoso sin necesidad", group: "MNM3", course: "3º ESO" },
       { title: "Cuando todo era gris", group: "Las Grecas", course: "1º ESO" },
@@ -382,8 +390,8 @@ const nominationCategories = [
       { title: "El secreto", group: "Spaicy Sausage", course: "1º ESO" },
       { title: "Justo a tiempo", group: "JISOL", course: "3º ESO" },
       { title: "La voz de la experiencia", group: "Moonlight", course: "3º ESO" },
-      { title: "Lo abstracto", group: "JISOL", course: "3º ESO" },
-      { title: "Plutón", group: "Lampedusa", course: "3º ESO" },
+      { title: "Lo abstracto", group: "Epic Screen", course: "3º ESO" },
+      { title: "Plutón", group: "Lampedusa Films", course: "3º ESO" },
     ],
   },
   {
@@ -393,7 +401,12 @@ const nominationCategories = [
     candidates: 11,
     nominations: 6,
     nominees: [
-      { title: "Lo abstracto", group: "JISOL", course: "3º ESO", author: "Lucía Toledano", audio: "/nominaciones/espacio-sonoro/lo-abstracto-lucia-toledano.mp3" },
+      { title: "Arahal, pasado y presente", group: "Indigo", course: "1º ESO" },
+      { title: "La misteriosa noche", group: "KASK", course: "1º ESO" },
+      { title: "Lo abstracto", group: "Epic Screen", course: "3º ESO", author: "Lucía Toledano", audio: "/nominaciones/espacio-sonoro/lo-abstracto-lucia-toledano.mp3" },
+      { title: "La ausencia que respira", group: "Estrella Co.", course: "3º ESO" },
+      { title: "Las flechas misteriosas", group: "Film Action", course: "3º ESO" },
+      { title: "Directo y sin filtros", group: "Opalite Studios", course: "3º ESO" },
     ],
     entries: [
       { title: "Arahal, pasado y presente", group: "Indigo", course: "1º ESO" },
@@ -403,7 +416,7 @@ const nominationCategories = [
       { title: "La ausencia que respira", group: "Estrella Co.", course: "3º ESO" },
       { title: "Las flechas misteriosas", group: "Film Action", course: "3º ESO" },
       { title: "La misteriosa noche", group: "KASK", course: "1º ESO" },
-      { title: "Lo abstracto", group: "JISOL", course: "3º ESO" },
+      { title: "Lo abstracto", group: "Epic Screen", course: "3º ESO" },
       { title: "Plutón", group: "Lampedusa", course: "3º ESO" },
       { title: "Sabores de mi tierra", group: "RBM", course: "1º ESO" },
       { title: "Servicio público", group: "OOPS Studios", course: "1º ESO" },
@@ -897,6 +910,22 @@ const graphicJury = [
       " Su trabajo se ha desarrollado en múltiples proyectos, comenzando como directora de vestuario en ",
       { text: "Cuando las cigarras callen", highlight: true },
       ", corto de Bea Hohenlaiter, o Casa típica, de Jesús Pascual y Antonio Bonilla. Otros trabajos han sido Lava, de Carmen Jiménez, como ayudante de vestuario, y Pepe, el mudo, spot para Cruzcampo - Carne al Corte, como directora de vestuario.",
+    ],
+  },
+  {
+    name: "Alfonso Nieto",
+    role: "Comunicación visual, marketing y diseño gráfico",
+    image: "/jurado/alfonso-nieto.jpg",
+    imagePosition: "center 30%",
+    bio: [
+      {
+        text: "Profesional de la comunicación visual especializado en marketing, publicidad y diseño gráfico.",
+        highlight: true,
+      },
+      " Inició su formación en Marketing y Publicidad en EUSA, ampliando posteriormente su perfil creativo con estudios de Diseño Gráfico en la Escuela Superior de Arte y Diseño de Sevilla.",
+      " A lo largo de su trayectoria ha desarrollado proyectos de identidad visual, comunicación y diseño gráfico para diferentes entidades e iniciativas culturales. Su actividad creativa también se extiende al ámbito artístico, habiendo expuesto obra fotográfica en la Galería Zunino de Sevilla.",
+      " Ha realizado trabajos gráficos para diversas hermandades de Andalucía, así como proyectos de cartelería y comunicación visual entre los que destacan los realizados para la Pastora de Cantillana y la Virgen de la Soledad de La Rambla (Córdoba). Asimismo, ha desarrollado la identidad visual y la estrategia de comunicación de OCAÑA, asociación LGTBIQ+ de Cantillana que promueve el diálogo entre tradición, diversidad y expresión artística.",
+      " Su trabajo combina tradición, sensibilidad estética y comunicación visual contemporánea, explorando la imagen como vehículo para transmitir ideas, emociones y relatos.",
     ],
   },
 ];
@@ -1635,11 +1664,11 @@ function Candidates() {
                     <div className="grid gap-3 md:grid-cols-2">
                       {activeNominees.map((entry, index) => (
                         <div key={`${activeCategory.title}-nominee-${entry.title}-${index}`} className="border border-[#fbf7ed]/10 bg-[#fbf7ed]/[0.06] p-4">
-                          {(entry.logo || entry.poster) && (
-                            <div className={`mb-4 flex items-center justify-center border border-[#fbf7ed]/10 bg-white p-4 shadow-inner shadow-[#101a36]/10 ${entry.poster ? "aspect-[3/4]" : "aspect-[16/10]"}`}>
+                          {entry.logo && (
+                            <div className="mb-4 flex aspect-[16/10] items-center justify-center border border-[#fbf7ed]/10 bg-white p-4 shadow-inner shadow-[#101a36]/10">
                               <img
-                                src={entry.logo ?? entry.poster}
-                                alt={`${entry.poster ? "Cartel" : "Logo"} de ${entry.title}`}
+                                src={entry.logo}
+                                alt={`Logo de ${entry.title}`}
                                 className="h-full w-full object-contain"
                                 loading="lazy"
                               />
@@ -1986,11 +2015,11 @@ function JuryVotingForm() {
                 <div key={entryKey} className="rounded-[1.4rem] border border-[#101a36]/10 bg-white/65 p-5">
                   <div className="flex flex-col gap-3 lg:flex-row lg:items-start lg:justify-between">
                     <div className="min-w-0">
-                      {(entry.logo || entry.poster) && (
-                        <div className={`mb-4 flex max-w-sm items-center justify-center rounded-2xl border border-[#101a36]/10 bg-white p-4 ${entry.poster ? "aspect-[3/4]" : "aspect-[16/9]"}`}>
+                      {entry.logo && (
+                        <div className="mb-4 flex aspect-[16/9] max-w-sm items-center justify-center rounded-2xl border border-[#101a36]/10 bg-white p-4">
                           <img
-                            src={entry.logo ?? entry.poster}
-                            alt={`${entry.poster ? "Cartel" : "Logo"} de ${entry.title}`}
+                            src={entry.logo}
+                            alt={`Logo de ${entry.title}`}
                             className="h-full w-full object-contain"
                             loading="lazy"
                           />
