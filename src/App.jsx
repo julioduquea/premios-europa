@@ -331,6 +331,14 @@ const nominationCategories = [
     icon: ScrollText,
     candidates: 12,
     nominations: 6,
+    nominees: [
+      { title: "Sabores de mi tierra", group: "RBM", course: "1º ESO" },
+      { title: "Servicio público", group: "OOPS Studios", course: "3º ESO" },
+      { title: "El tarot", group: "Dark Cinema", course: "3º ESO" },
+      { title: "Las flechas misteriosas", group: "Film Action", course: "3º ESO" },
+      { title: "Ganar para salir", group: "Horizonte Pluz", course: "3º ESO" },
+      { title: "Directo y sin filtros", group: "Opalite Studios", course: "3º ESO" },
+    ],
     entries: [
       { title: "Acoso sin necesidad", group: "MNM3", course: "3º ESO" },
       { title: "Directo y sin filtros", group: "Opalite Studios", course: "3º ESO" },
