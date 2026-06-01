@@ -234,7 +234,7 @@ const nominationCategories = [
     nominations: 6,
     nominees: [
       { title: "El secreto", group: "Spaicy Sausage", course: "1º ESO", poster: "/nominaciones/cartel/el-secreto.jpg" },
-      { title: "Justo a tiempo", group: "JISOL", course: "3º ESO", poster: "/nominaciones/cartel/justo-a-tiempo.jpg" },
+      { title: "Justo a tiempo", group: "JISOL", course: "3º ESO", poster: "/nominaciones/cartel/justo-a-tiempo.png" },
       { title: "La voz de la experiencia", group: "Moonlight", course: "3º ESO", poster: "/nominaciones/cartel/la-voz-de-la-experiencia.jpg" },
       { title: "Las flechas misteriosas", group: "Films Action", course: "3º ESO", poster: "/nominaciones/cartel/las-flechas-misteriosas.jpg" },
       { title: "Lo abstracto", group: "Epic Screen", course: "3º ESO", poster: "/nominaciones/cartel/lo-abstracto.jpg" },
