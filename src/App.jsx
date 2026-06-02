@@ -654,7 +654,7 @@ const nominationCategories = [
     nominees: [
       { title: "Justo a tiempo", group: "JISOL", course: "3º ESO" },
       { title: "Lo abstracto", group: "Epic Screen", course: "3º ESO" },
-      { title: "La voz de la experiencia", group: "Moonlight", course: "3º ESO" },
+      { title: "La ausencia que respira", group: "Estrella Co.", course: "3º ESO"  },
       { title: "Lo que nunca dijimos", group: "Modo Avión", course: "3º ESO" },
       { title: "Servicio público", group: "OOPS Studios", course: "3º ESO" },
       { title: "Puntas abiertas", group: "Chandal y Tacón", course: "3º ESO · 2025" },
