@@ -114,6 +114,7 @@ const italianTranslations = {
   "Ver guión": "Vedi sceneggiatura",
   "Ver vestuario": "Vedi costumi",
   "Creación sonora:": "Creazione sonora:",
+  "Pistas de audio": "Tracce audio",
   "Jurado profesional": "Giuria professionale",
   "Industria del cine": "Industria cinematografica",
   "Referentes de la interpretación, la creación audiovisual, la educación, la cultura pop y el cine de género acompañan la valoración de los cortos de esta edición.": "Professionisti della recitazione, della creazione audiovisiva, dell'educazione, della cultura pop e del cinema di genere partecipano alla valutazione dei cortometraggi di questa edizione.",
@@ -402,6 +403,28 @@ function LocalizedPage({ children }) {
   );
 }
 
+const avianoSoundtrackAudios = [
+  { title: "Titoli di coda", src: "/nominaciones/espacio-sonoro/aviano/titoli-di-coda.mp3" },
+  { title: "Notturna", src: "/nominaciones/espacio-sonoro/aviano/notturna.mp3" },
+  { title: "Musica re", src: "/nominaciones/espacio-sonoro/aviano/musica-re.mp3" },
+  { title: "Agitazione", src: "/nominaciones/espacio-sonoro/aviano/agitazione.mp3" },
+  { title: "Allegra Enea", src: "/nominaciones/espacio-sonoro/aviano/allegra-enea.mp3" },
+  { title: "Misteriosa", src: "/nominaciones/espacio-sonoro/aviano/misteriosa.mp3" },
+  { title: "Avventurosa - colpo di scena nel finale", src: "/nominaciones/espacio-sonoro/aviano/avventurosa-colpo-di-scena-nel-finale.mp3" },
+  { title: "Leggera stesso tema avventurosa", src: "/nominaciones/espacio-sonoro/aviano/leggera-stesso-tema-avventurosa.mp3" },
+  { title: "Avventurosa con coro", src: "/nominaciones/espacio-sonoro/aviano/avventurosa-con-coro.mp3" },
+  { title: "Avventurosa", src: "/nominaciones/espacio-sonoro/aviano/avventurosa.mp3" },
+  { title: "Maestosa lenta", src: "/nominaciones/espacio-sonoro/aviano/maestosa-lenta.mp3" },
+  { title: "Maestosa veloce", src: "/nominaciones/espacio-sonoro/aviano/maestosa-veloce.mp3" },
+  { title: "Calma", src: "/nominaciones/espacio-sonoro/aviano/calma.mp3" },
+];
+
+function getEntryAudios(entry) {
+  if (entry.audios?.length) return entry.audios;
+  if (entry.audio) return [{ title: entry.author ?? "Audio", src: entry.audio }];
+  return [];
+}
+
 const nominationCategories = [
   {
     title: "Mejor corto",
@@ -686,7 +709,7 @@ const nominationCategories = [
       { title: "El tarot", group: "Dark Cinema", course: "3º ESO" },
       { title: "Las flechas misteriosas", group: "Film Action", course: "3º ESO" },
       { title: "Ganar para salir", group: "Horizonte Pluz", course: "3º ESO" },
-      { title: "Directo y sin filtros", group: "Opalite Studios", course: "3º ESO" },
+      { title: "Justo a tiempo", group: "JISOL", course: "3º ESO" },
     ],
     entries: [
       { title: "Acoso sin necesidad", group: "MNM3", course: "3º ESO" },
@@ -759,7 +782,7 @@ const nominationCategories = [
     nominations: 6,
     nominees: [
       { title: "Arahal, pasado y presente", group: "Indigo", course: "1º ESO" },
-      { title: "La misteriosa noche", group: "KASK", course: "1º ESO" },
+      { title: "WHO FIND A TREASURE... FIND A FRIEND", group: "Aviano Film Production", course: "Erasmus Italia", audios: avianoSoundtrackAudios },
       { title: "Lo abstracto", group: "Epic Screen", course: "3º ESO", author: "Lucía Toledano", audio: "/nominaciones/espacio-sonoro/lo-abstracto-lucia-toledano.mp3" },
       { title: "La ausencia que respira", group: "Estrella Co.", course: "3º ESO" },
       { title: "Las flechas misteriosas", group: "Film Action", course: "3º ESO" },
@@ -2049,10 +2072,18 @@ function Candidates() {
                                 </p>
                               )}
                               {entry.author && <p className="mt-2 text-sm font-semibold text-[#d5a449]">Creación sonora: {entry.author}</p>}
-                              {entry.audio && (
-                                <audio controls preload="metadata" className="mt-3 h-10 w-full max-w-sm">
-                                  <source src={entry.audio} type="audio/mpeg" />
-                                </audio>
+                              {getEntryAudios(entry).length > 0 && (
+                                <div className="mt-3 max-w-sm space-y-3">
+                                  <p className="text-xs font-black uppercase tracking-[0.16em] text-[#d5a449]">Pistas de audio</p>
+                                  {getEntryAudios(entry).map((audio) => (
+                                    <div key={audio.src}>
+                                      <p className="mb-1 text-xs font-semibold text-[#fbf7ed]/70">{audio.title}</p>
+                                      <audio controls preload="metadata" className="h-10 w-full">
+                                        <source src={audio.src} type="audio/mpeg" />
+                                      </audio>
+                                    </div>
+                                  ))}
+                                </div>
                               )}
                               {entry.pdf && (
                                 <a
@@ -2390,10 +2421,18 @@ function JuryVotingForm() {
                         {entry.work ? `${entry.work} · ${entry.group} · ${entry.course}` : `${entry.group ? `${entry.group} · ` : ""}${entry.course}`}
                       </p>
                       {entry.author && <p className="mt-2 text-sm font-semibold text-[#b56b24]">Creación sonora: {entry.author}</p>}
-                      {entry.audio && (
-                        <audio controls preload="metadata" className="mt-3 h-10 w-full max-w-sm">
-                          <source src={entry.audio} type="audio/mpeg" />
-                        </audio>
+                      {getEntryAudios(entry).length > 0 && (
+                        <div className="mt-3 max-w-sm space-y-3">
+                          <p className="text-xs font-black uppercase tracking-[0.16em] text-[#b56b24]">Pistas de audio</p>
+                          {getEntryAudios(entry).map((audio) => (
+                            <div key={audio.src}>
+                              <p className="mb-1 text-xs font-semibold text-[#101a36]/60">{audio.title}</p>
+                              <audio controls preload="metadata" className="h-10 w-full">
+                                <source src={audio.src} type="audio/mpeg" />
+                              </audio>
+                            </div>
+                          ))}
+                        </div>
                       )}
                       {entry.pdf && (
                         <a
