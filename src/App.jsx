@@ -103,6 +103,30 @@ const italianTranslations = {
   "Ver vídeo": "Guarda il video",
   "Selección oficial 2026": "Selezione ufficiale 2026",
   "Presentación de las candidaturas por categoría, con el paso de candidaturas a nominaciones y todos los trabajos seleccionados por orden alfabético.": "Presentazione delle candidature per categoria, con il passaggio dalle candidature alle nomination e tutte le opere selezionate in ordine alfabetico.",
+  "Cortometrajes de la II Edición": "Cortometraggi della II Edizione",
+  "Disfruta de todos los cortos participantes de la II Edición de Premios Europa en nuestra lista de reproducción oficial.": "Guarda tutti i cortometraggi partecipanti alla II Edizione dei Premios Europa nella nostra playlist ufficiale.",
+  "Playlist oficial": "Playlist ufficiale",
+  "Ver playlist en YouTube": "Guarda la playlist su YouTube",
+  "Palmarés oficial": "Albo d'oro ufficiale",
+  "Ganadores de la II Edición": "Vincitori della II Edizione",
+  "Celebramos los trabajos, intérpretes y propuestas creativas reconocidas en la gala de Premios Europa 2026.": "Celebriamo le opere, gli interpreti e le proposte creative premiate durante la cerimonia dei Premios Europa 2026.",
+  "Premio principal": "Premio principale",
+  "Premio del público": "Premio del pubblico",
+  "Mejor diseño de storyboard": "Miglior design dello storyboard",
+  "Mejor diseño de guion": "Miglior design della sceneggiatura",
+  "Mejor compromiso social": "Miglior impegno sociale",
+  "Mejor espacio sonoro": "Miglior spazio sonoro",
+  "Diploma a más candidaturas": "Diploma per il maggior numero di candidature",
+  "Galería de la II Edición": "Galleria della II Edizione",
+  "La gala en imágenes": "La cerimonia per immagini",
+  "Revive la alfombra roja, las actuaciones, la entrega de premios y los encuentros de la II Edición a través de 68 fotografías.": "Rivivi il red carpet, le esibizioni, la consegna dei premi e gli incontri della II Edizione attraverso 68 fotografie.",
+  "Reportaje fotográfico": "Reportage fotografico",
+  "68 fotografías": "68 fotografie",
+  "Abrir fotografía": "Apri fotografia",
+  "Cerrar galería": "Chiudi galleria",
+  "Fotografía anterior": "Foto precedente",
+  "Fotografía siguiente": "Foto successiva",
+  "Gala de la II Edición de Premios Europa": "Cerimonia della II Edizione dei Premios Europa",
   "Categorías": "Categorie",
   "Nominaciones": "Nomination",
   "Elige una para ver el detalle": "Scegline una per vedere i dettagli",
@@ -146,6 +170,7 @@ const italianTranslations = {
   "Contraseña del jurado": "Password della giuria",
   "Entrar": "Entra",
   "Votación del jurado": "Votazione della giuria",
+  "Acceso reservado para valorar los cortos de la II Edición.": "Accesso riservato per valutare i cortometraggi della II Edizione.",
   "Valoración por especialidad con nota cerrada y comentario positivo para cada corto.": "Valutazione per specialità con punteggio prestabilito e commento positivo per ogni cortometraggio.",
   "Nombre del jurado": "Nome del giurato",
   "Email del jurado": "Email del giurato",
@@ -806,71 +831,421 @@ const nominationCategories = [
 
 const juryPassword = "jurado2026";
 
-const juryPlaylist = {
-  title: "Lista de reproducción del jurado",
-  category: "Zona privada",
-  group: "YouTube privado",
-  description: "Todos los cortos ocultos de YouTube solo accesibles para el jurado tras introducir la contraseña.",
+const secondEditionPlaylist = {
+  title: "Cortometrajes de la II Edición",
+  category: "Playlist oficial",
+  group: "Premios Europa 2026",
+  description: "Disfruta de todos los cortos participantes de la II Edición de Premios Europa en nuestra lista de reproducción oficial.",
   embed: "https://www.youtube.com/embed/videoseries?list=PLFe_gKuKvRXWlW1KjrPOXzjTTuEvb11z_",
   url: "https://www.youtube.com/playlist?list=PLFe_gKuKvRXWlW1KjrPOXzjTTuEvb11z_",
 };
 
-const juryPrivateMaterials = [
-  juryPlaylist,
-];
-
-function JuryMediaCard({ item, index }) {
-  const isHiddenItem = item.hidden;
+function SecondEditionPlaylist() {
   return (
-    <motion.div
-      key={item.title}
-      variants={fadeUp}
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true }}
-      transition={{ duration: 0.65, delay: index * 0.08 }}
-    >
-      <Card className="overflow-hidden rounded-[2rem] border-[#101a36]/10 bg-white/65 shadow-xl shadow-[#101a36]/10">
-        <div className="aspect-video bg-[#101a36] lg:aspect-[16/9]">
-          {isHiddenItem ? (
-            <div className="flex h-full items-center justify-center px-6 text-center text-sm font-semibold uppercase tracking-[0.14em] text-[#fbf7ed]">
-              Vídeo por definir. Se añadirá cuando esté listo.
-            </div>
-          ) : (
+    <section id="cortos-ii-edicion" className="relative overflow-hidden bg-[#f3ecd9] px-4 py-20 md:px-8">
+      <div className="absolute -right-24 top-16 h-72 w-72 rounded-full border border-[#b56b24]/15" />
+      <div className="mx-auto max-w-7xl">
+        <SectionTitle
+          eyebrow="II Edición"
+          title={secondEditionPlaylist.title}
+          text={secondEditionPlaylist.description}
+        />
+        <motion.div
+          variants={fadeUp}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          transition={{ duration: 0.7 }}
+          className="relative overflow-hidden rounded-[2rem] border border-[#101a36]/10 bg-[#101a36] shadow-2xl shadow-[#101a36]/20"
+        >
+          <div className="aspect-video">
             <iframe
               className="h-full w-full"
-              src={item.embed}
-              title={item.title}
+              src={secondEditionPlaylist.embed}
+              title={secondEditionPlaylist.title}
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
               allowFullScreen
             />
-          )}
+          </div>
+          <div className="flex flex-col gap-5 p-6 text-[#fbf7ed] md:flex-row md:items-center md:justify-between md:p-8">
+            <div>
+              <p className="text-sm font-semibold uppercase tracking-[0.22em] text-[#d5a449]">
+                {secondEditionPlaylist.category}
+              </p>
+              <h3 className="mt-2 text-2xl font-light uppercase tracking-[0.08em] md:text-3xl">
+                {secondEditionPlaylist.title}
+              </h3>
+            </div>
+            <Button asChild className="rounded-full bg-[#d5a449] px-6 text-[#101a36] hover:bg-[#fbf7ed]">
+              <a href={secondEditionPlaylist.url} target="_blank" rel="noreferrer">
+                <PlayCircle className="mr-2 h-5 w-5" />
+                Ver playlist en YouTube
+              </a>
+            </Button>
+          </div>
+        </motion.div>
+      </div>
+    </section>
+  );
+}
+
+const secondEditionMainWinner = {
+  category: "Mejor cortometraje",
+  winner: "Píxeles",
+};
+
+const secondEditionAwards = [
+  {
+    category: "Mejor interpretación protagonista",
+    winner: "Ana Gallegos",
+    detail: "La Rebe · Puntas abiertas",
+    icon: UserRound,
+  },
+  {
+    category: "Mejor interpretación de reparto",
+    winner: "Laura Sánchez",
+    detail: "Influencer argentina · Servicio público",
+    icon: UsersRound,
+  },
+  {
+    category: "Premio del público",
+    winner: "Servicio público",
+    icon: Users,
+  },
+  {
+    category: "Mejor formato arriesgado",
+    winner: "La misteriosa noche",
+    icon: Sparkles,
+  },
+  {
+    category: "Mejor cartel",
+    winner: "El reparto",
+    icon: Image,
+  },
+  {
+    category: "Mejor diseño de vestuario y personajes",
+    winner: "Servicio público",
+    icon: Shirt,
+  },
+  {
+    category: "Mejor logo de productora",
+    winner: "JJHN",
+    icon: Palette,
+  },
+  {
+    category: "Mejor diseño de storyboard",
+    winner: "La ausencia que respira",
+    icon: Film,
+  },
+  {
+    category: "Mejor diseño de guion",
+    winner: "Servicio público",
+    icon: ScrollText,
+  },
+  {
+    category: "Mejor presupuesto",
+    winner: "Servicio público",
+    icon: Calculator,
+  },
+  {
+    category: "Mejor traducción de guion",
+    winner: "Justo a tiempo",
+    icon: Globe2,
+  },
+  {
+    category: "Mejor compromiso social",
+    winner: "Justo a tiempo",
+    icon: Handshake,
+  },
+  {
+    category: "Mejor espacio sonoro",
+    winner: "Enea Capovilla",
+    detail: "When You Find a Treasure",
+    icon: Music,
+  },
+  {
+    category: "Diploma a más candidaturas",
+    winner: "Cuando todo era gris",
+    icon: Award,
+    diploma: true,
+  },
+];
+
+function SecondEditionWinners() {
+  return (
+    <section id="ganadores-ii-edicion" className="relative overflow-hidden bg-[#fbf7ed] px-4 py-20 md:px-8">
+      <div className="absolute -left-32 top-24 h-80 w-80 rounded-full bg-[#d5a449]/10 blur-3xl" />
+      <div className="absolute -right-24 bottom-12 h-72 w-72 rounded-full border border-[#b56b24]/15" />
+      <div className="relative mx-auto max-w-7xl">
+        <SectionTitle
+          eyebrow="Palmarés oficial"
+          title="Ganadores de la II Edición"
+          text="Celebramos los trabajos, intérpretes y propuestas creativas reconocidas en la gala de Premios Europa 2026."
+        />
+
+        <motion.article
+          variants={fadeUp}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-80px" }}
+          transition={{ duration: 0.7 }}
+          className="relative mb-6 overflow-hidden rounded-[2rem] bg-[#101a36] p-7 text-[#fbf7ed] shadow-2xl shadow-[#101a36]/20 md:p-10"
+        >
+          <div className="absolute -right-12 -top-16 h-56 w-56 rounded-full border border-[#d5a449]/20" />
+          <div className="absolute right-10 top-8 text-[#d5a449]/10">
+            <Trophy className="h-44 w-44" strokeWidth={1} />
+          </div>
+          <div className="relative flex max-w-3xl items-start gap-5">
+            <span className="flex h-16 w-16 shrink-0 items-center justify-center rounded-2xl bg-[#d5a449] text-[#101a36] shadow-lg shadow-black/20">
+              <Trophy className="h-8 w-8" />
+            </span>
+            <div>
+              <p className="text-xs font-bold uppercase tracking-[0.3em] text-[#d5a449]">Premio principal</p>
+              <p className="mt-3 text-sm font-semibold uppercase tracking-[0.18em] text-[#fbf7ed]/65">
+                {secondEditionMainWinner.category}
+              </p>
+              <h3 className="mt-2 text-4xl font-light uppercase tracking-[0.08em] md:text-6xl">
+                {secondEditionMainWinner.winner}
+              </h3>
+            </div>
+          </div>
+        </motion.article>
+
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {secondEditionAwards.map((award, index) => {
+            const Icon = award.icon;
+            return (
+              <motion.article
+                key={award.category}
+                variants={fadeUp}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, margin: "-50px" }}
+                transition={{ duration: 0.55, delay: Math.min(index * 0.04, 0.24) }}
+                className={`group relative overflow-hidden rounded-3xl border p-6 shadow-lg transition duration-300 hover:-translate-y-1 hover:shadow-xl ${
+                  award.diploma
+                    ? "border-[#d5a449]/40 bg-[#f3ecd9] sm:col-span-2 lg:col-span-3"
+                    : "border-[#101a36]/10 bg-white/80"
+                }`}
+              >
+                <div className={`flex ${award.diploma ? "items-center" : "items-start"} gap-4`}>
+                  <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-[#101a36] text-[#d5a449] transition group-hover:bg-[#b56b24] group-hover:text-white">
+                    <Icon className="h-5 w-5" />
+                  </span>
+                  <div>
+                    <p className="text-xs font-bold uppercase leading-5 tracking-[0.18em] text-[#b56b24]">
+                      {award.category}
+                    </p>
+                    <h3 className="mt-2 text-xl font-semibold leading-tight text-[#101a36] md:text-2xl">
+                      {award.winner}
+                    </h3>
+                    {award.detail && <p className="mt-2 text-sm leading-6 text-[#1b294e]/65">{award.detail}</p>}
+                  </div>
+                </div>
+              </motion.article>
+            );
+          })}
         </div>
-        <CardContent className="p-6">
-          <span className="rounded-full bg-[#d5a449]/20 px-3 py-1 text-xs font-bold uppercase tracking-[0.16em] text-[#b56b24]">
-            {item.category}
-          </span>
-          <h3 className="mt-4 text-xl font-semibold text-[#101a36]">{item.title}</h3>
-          <p className="mt-2 text-sm uppercase tracking-[0.18em] text-[#b56b24]">{item.group}</p>
-          <p className="mt-3 leading-7 text-[#1b294e]/70">{item.description}</p>
-          {item.url && !isHiddenItem && (
-            <a
-              href={item.url}
-              target="_blank"
-              rel="noreferrer"
-              className="mt-4 inline-flex rounded-full bg-[#d5a449] px-5 py-3 text-sm font-semibold text-[#101a36] transition hover:bg-[#fbf7ed]"
-            >
-              Abrir playlist en YouTube
-            </a>
-          )}
-          {isHiddenItem && (
-            <p className="mt-4 rounded-2xl bg-[#f3ecd9]/80 px-4 py-3 text-sm font-semibold text-[#101a36]">
-              Contenido oculto hasta que el vídeo esté disponible.
-            </p>
-          )}
-        </CardContent>
-      </Card>
-    </motion.div>
+      </div>
+    </section>
+  );
+}
+
+const secondEditionPhotoIds = [
+  5938, 5936, 5935, 5929, 5925, 5921, 5919, 5914, 5909, 5908, 5907, 5899, 5898, 5894, 5892, 5888, 5887,
+  5886, 5885, 5882, 5880, 5876, 5873, 5871, 5870, 5868, 5865, 5860, 5858, 5856, 5854, 5852, 5845, 5842,
+  5840, 5838, 5837, 5835, 5834, 5833, 5829, 5827, 5825, 5824, 5823, 5822, 5821, 5820, 5819, 5818, 5817,
+  5815, 5806, 5803, 5798, 5794, 5786, 5780, 5776, 5769, 5766, 5761, 5758, 5754, 5749, 5745, 5742, 5741,
+];
+
+const secondEditionPhotos = secondEditionPhotoIds.map((id, index) => ({
+  id,
+  thumb: `/ii-edicion/thumbs/IMG_${id}.webp`,
+  full: `/ii-edicion/full/IMG_${id}.webp`,
+  alt: `Gala de la II Edición de Premios Europa, fotografía ${index + 1}`,
+}));
+
+function SecondEditionGallery() {
+  const [selectedIndex, setSelectedIndex] = useState(null);
+  const selectedPhoto = selectedIndex === null ? null : secondEditionPhotos[selectedIndex];
+
+  const closeGallery = () => setSelectedIndex(null);
+  const showPreviousPhoto = () => {
+    setSelectedIndex((current) => (current === null ? 0 : (current - 1 + secondEditionPhotos.length) % secondEditionPhotos.length));
+  };
+  const showNextPhoto = () => {
+    setSelectedIndex((current) => (current === null ? 0 : (current + 1) % secondEditionPhotos.length));
+  };
+
+  useEffect(() => {
+    if (selectedIndex === null) return undefined;
+
+    const handleKeyDown = (event) => {
+      if (event.key === "Escape") closeGallery();
+      if (event.key === "ArrowLeft") showPreviousPhoto();
+      if (event.key === "ArrowRight") showNextPhoto();
+    };
+
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    window.addEventListener("keydown", handleKeyDown);
+
+    const adjacentPhotos = [
+      secondEditionPhotos[(selectedIndex - 1 + secondEditionPhotos.length) % secondEditionPhotos.length],
+      secondEditionPhotos[(selectedIndex + 1) % secondEditionPhotos.length],
+    ];
+    adjacentPhotos.forEach((photo) => {
+      const image = new window.Image();
+      image.src = photo.full;
+    });
+
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [selectedIndex]);
+
+  return (
+    <section id="galeria-ii-edicion" className="relative overflow-hidden bg-[#101a36] px-4 py-20 text-[#fbf7ed] md:px-8">
+      <div className="absolute -left-32 top-24 h-80 w-80 rounded-full border border-[#d5a449]/15" />
+      <div className="absolute -right-32 bottom-20 h-96 w-96 rounded-full bg-[#b56b24]/10 blur-3xl" />
+      <div className="relative mx-auto max-w-7xl">
+        <SectionTitle
+          eyebrow="Galería de la II Edición"
+          title="La gala en imágenes"
+          text="Revive la alfombra roja, las actuaciones, la entrega de premios y los encuentros de la II Edición a través de 68 fotografías."
+          light
+        />
+
+        <motion.button
+          type="button"
+          variants={fadeUp}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          transition={{ duration: 0.7 }}
+          onClick={() => setSelectedIndex(0)}
+          className="group relative mb-5 block w-full overflow-hidden rounded-[2rem] border border-[#fbf7ed]/10 bg-[#0b1328] text-left shadow-2xl shadow-black/30 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[#d5a449]/50"
+          aria-label="Abrir fotografía 1"
+        >
+          <div className="aspect-[3/2] md:aspect-[21/9]">
+            <img
+              src={secondEditionPhotos[0].full}
+              alt={secondEditionPhotos[0].alt}
+              width="1800"
+              height="1200"
+              decoding="async"
+              className="h-full w-full object-cover object-center transition duration-700 group-hover:scale-[1.025]"
+            />
+          </div>
+          <div className="absolute inset-0 bg-gradient-to-t from-[#101a36]/95 via-[#101a36]/10 to-transparent" />
+          <div className="absolute inset-x-0 bottom-0 flex items-end justify-between gap-4 p-6 md:p-9">
+            <div>
+              <p className="text-xs font-bold uppercase tracking-[0.24em] text-[#d5a449]">Reportaje fotográfico</p>
+              <p className="mt-2 text-2xl font-light uppercase tracking-[0.08em] md:text-4xl">Galería de la II Edición</p>
+            </div>
+            <span className="hidden rounded-full border border-[#fbf7ed]/20 bg-[#fbf7ed]/10 px-4 py-2 text-sm font-semibold backdrop-blur sm:block">
+              68 fotografías
+            </span>
+          </div>
+        </motion.button>
+
+        <div className="grid grid-cols-2 gap-3 sm:gap-4 md:grid-cols-3 lg:grid-cols-4">
+          {secondEditionPhotos.slice(1).map((photo, photoIndex) => {
+            const index = photoIndex + 1;
+            return (
+              <motion.button
+                key={photo.id}
+                type="button"
+                variants={fadeUp}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, margin: "120px" }}
+                transition={{ duration: 0.45, delay: (photoIndex % 4) * 0.04 }}
+                onClick={() => setSelectedIndex(index)}
+                className="group relative aspect-[3/2] overflow-hidden rounded-xl border border-[#fbf7ed]/10 bg-[#0b1328] shadow-lg shadow-black/15 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[#d5a449]/50 sm:rounded-2xl"
+                aria-label={`Abrir fotografía ${index + 1}`}
+              >
+                <img
+                  src={photo.thumb}
+                  alt={photo.alt}
+                  width="720"
+                  height="480"
+                  loading="lazy"
+                  decoding="async"
+                  className="h-full w-full object-cover transition duration-500 group-hover:scale-105 group-hover:brightness-110"
+                />
+                <span className="absolute inset-0 bg-gradient-to-t from-[#101a36]/45 to-transparent opacity-0 transition group-hover:opacity-100" />
+                <span className="absolute bottom-3 right-3 flex h-9 w-9 items-center justify-center rounded-full bg-[#fbf7ed]/90 text-[#101a36] opacity-0 shadow-lg transition group-hover:opacity-100">
+                  <Image className="h-4 w-4" aria-hidden="true" />
+                </span>
+              </motion.button>
+            );
+          })}
+        </div>
+      </div>
+
+      {selectedPhoto && (
+        <div
+          role="dialog"
+          aria-modal="true"
+          aria-label="Galería de la II Edición"
+          className="fixed inset-0 z-[100] flex items-center justify-center bg-[#070b16]/96 p-3 backdrop-blur-md md:p-8"
+          onClick={closeGallery}
+        >
+          <button
+            type="button"
+            onClick={closeGallery}
+            className="absolute right-4 top-4 z-20 flex h-11 w-11 items-center justify-center rounded-full border border-white/15 bg-white/10 text-white transition hover:bg-white/20 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[#d5a449]/50 md:right-7 md:top-7"
+            aria-label="Cerrar galería"
+          >
+            <X className="h-6 w-6" />
+          </button>
+
+          <button
+            type="button"
+            onClick={(event) => {
+              event.stopPropagation();
+              showPreviousPhoto();
+            }}
+            className="absolute left-3 z-20 flex h-11 w-11 items-center justify-center rounded-full border border-white/15 bg-white/10 text-white transition hover:bg-white/20 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[#d5a449]/50 md:left-7 md:h-14 md:w-14"
+            aria-label="Fotografía anterior"
+          >
+            <ChevronLeft className="h-7 w-7" />
+          </button>
+
+          <figure
+            className="flex h-full w-full max-w-[min(92rem,calc(100vw-1.5rem))] flex-col items-center justify-center"
+            onClick={(event) => event.stopPropagation()}
+          >
+            <img
+              key={selectedPhoto.id}
+              src={selectedPhoto.full}
+              alt={selectedPhoto.alt}
+              width="1800"
+              height="1200"
+              decoding="async"
+              className="max-h-[calc(100vh-6rem)] max-w-full rounded-xl object-contain shadow-2xl shadow-black/60 md:rounded-2xl"
+            />
+            <figcaption className="mt-3 rounded-full bg-black/35 px-4 py-2 text-sm font-semibold text-white/85 backdrop-blur">
+              {selectedIndex + 1} / {secondEditionPhotos.length}
+            </figcaption>
+          </figure>
+
+          <button
+            type="button"
+            onClick={(event) => {
+              event.stopPropagation();
+              showNextPhoto();
+            }}
+            className="absolute right-3 z-20 flex h-11 w-11 items-center justify-center rounded-full border border-white/15 bg-white/10 text-white transition hover:bg-white/20 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[#d5a449]/50 md:right-7 md:h-14 md:w-14"
+            aria-label="Fotografía siguiente"
+          >
+            <ChevronRight className="h-7 w-7" />
+          </button>
+        </div>
+      )}
+    </section>
   );
 }
 
@@ -1353,7 +1728,7 @@ function PremiosEuropaLogo({ compact = false, inverted = false }) {
   );
 }
 
-function SectionTitle({ eyebrow, title, text }) {
+function SectionTitle({ eyebrow, title, text, light = false }) {
   return (
     <motion.div
       variants={fadeUp}
@@ -1363,23 +1738,28 @@ function SectionTitle({ eyebrow, title, text }) {
       transition={{ duration: 0.7 }}
       className="mx-auto mb-10 max-w-3xl text-center"
     >
-      <p className="mb-3 text-sm font-semibold uppercase tracking-[0.35em] text-[#b56b24]">{eyebrow}</p>
-      <h2 className="text-3xl font-light tracking-[0.08em] text-[#101a36] md:text-5xl">{title}</h2>
-      {text && <p className="mt-4 text-base leading-7 text-[#1b294e]/75 md:text-lg">{text}</p>}
+      <p className={`mb-3 text-sm font-semibold uppercase tracking-[0.35em] ${light ? "text-[#d5a449]" : "text-[#b56b24]"}`}>{eyebrow}</p>
+      <h2 className={`text-3xl font-light tracking-[0.08em] md:text-5xl ${light ? "text-[#fbf7ed]" : "text-[#101a36]"}`}>{title}</h2>
+      {text && <p className={`mt-4 text-base leading-7 md:text-lg ${light ? "text-[#fbf7ed]/75" : "text-[#1b294e]/75"}`}>{text}</p>}
     </motion.div>
   );
 }
 
 function Nav({ isAdmin, onAdminLogin, onAdminLogout }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const links = ["Evento", "I Edición", "Candidaturas", "Colaboración", "Jurado", "Programa"];
+  const links = ["Evento", "I Edición", "II Edición", "Candidaturas", "Colaboración", "Jurado", "Programa"];
   const getSectionHref = (link) =>
     `#${link
       .toLowerCase()
       .normalize("NFD")
       .replace(/[\u0300-\u036f]/g, "")
       .replace(/\s+/g, "-")}`;
-  const getLinkHref = (link) => (link === "Jurado" ? "#/jurado" : link === "Colaboración" ? "#/colaboracion" : getSectionHref(link));
+  const getLinkHref = (link) => {
+    if (link === "Jurado") return "#/jurado";
+    if (link === "Colaboración") return "#/colaboracion";
+    if (link === "II Edición") return "#cortos-ii-edicion";
+    return getSectionHref(link);
+  };
 
   return (
     <header className="fixed left-0 right-0 top-0 z-50 border-b border-[#101a36]/10 bg-[#fbf7ed]/80 backdrop-blur-xl">
@@ -2535,8 +2915,8 @@ function JuryVideos() {
         <div className="mt-20">
           <SectionTitle
             eyebrow="Zona privada"
-            title="Visionado del jurado"
-            text="Acceso reservado para revisar los cortos de la II Edición antes de la gala. Visualización de los cortos."
+            title="Votación del jurado"
+            text="Acceso reservado para valorar los cortos de la II Edición."
           />
         </div>
 
@@ -2572,14 +2952,7 @@ function JuryVideos() {
             {error && <p className="mt-4 text-sm font-semibold text-[#d5a449]">{error}</p>}
           </motion.div>
         ) : (
-          <>
-            <div className="grid gap-8 xl:grid-cols-2">
-              {juryPrivateMaterials.map((item, index) => (
-                <JuryMediaCard key={item.title} item={item} index={index} />
-              ))}
-            </div>
-            <JuryVotingForm />
-          </>
+          <JuryVotingForm />
         )}
       </div>
     </section>
@@ -2993,6 +3366,9 @@ function PremiosEuropaContent() {
       <OfficialSponsor />
       <FirstEdition />
       <Candidates />
+      <SecondEditionPlaylist />
+      <SecondEditionWinners />
+      <SecondEditionGallery />
       {isAdmin && <AdminUploadSection />}
       <AwardCategories />
       <Schedule />
