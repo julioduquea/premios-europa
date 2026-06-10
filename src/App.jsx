@@ -64,7 +64,7 @@ const italianTranslations = {
   "II Edición": "II Edizione",
   "Festival de Cine Adolescente": "Festival del Cinema Adolescenziale",
   "Jueves 04.JUN.26": "Giovedì 04.GIU.26",
-  "Ver candidaturas": "Vedi candidature",
+  "Ver nominaciones": "Vedi nomination",
   "Subir cortos": "Carica cortometraggi",
   "Salir admin": "Esci da admin",
   "Cerrar menú": "Chiudi menu",
@@ -102,7 +102,7 @@ const italianTranslations = {
   "Cortos premiados": "Cortometraggi premiati",
   "Ver vídeo": "Guarda il video",
   "Selección oficial 2026": "Selezione ufficiale 2026",
-  "Presentación de las candidaturas por categoría, con el paso de candidaturas a nominaciones y todos los trabajos seleccionados por orden alfabético.": "Presentazione delle candidature per categoria, con il passaggio dalle candidature alle nomination e tutte le opere selezionate in ordine alfabetico.",
+  "Consulta las nominaciones oficiales por categoría y descubre también todas las candidaturas seleccionadas, ordenadas alfabéticamente.": "Consulta le nomination ufficiali per categoria e scopri anche tutte le candidature selezionate, in ordine alfabetico.",
   "Cortometrajes de la II Edición": "Cortometraggi della II Edizione",
   "Disfruta de todos los cortos participantes de la II Edición de Premios Europa en nuestra lista de reproducción oficial.": "Guarda tutti i cortometraggi partecipanti alla II Edizione dei Premios Europa nella nostra playlist ufficiale.",
   "Playlist oficial": "Playlist ufficiale",
@@ -919,7 +919,7 @@ const secondEditionAwards = [
   },
   {
     category: "Mejor cartel",
-    winner: "El reparto",
+    winner: "El secreto",
     icon: Image,
   },
   {
@@ -1747,7 +1747,7 @@ function SectionTitle({ eyebrow, title, text, light = false }) {
 
 function Nav({ isAdmin, onAdminLogin, onAdminLogout }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const links = ["Evento", "I Edición", "II Edición", "Candidaturas", "Colaboración", "Jurado", "Programa"];
+  const links = ["Evento", "I Edición", "II Edición", "Nominaciones", "Colaboración", "Jurado", "Programa"];
   const getSectionHref = (link) =>
     `#${link
       .toLowerCase()
@@ -1897,7 +1897,7 @@ function Hero({ isAdmin }) {
           </div>
           <div className="mt-9 flex flex-col gap-3 sm:flex-row">
             <Button asChild className="rounded-full bg-[#101a36] px-7 py-6 text-base text-[#fbf7ed] shadow-xl shadow-[#101a36]/15 hover:bg-[#1b294e]">
-              <a href="#candidaturas">Ver candidaturas</a>
+              <a href="#nominaciones">Ver nominaciones</a>
             </Button>
             {isAdmin && (
               <Button asChild variant="outline" className="rounded-full border-[#b56b24]/50 bg-white/30 px-7 py-6 text-base text-[#101a36] backdrop-blur hover:bg-[#f3ecd9]">
@@ -2277,7 +2277,7 @@ function Candidates() {
   const activeNominees = activeCategory.nominees ?? [];
 
   return (
-    <section id="candidaturas" className="relative overflow-hidden bg-[#101a36] px-4 py-20 text-[#fbf7ed] md:px-8">
+    <section id="nominaciones" className="relative overflow-hidden bg-[#101a36] px-4 py-20 text-[#fbf7ed] md:px-8">
       <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[#d5a449]/70 to-transparent" />
       <div className="absolute -right-24 top-20 h-72 w-72 rounded-full border border-[#d5a449]/20" />
       <div className="absolute -left-24 bottom-24 h-64 w-64 rounded-full border border-[#fbf7ed]/10" />
@@ -2291,9 +2291,9 @@ function Candidates() {
           className="relative mx-auto mb-12 max-w-4xl text-center"
         >
           <p className="mb-3 text-sm font-semibold uppercase tracking-[0.35em] text-[#d5a449]">Selección oficial 2026</p>
-          <h2 className="text-4xl font-light uppercase tracking-[0.12em] md:text-6xl">Candidaturas</h2>
+          <h2 className="text-4xl font-light uppercase tracking-[0.12em] md:text-6xl">Nominaciones</h2>
           <p className="mx-auto mt-5 max-w-2xl text-base leading-7 text-[#fbf7ed]/72 md:text-lg">
-            Presentación de las candidaturas por categoría, con el paso de candidaturas a nominaciones y todos los trabajos seleccionados por orden alfabético.
+            Consulta las nominaciones oficiales por categoría y descubre también todas las candidaturas seleccionadas, ordenadas alfabéticamente.
           </p>
         </motion.div>
 
