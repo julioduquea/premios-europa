@@ -55,6 +55,26 @@ const fadeUp = {
 };
 
 const italianTranslations = {
+  "III Edición": "III Edizione",
+  "III Edición · En preparación": "III Edizione · In preparazione",
+  "La II edición ya forma parte de nuestra historia. Preparamos una nueva cita con el talento joven, las historias y la emoción del cine.": "La II edizione fa già parte della nostra storia. Prepariamo un nuovo appuntamento con il talento dei giovani, le storie e le emozioni del cinema.",
+  "Fecha por confirmar": "Data da confermare",
+  "Sede por confirmar": "Sede da confermare",
+  "Fecha y sede por confirmar": "Data e sede da confermare",
+  "Próximamente anunciaremos aquí la fecha, la sede y las novedades de la III edición.": "Presto annunceremo qui la data, la sede e le novità della III edizione.",
+  "Revive la II edición": "Rivivi la II edizione",
+  "El resumen de la gala": "Il video della cerimonia",
+  "Así vivimos la II edición": "Riviviamo la II edizione",
+  "Una gala, muchas historias y todo el talento de una edición para recordar.": "Una cerimonia, tante storie e tutto il talento di un’edizione da ricordare.",
+  "Vídeo resumen de la gala de la II edición de Premios Europa": "Video della cerimonia della II edizione dei Premios Europa",
+  "Reproducir resumen de la gala de la II edición": "Riproduci il video della cerimonia della II edizione",
+  "Ver vídeo resumen": "Guarda il video",
+  "Ver en YouTube": "Guarda su YouTube",
+  "Ver ganadores": "Scopri i vincitori",
+  "Archivo · II Edición · 04.JUN.26": "Archivio · II Edizione · 04.GIU.26",
+  "Así fue el programa de la II edición. El programa de la III edición se anunciará más adelante.": "Questo era il programma della II edizione. Il programma della III edizione sarà annunciato prossimamente.",
+  "La II Edición 2026 se celebró en el Teatro Municipal de Arahal, con una alianza Erasmus con el Liceo de Aviano y cobertura de Medial TV. Preparamos la III edición, con fecha y sede por confirmar. Estamos abiertos a propuestas en material o colaboraciones adaptadas a cada entidad.": "La II Edizione 2026 si è svolta presso il Teatro Municipale di Arahal, con un’alleanza Erasmus con il Liceo di Aviano e la copertura di Medial TV. Prepariamo la III edizione, con data e sede da confermare. Siamo aperti a proposte di materiali o collaborazioni adatte a ogni realtà.",
+
   "Evento": "Evento",
   "I Edición": "I Edizione",
   "Candidaturas": "Candidature",
@@ -181,11 +201,10 @@ const italianTranslations = {
   "Colaboración oficial": "Collaborazione ufficiale",
   "Apoya el talento joven": "Sostieni il talento dei giovani",
   "Premios Europa es el festival de cine adolescente del IES Europa de Arahal. Buscamos comercios, empresas e instituciones que quieran impulsar la cultura, el emprendimiento escolar y la creatividad audiovisual del alumnado.": "Premios Europa è il festival del cinema adolescenziale dell'IES Europa di Arahal. Cerchiamo negozi, aziende e istituzioni che vogliano sostenere la cultura, l'iniziativa scolastica e la creatività audiovisiva degli studenti.",
-  "La II Edición 2026 da un salto de calidad con una gala en el Teatro Municipal de Arahal, alianza Erasmus con el Liceo de Aviano y cobertura de Medial TV. También estamos abiertos a propuestas en material o colaboraciones adaptadas a cada entidad.": "La II Edizione 2026 compie un salto di qualità con una cerimonia presso il Teatro Municipale di Arahal, un'alleanza Erasmus con il Liceo di Aviano e la copertura di Medial TV. Siamo inoltre aperti a proposte di materiali o collaborazioni adatte a ogni realtà.",
   "Por qué colaborar": "Perché collaborare",
   "Impacto local": "Impatto locale",
   "Primera edición con más de 300 asistentes, 40 productoras escolares y cobertura televisiva.": "Prima edizione con oltre 300 partecipanti, 40 case di produzione scolastiche e copertura televisiva.",
-  "La II Edición se celebrará el 4 de junio en el Teatro Municipal de Arahal, con 412 butacas.": "La II Edizione si terrà il 4 giugno presso il Teatro Municipale di Arahal, con 412 posti.",
+  "La II Edición se celebró el 4 de junio de 2026 en el Teatro Municipal de Arahal, con 412 butacas.": "La II Edizione si è svolta il 4 giugno 2026 presso il Teatro Municipale di Arahal, con 412 posti.",
   "Proyección cultural": "Proiezione culturale",
   "Festival internacional gracias a la alianza Erasmus con el Liceo de Aviano, Italia.": "Festival internazionale grazie all'alleanza Erasmus con il Liceo di Aviano, Italia.",
   "Participación de referentes de la cultura, la interpretación, el diseño y el audiovisual.": "Partecipazione di professionisti della cultura, della recitazione, del design e dell'audiovisivo.",
@@ -1511,7 +1530,7 @@ const categories = [
 
 const collaborationHighlights = [
   { icon: Users, title: "Impacto local", text: "Primera edición con más de 300 asistentes, 40 productoras escolares y cobertura televisiva." },
-  { icon: Theater, title: "Gala 2026", text: "La II Edición se celebrará el 4 de junio en el Teatro Municipal de Arahal, con 412 butacas." },
+  { icon: Theater, title: "Gala 2026", text: "La II Edición se celebró el 4 de junio de 2026 en el Teatro Municipal de Arahal, con 412 butacas." },
   { icon: Sparkles, title: "Proyección cultural", text: "Festival internacional gracias a la alianza Erasmus con el Liceo de Aviano, Italia." },
   { icon: Award, title: "Jurado profesional", text: "Participación de referentes de la cultura, la interpretación, el diseño y el audiovisual." },
 ];
@@ -1747,7 +1766,7 @@ function SectionTitle({ eyebrow, title, text, light = false }) {
 
 function Nav({ isAdmin, onAdminLogin, onAdminLogout }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const links = ["Evento", "I Edición", "II Edición", "Nominaciones", "Colaboración", "Jurado", "Programa"];
+  const links = ["III Edición", "II Edición", "I Edición", "Nominaciones", "Colaboración", "Jurado"];
   const getSectionHref = (link) =>
     `#${link
       .toLowerCase()
@@ -1757,7 +1776,8 @@ function Nav({ isAdmin, onAdminLogin, onAdminLogout }) {
   const getLinkHref = (link) => {
     if (link === "Jurado") return "#/jurado";
     if (link === "Colaboración") return "#/colaboracion";
-    if (link === "II Edición") return "#cortos-ii-edicion";
+    if (link === "III Edición") return "#inicio";
+    if (link === "II Edición") return "#resumen-ii-edicion";
     return getSectionHref(link);
   };
 
@@ -1872,6 +1892,8 @@ function Nav({ isAdmin, onAdminLogin, onAdminLogout }) {
 }
 
 function Hero({ isAdmin }) {
+  const [isRecapPlaying, setIsRecapPlaying] = useState(false);
+
   return (
     <section id="inicio" className="relative isolate overflow-hidden px-4 pb-20 pt-32 md:px-8 md:pb-28 md:pt-40">
       <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_20%_10%,rgba(213,164,73,0.25),transparent_28%),radial-gradient(circle_at_90%_20%,rgba(16,26,54,0.13),transparent_26%),linear-gradient(135deg,#fbf7ed,#f3ecd9)]" />
@@ -1880,7 +1902,7 @@ function Hero({ isAdmin }) {
         <motion.div initial={{ opacity: 0, y: 36 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
           <PremiosEuropaLogo />
           <div className="mt-12 inline-flex rotate-[-8deg] items-center rounded-sm bg-gradient-to-r from-[#9a531b] to-[#d5a449] px-5 py-2 text-sm font-semibold uppercase tracking-[0.28em] text-white shadow-xl shadow-[#b56b24]/20">
-            II Edición
+            III Edición · En preparación
           </div>
           <h1 className="font-anthony mt-7 text-5xl font-light uppercase leading-[0.95] tracking-[0.12em] text-[#101a36] md:text-7xl xl:text-8xl">
             Premios
@@ -1889,15 +1911,25 @@ function Hero({ isAdmin }) {
           <p className="mt-5 max-w-xl text-xl font-light tracking-[0.08em] text-[#1b294e]/80 md:text-2xl">
             Festival de Cine Adolescente
           </p>
+          <p className="mt-6 max-w-xl text-lg leading-8 text-[#1b294e]/80">
+            La II edición ya forma parte de nuestra historia. Preparamos una nueva cita con el talento joven, las historias y la emoción del cine.
+          </p>
           <div className="mt-8 flex flex-wrap items-center gap-4 text-[#101a36]">
             <div className="flex items-center gap-3 rounded-full border border-[#101a36]/15 bg-white/40 px-5 py-3 shadow-sm backdrop-blur">
               <CalendarDays className="h-5 w-5 text-[#b56b24]" />
-              <span className="text-lg tracking-[0.16em]">Jueves 04.JUN.26</span>
+              <span className="font-semibold">Fecha por confirmar</span>
+            </div>
+            <div className="flex items-center gap-3 rounded-full border border-[#101a36]/15 bg-white/40 px-5 py-3 shadow-sm backdrop-blur">
+              <Theater className="h-5 w-5 text-[#b56b24]" />
+              <span className="font-semibold">Sede por confirmar</span>
             </div>
           </div>
+          <p className="mt-5 max-w-xl text-sm leading-6 text-[#1b294e]/70">
+            Próximamente anunciaremos aquí la fecha, la sede y las novedades de la III edición.
+          </p>
           <div className="mt-9 flex flex-col gap-3 sm:flex-row">
             <Button asChild className="rounded-full bg-[#101a36] px-7 py-6 text-base text-[#fbf7ed] shadow-xl shadow-[#101a36]/15 hover:bg-[#1b294e]">
-              <a href="#nominaciones">Ver nominaciones</a>
+              <a href="#resumen-ii-edicion"><PlayCircle className="mr-2 h-5 w-5" />Revive la II edición</a>
             </Button>
             {isAdmin && (
               <Button asChild variant="outline" className="rounded-full border-[#b56b24]/50 bg-white/30 px-7 py-6 text-base text-[#101a36] backdrop-blur hover:bg-[#f3ecd9]">
@@ -1911,30 +1943,47 @@ function Hero({ isAdmin }) {
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.9, delay: 0.15 }}
-          className="relative"
+          id="resumen-ii-edicion"
+          className="relative scroll-mt-28"
         >
           <div className="absolute -inset-6 rounded-[2.5rem] bg-gradient-to-br from-[#d5a449]/30 to-[#101a36]/10 blur-2xl" />
-          <div className="relative overflow-hidden rounded-[2.2rem] border border-[#101a36]/10 bg-[#fbf7ed]/75 p-6 shadow-2xl shadow-[#101a36]/20 backdrop-blur">
-            <div className="aspect-[4/5] rounded-[1.6rem] border border-[#101a36]/10 bg-[#f3ecd9] p-8 shadow-inner">
-              <div className="flex h-full flex-col justify-between">
-                <div className="flex justify-between">
-                  <Sparkles className="h-10 w-10 text-[#d5a449]" />
-                  <span className="text-right text-sm uppercase tracking-[0.32em] text-[#101a36]/60">Gala</span>
-                </div>
-                <div>
-                  <p className="mb-4 text-sm uppercase tracking-[0.35em] text-[#b56b24]">Selección oficial</p>
-                  <h3 className="font-anthony text-4xl font-light uppercase tracking-[0.12em] text-[#101a36] md:text-5xl">
-                    ¿Estáis preparados?
-                  </h3>
-                </div>
-                <div className="grid grid-cols-3 gap-3">
-                  {["Cine", "Gala", "Premios"].map((item) => (
-                    <div key={item} className="rounded-2xl border border-[#101a36]/10 bg-white/35 p-4 text-center text-sm font-medium text-[#101a36]/70">
-                      {item}
-                    </div>
-                  ))}
-                </div>
-              </div>
+          <div className="relative overflow-hidden rounded-[2rem] border border-[#d5a449]/40 bg-[#101a36] text-[#fbf7ed] shadow-2xl shadow-[#101a36]/25">
+            <div className="p-6 md:p-8">
+              <p className="text-xs font-bold uppercase tracking-[0.25em] text-[#d5a449]">El resumen de la gala</p>
+              <h2 className="mt-3 text-3xl font-light leading-tight md:text-4xl">Así vivimos la II edición</h2>
+              <p className="mt-3 leading-7 text-[#fbf7ed]/75">Una gala, muchas historias y todo el talento de una edición para recordar.</p>
+            </div>
+            <div className="aspect-video bg-black">
+              {isRecapPlaying ? (
+                <iframe
+                  src="https://www.youtube-nocookie.com/embed/DSCWIKdMu2I?autoplay=1&rel=0"
+                  title="Vídeo resumen de la gala de la II edición de Premios Europa"
+                  className="h-full w-full border-0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  referrerPolicy="strict-origin-when-cross-origin"
+                  allowFullScreen
+                />
+              ) : (
+                <button
+                  type="button"
+                  onClick={() => setIsRecapPlaying(true)}
+                  aria-label="Reproducir resumen de la gala de la II edición"
+                  className="group relative flex h-full w-full items-center justify-center overflow-hidden focus-visible:outline-4 focus-visible:outline-offset-[-4px] focus-visible:outline-[#d5a449]"
+                >
+                  <img src="https://i.ytimg.com/vi/DSCWIKdMu2I/hqdefault.jpg" alt="" className="absolute inset-0 h-full w-full object-cover transition duration-500 group-hover:scale-105" />
+                  <span className="absolute inset-0 bg-gradient-to-t from-[#101a36]/85 via-[#101a36]/15 to-transparent" />
+                  <span className="relative flex flex-col items-center gap-3 text-[#fbf7ed]">
+                    <span className="flex h-20 w-20 items-center justify-center rounded-full bg-[#d5a449] text-[#101a36] shadow-xl transition group-hover:scale-110 group-hover:bg-[#fbf7ed]">
+                      <PlayCircle className="h-11 w-11" />
+                    </span>
+                    <span className="rounded-full bg-[#101a36]/80 px-5 py-2 text-sm font-semibold">Ver vídeo resumen</span>
+                  </span>
+                </button>
+              )}
+            </div>
+            <div className="flex flex-wrap items-center justify-between gap-4 p-6">
+              <a href="https://youtu.be/DSCWIKdMu2I" target="_blank" rel="noreferrer" className="text-sm font-semibold text-[#d5a449] underline underline-offset-4 hover:text-white">Ver en YouTube</a>
+              <a href="#ganadores-ii-edicion" className="inline-flex items-center gap-2 text-sm font-semibold hover:text-[#d5a449]">Ver ganadores<ChevronRight className="h-4 w-4" /></a>
             </div>
           </div>
         </motion.div>
@@ -3025,7 +3074,7 @@ function CollaborationPage() {
               Premios Europa es el festival de cine adolescente del IES Europa de Arahal. Buscamos comercios, empresas e instituciones que quieran impulsar la cultura, el emprendimiento escolar y la creatividad audiovisual del alumnado.
             </p>
             <p className="mt-4 max-w-2xl leading-8 text-[#1b294e]/70">
-              La II Edición 2026 da un salto de calidad con una gala en el Teatro Municipal de Arahal, alianza Erasmus con el Liceo de Aviano y cobertura de Medial TV. También estamos abiertos a propuestas en material o colaboraciones adaptadas a cada entidad.
+              La II Edición 2026 se celebró en el Teatro Municipal de Arahal, con una alianza Erasmus con el Liceo de Aviano y cobertura de Medial TV. Preparamos la III edición, con fecha y sede por confirmar. Estamos abiertos a propuestas en material o colaboraciones adaptadas a cada entidad.
             </p>
           </motion.div>
 
@@ -3226,7 +3275,7 @@ function Schedule() {
   return (
     <section id="programa" className="px-4 py-20 md:px-8">
       <div className="mx-auto max-w-5xl">
-        <SectionTitle eyebrow="04.JUN.26" title="Programa de la gala" />
+        <SectionTitle eyebrow="Archivo · II Edición · 04.JUN.26" title="Programa de la gala" text="Así fue el programa de la II edición. El programa de la III edición se anunciará más adelante." />
         <div className="relative mx-auto max-w-3xl">
           <div className="absolute bottom-0 left-5 top-0 hidden w-px bg-gradient-to-b from-[#d5a449] via-[#101a36]/30 to-[#d5a449] md:block" />
           <div className="space-y-5">
@@ -3257,11 +3306,11 @@ function Footer() {
           <PremiosEuropaLogo compact inverted />
           <div>
             <p className="text-xl font-light uppercase tracking-[0.16em]">Premios Europa</p>
-            <p className="mt-1 text-sm text-[#fbf7ed]/65">II Edición · Festival de Cine Adolescente</p>
+            <p className="mt-1 text-sm text-[#fbf7ed]/65">III Edición · En preparación</p>
           </div>
         </div>
         <div className="text-left md:text-right">
-          <p className="text-lg tracking-[0.18em] text-[#d5a449]">04.JUN.26</p>
+          <p className="text-sm text-[#d5a449]">Fecha y sede por confirmar</p>
           <p className="mt-2 text-sm text-[#fbf7ed]/60">Design by Julio Duque</p>
         </div>
       </div>
