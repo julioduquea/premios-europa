@@ -1891,6 +1891,23 @@ function Nav({ isAdmin, onAdminLogin, onAdminLogout }) {
   );
 }
 
+function MemorialRibbon() {
+  return (
+    <div
+      className="fixed right-4 top-20 z-40 md:right-8"
+      role="img"
+      aria-label="En memoria de las víctimas del accidente ferroviario de Urda"
+    >
+      <svg viewBox="0 0 64 80" className="h-20 w-16 drop-shadow-lg md:h-24 md:w-20" aria-hidden="true">
+        <path d="M17 7C8 7 4 13 4 22c0 10 9 19 22 31l6 6 8-8-15-15C17 28 11 23 11 19c0-4 3-7 7-7 6 0 10 6 14 13l7-9C31 10 24 7 17 7Z" fill="#111" />
+        <path d="M47 7c9 0 13 6 13 15 0 10-9 19-22 31l-6 6-8-8 15-15c8-8 14-13 14-17 0-4-3-7-7-7-6 0-10 6-14 13l-7-9C33 10 40 7 47 7Z" fill="#111" />
+        <path d="m27 48 8 7-12 20H10Z" fill="#111" />
+        <path d="m37 48-8 7 12 20h13Z" fill="#111" />
+      </svg>
+    </div>
+  );
+}
+
 function Hero({ isAdmin }) {
   const [isRecapPlaying, setIsRecapPlaying] = useState(false);
 
@@ -3409,6 +3426,7 @@ function PremiosEuropaContent() {
         section { scroll-margin-top: 88px; }
       `}</style>
       <Nav isAdmin={isAdmin} onAdminLogin={handleAdminLogin} onAdminLogout={() => setIsAdmin(false)} />
+      <MemorialRibbon />
       <Hero isAdmin={isAdmin} />
       <EventIntro />
       <GalaDirector />
